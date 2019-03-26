@@ -3,7 +3,6 @@ import { Docking, System, Window, Event } from 'redux-openfin';
 
 import {
     IApplicationNewSnackbarOption,
-    IApplicationSetSnackbarStatusOption,
     ISnackBarMsg, IApplicationState,
 } from './types';
 
@@ -213,10 +212,10 @@ const reducerMap:{[key:string]:(state:IApplicationState,action?:Action<any>)=>IA
         }
     },
     [APPLICATION_SET_SNACKBAR_STATUS]:(state,action)=>{
-        const option:IApplicationSetSnackbarStatusOption = action.payload as IApplicationSetSnackbarStatusOption;
+        const {snackBarOpen} = action.payload;
         return {
             ...state,
-            snackBarOpen:option.open,
+            snackBarOpen,
         };
     },
     [APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE]:(state,action)=>({

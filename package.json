@@ -4,6 +4,9 @@
   "description": "React utils for openfin app development",
   "main": "index.ts",
   "scripts": {
+    "prebuild": "rimraf build",
+    "build:es2016": "tsc",
+    "build": "yarn prebuild && yarn build:es2016",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +30,7 @@
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {
+    "@date-io/core": "^1.1.0",
     "@material-ui/core": "^3.9.2",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
@@ -39,6 +43,7 @@
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
     "material-ui-pickers": "^2.2.4",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.0",
     "typescript": "^3.3.3333"
   }

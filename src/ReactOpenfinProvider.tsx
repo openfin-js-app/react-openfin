@@ -64,3 +64,5 @@ const ReactOpenfinProvider:React.FunctionComponent<IProps> = (
         </RootReduxProvider>
     </React.Fragment>)
 }
+
+export default ReactOpenfinProvider;

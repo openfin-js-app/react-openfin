@@ -1,32 +1,31 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "lib": ["es2017", "dom"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "outDir": "./build",
+    "declaration": true,
+    "declarationDir": "./build",
     "jsx": "react",
     "sourceMap": true,
-    "noEmit": true,
-    "strict": true,
     "noImplicitAny": false,
-    "strictNullChecks": false,
-    "strictFunctionTypes": true,
-    "noImplicitThis": false,
-    "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
     "noImplicitReturns": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {
-      "*": [
-        "*.web",
-        "*"
-      ]
-    },
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop":true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["es6","dom"]
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "config",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "./src/**/__mocks__/",
+    "./src/**/__tests__/",
+    "./src/**/*.spec.ts",
+    "./src/**/*.test.ts"
+  ]
 }

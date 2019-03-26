@@ -21,7 +21,7 @@ const RootReduxProvider:React.FunctionComponent<IProps> = (
 )=>{
 
     const [state, dispatch] = useEnhancedReducerAndSaga(rootReducer,buildInitState(),[
-        createOpenfinMiddleware(fin,finMiddlewareConfig)
+        // createOpenfinMiddleware(fin,finMiddlewareConfig)
     ],rootSaga,{});
 
     return(<React.Fragment>
