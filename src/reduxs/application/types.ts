@@ -1,14 +1,12 @@
+import * as React from "react";
+
 export interface IApplicationNewSnackbarOption {
     message:string;
     variant?:'primary'|'success'|'warning'|'error'|'info'|'rose';
 }
 
-export interface IApplicationSetSnackbarStatusOption {
-    open:boolean;
-}
-
 export interface IApplicationCloseSnackBarOption {
-    event?:any;
+    event?:React.SyntheticEvent<any>;
     reason:string;
 }
 

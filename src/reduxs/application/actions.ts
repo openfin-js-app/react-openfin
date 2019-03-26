@@ -1,7 +1,8 @@
 import { createAction, ActionFunctionAny, Action } from 'redux-actions';
 import {WindowOptions} from 'redux-openfin';
 
-import { IApplicationNewSnackbarOption, IApplicationSetSnackbarStatusOption, IApplicationCloseSnackBarOption } from './types';
+import { IApplicationNewSnackbarOption, IApplicationCloseSnackBarOption } from './types';
+import * as React from "react";
 
 export const APPLICATION_SET_LOADING_MSG:string = 'APPLICATION_SET_LOADING_MSG';
 export const APPLICATION_STARTED:string = 'APPLICATION_STARTED';
@@ -29,12 +30,12 @@ export const APPLICATION_CLOSE_SNACKBAR='APPLICATION_CLOSE_SNACKBAR';
 
 export const applicationNewSnackbar:ActionFunctionAny<Action<IApplicationNewSnackbarOption>>
     = createAction(APPLICATION_NEW_SNACKBAR, (option:IApplicationNewSnackbarOption)=>(option));
-export const applicationSetSnackbarStatus:ActionFunctionAny<Action<IApplicationSetSnackbarStatusOption>>
-    = createAction(APPLICATION_SET_SNACKBAR_STATUS, (option:IApplicationSetSnackbarStatusOption)=>(option));
-export const applicationProcessSnackbarQueue:ActionFunctionAny<Action<void>>
+export const applicationSetSnackbarStatus:ActionFunctionAny<Action<{snackBarOpen:boolean}>>
+    = createAction(APPLICATION_SET_SNACKBAR_STATUS, (snackBarOpen:boolean)=>({snackBarOpen}));
+export const applicationProcessSnackbarQueue:ActionFunctionAny<Action<{}>>
     = createAction(APPLICATION_PROCESS_SNACKBAR_QUEUE);
 export const applicationCloseSnackbar:ActionFunctionAny<Action<IApplicationCloseSnackBarOption>>
-    = createAction(APPLICATION_CLOSE_SNACKBAR, (option)=>(option));
+    = createAction(APPLICATION_CLOSE_SNACKBAR, (event: React.SyntheticEvent<any>, reason: string)=>({event,reason}));
 
 
 // snap dock
@@ -43,7 +44,6 @@ export const applicationUpdateDockStatus:ActionFunctionAny<Action<{docked:boolea
     = createAction(APPLICATION_UPDATE_DOCK_STATUS, (docked:boolean)=>({docked}));
 
 // launch bar
-
 export const APPLICATION_LAUNCH_BAR_TOGGLE = 'APPLICATION_LAUNCH_BAR_TOGGLE';
 export const APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE = 'APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE';
 export const APPLICATION_LAUNCH_NEW_WINDOW = 'APPLICATION_LAUNCH_NEW_WINDOW';

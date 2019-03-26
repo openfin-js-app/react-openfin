@@ -9,6 +9,10 @@ interface IWithApplication {
     state:IApplicationState,
     actions:{
         launchNewWin: (appJson:Partial<WindowOptions>) => void
+        // snackbars
+        onSnackBarClose:(event: React.SyntheticEvent<any>, reason: string) => void,
+        onSnackBarCloseBtnClick:()=>void,
+        onSnackBarExited:()=>void,
     }
 }
 
