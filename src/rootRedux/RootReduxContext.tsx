@@ -1,13 +1,17 @@
 import * as React from 'react';
 
+import { Action } from 'redux-actions';
+
 import { Omit } from '../utils/typeHelper';
 
+import { IRootState } from '../reduxs';
+
 interface IWithRootRedux{
-    state:any,
-    dispatch:any,
+    state:IRootState,
+    dispatch:(action:Action<any>) => void,
 }
 
-export const RootReduxContext = React.createContext<IWithRootRedux>({state:{},dispatch:void 0});
+export const RootReduxContext = React.createContext<IWithRootRedux>({state: void 0,dispatch:void 0});
 
 const { Provider, Consumer } = RootReduxContext;
 
