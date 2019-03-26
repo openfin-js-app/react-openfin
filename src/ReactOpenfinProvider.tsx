@@ -12,6 +12,8 @@ import {setInitState, resetInitState} from './init';
 import { IConfigTab } from './reduxs'
 
 import RootReduxProvider from './rootRedux/RootReduxProvider'
+import ApplicationCtxProvider from './providers/ApplicationCtxProvider';
+import ConfigCtxProvider from './providers/ConfigCtxProvider';
 
 interface IProps {
 
@@ -54,7 +56,11 @@ const ReactOpenfinProvider:React.FunctionComponent<IProps> = (
                 dockingOptions,
             }}
         >
-            { children }
+            <ApplicationCtxProvider>
+                <ConfigCtxProvider>
+                    {children}
+                </ConfigCtxProvider>
+            </ApplicationCtxProvider>
         </RootReduxProvider>
     </React.Fragment>)
 }

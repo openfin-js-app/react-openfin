@@ -23,3 +23,5 @@ const ApplicationCtxProivder:React.FunctionComponent<{}> = (
         </ApplicationContextProvider>
     </React.Fragment>)
 }
+
+export default ApplicationCtxProivder;
