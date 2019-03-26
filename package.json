@@ -1,0 +1,45 @@
+{
+  "name": "react-openfin",
+  "version": "0.70.10",
+  "description": "React utils for openfin app development",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@albertli.ddns.net:open-fin/react-openfin.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/history": "^4.7.2",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-redux": "^7.0.5",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/redux-actions": "^2.3.2",
+    "dexie": "^2.0.4",
+    "i18next": "^15.0.7",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "redux-openfin": "^0.35.40",
+    "redux-saga": "^1.0.2"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^3.9.2",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.5",
+    "fake-indexeddb": "^2.1.0",
+    "jest": "24.5.0",
+    "jest-environment-jsdom": "^24.5.0",
+    "jest-environment-jsdom-global": "^1.2.0",
+    "jest-pnp-resolver": "1.0.2",
+    "jest-resolve": "23.6.0",
+    "jest-watch-typeahead": "^0.2.1",
+    "material-ui-pickers": "^2.2.4",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333"
+  }
+}
