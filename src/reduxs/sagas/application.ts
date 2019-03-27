@@ -7,6 +7,10 @@ import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "redux-o
 import { findOneFieldVal } from '../../dexies/configDao';
 
 import {
+    // types
+    IRootState,
+
+    // actions
     applicationSetLoadingMsg,
     APPLICATION_STARTED,
     APPLICATION_CHILD_STARTED,
@@ -45,12 +49,13 @@ const DEFAULT_WIDTH = parseInt(process.env.REACT_APP_DEFAULT_APP_WIDTH, 10);
 const DEFAULT_HEIGHT = parseInt(process.env.REACT_APP_DEFAULT_APP_HEIGHT, 10);
 
 
-export const getLaunchBarCollapse = state => state.application.launchBarCollapse;
-export const getWindowsState = state => state.application.windowsState;
-export const getNewWindowTop = state => state.config.application.newWinTop;
-export const getNewWindowLeft = state => state.config.application.newWinLeft;
-export const getNewWindowWidth = state => state.config.application.newWinWidth;
-export const getNewWindowHeight = state => state.config.application.newWinHeight;
+export const getSnackBarOpen = (state:IRootState) => state.application.snackBarOpen;
+export const getLaunchBarCollapse = (state:IRootState) => state.application.launchBarCollapse;
+export const getWindowsState = (state:IRootState)  => state.application.windowsState;
+export const getNewWindowTop = (state:IRootState)  => state.config.application.newWinTop;
+export const getNewWindowLeft = (state:IRootState)  => state.config.application.newWinLeft;
+export const getNewWindowWidth = (state:IRootState)  => state.config.application.newWinWidth;
+export const getNewWindowHeight = (state:IRootState)  => state.config.application.newWinHeight;
 
 export function* handleRedirectToLoadingView(monitorRect) {
 
@@ -215,9 +220,9 @@ export function* handleApplicationExit() {
 }
 
 export function* handleApplicationAddNewSnackBar() {
-    const state = yield select();
-    if(state.snackBarOpen){
-        yield put(applicationSetSnackbarStatus({open:false}));
+    const snackBarOpen = yield select(getSnackBarOpen);
+    if(snackBarOpen){
+        yield put(applicationSetSnackbarStatus(false));
     }else{
         yield put(applicationProcessSnackbarQueue());
     }
@@ -228,7 +233,7 @@ export function* handleApplicationCloseSnackBar(action) {
     if(reason!=='clickaway'){
         return;
     }else{
-        yield put(applicationSetSnackbarStatus({open:false}));
+        yield put(applicationSetSnackbarStatus(false));
     }
 }
 

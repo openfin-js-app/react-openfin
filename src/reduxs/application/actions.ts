@@ -30,8 +30,7 @@ export const APPLICATION_CLOSE_SNACKBAR='APPLICATION_CLOSE_SNACKBAR';
 
 export const applicationNewSnackbar:ActionFunctionAny<Action<IApplicationNewSnackbarOption>>
     = createAction(APPLICATION_NEW_SNACKBAR, (option:IApplicationNewSnackbarOption)=>(option));
-export const applicationSetSnackbarStatus:ActionFunctionAny<Action<{snackBarOpen:boolean}>>
-    = createAction(APPLICATION_SET_SNACKBAR_STATUS, (snackBarOpen:boolean)=>({snackBarOpen}));
+export const applicationSetSnackbarStatus = createAction<{snackBarOpen:boolean},boolean>(APPLICATION_SET_SNACKBAR_STATUS, (snackBarOpen:boolean)=>({snackBarOpen}));
 export const applicationProcessSnackbarQueue:ActionFunctionAny<Action<{}>>
     = createAction(APPLICATION_PROCESS_SNACKBAR_QUEUE);
 export const applicationCloseSnackbar:ActionFunctionAny<Action<IApplicationCloseSnackBarOption>>
