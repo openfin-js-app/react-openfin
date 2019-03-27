@@ -6,7 +6,11 @@ import { WindowOptions } from "redux-openfin";
 import { RootReduxContext } from '../rootRedux/RootReduxContext'
 import { ApplicationContextProvider } from '../reduxs/application/context'
 import {
+    // types
+    IApplicationNewSnackbarOption,
+    // actions
     applicationLaunchNewWindow,
+    applicationNewSnackbar,
     applicationSetSnackbarStatus,
     applicationProcessSnackbarQueue,
     applicationCloseSnackbar,
@@ -23,6 +27,7 @@ const ApplicationCtxProivder:React.FunctionComponent<{}> = (
             state: state.application,
             actions:{
                 launchNewWin: (appJson:Partial<WindowOptions>)=>{dispatch(applicationLaunchNewWindow(appJson))},
+                onNewSnackBar:(newSnackBar:IApplicationNewSnackbarOption)=>{dispatch(applicationNewSnackbar(newSnackBar))},
                 onSnackBarClose:(event: React.SyntheticEvent<any>, reason: string) => {dispatch(applicationCloseSnackbar(event,reason))},
                 onSnackBarCloseBtnClick:()=> {dispatch(applicationSetSnackbarStatus(false))},
                 onSnackBarExited:()=> {dispatch(applicationProcessSnackbarQueue())},

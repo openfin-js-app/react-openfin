@@ -26,8 +26,8 @@ export const rootDefaultState = {
 }
 
 export const buildInitState = (parentRootState?:IRootState) => ({
-    application:applicationbBuildInitState(parentRootState.application),
-    config:configBuildInitState(parentRootState.config),
+    application:applicationbBuildInitState(parentRootState?parentRootState.application:void 0),
+    config:configBuildInitState(parentRootState?parentRootState.config:void 0),
 })
 
 export default combineReducers({

@@ -21,7 +21,7 @@ interface IProps {
     finUuid: string,
     sharedActions: string[],
     enableAutoDocking:boolean,
-    dockingOptions:IDockingOptions,
+    dockingOptions?:Partial<IDockingOptions>,
 
     i18n:typeof i18n,
     hist:History,

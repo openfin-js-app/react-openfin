@@ -17,10 +17,10 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
     const [state, reactDispatch] = useReducer(reducer, state0);
     const sagaEnv = useRef({ state: state0, pendingActions: [], channel: void 0 });
 
-    const dispatch = (action) => {
-        console.log("react dispatch", action);
+    function dispatch(action){
+        console.log("[EnhancedReducerAndSaga] react dispatch", action);
         reactDispatch(action);
-        console.log("post react dispatch", action);
+        console.log("[EnhancedReducerAndSaga] post react dispatch", action);
         // dispatch to sagas is done in the commit phase
         sagaEnv.current.pendingActions.push(action);
     }
@@ -35,7 +35,7 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
 
 
     useEffect(() => {
-        console.log("update saga state");
+        console.log("[EnhancedReducerAndSaga] update saga state");
         // sync with react state, *should* be safe since we're in commit phase
         sagaEnv.current.state = state;
         const pendingActions = sagaEnv.current.pendingActions;
@@ -43,7 +43,7 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
         // should've handled all those actions
         if (pendingActions.length > 0) {
             sagaEnv.current.pendingActions = [];
-            console.log("flush saga actions");
+            console.log("[EnhancedReducerAndSaga] flush saga actions");
             pendingActions.forEach(action => sagaEnv.current.channel.put(action));
             sagaEnv.current.channel.put({ type: "REACT_STATE_READY", state });
         }
@@ -57,7 +57,7 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
             {
                 ...sagaOptions,
                 channel: sagaEnv.current.channel,
-                enhancedDispatch,
+                dispatch:enhancedDispatch,
                 getState: () => {
                     /* overrided by effectMiddlewares below */
                 },

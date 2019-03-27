@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 
 import { createOpenfinMiddleware } from 'redux-openfin';
 import { IConfig } from 'redux-openfin/init'
+
+import { REACT_OPENFIN_DISPATCH_FIELD_NAME } from '../GlobalTypes';
 import { useEnhancedReducerAndSaga } from '../utils/useEnhancedReducerAndSaga'
 import rootReducer, {IRootState, buildInitState} from '../reduxs'
 import rootSaga from '../reduxs/sagas'
@@ -13,6 +16,8 @@ interface IProps {
     finMiddlewareConfig:IConfig,
 }
 
+declare const window:any;
+
 const RootReduxProvider:React.FunctionComponent<IProps> = (
     {
         children,
@@ -23,6 +28,13 @@ const RootReduxProvider:React.FunctionComponent<IProps> = (
     const [state, dispatch] = useEnhancedReducerAndSaga(rootReducer,buildInitState(),[
         // createOpenfinMiddleware(fin,finMiddlewareConfig)
     ],rootSaga,{});
+
+    useEffect(()=>{
+        window[REACT_OPENFIN_DISPATCH_FIELD_NAME] = dispatch;
+        return ()=>{
+            window[REACT_OPENFIN_DISPATCH_FIELD_NAME] = void 0;
+        }
+    })
 
     return(<React.Fragment>
         <RootReduxContextProvider value={{state,dispatch}}>

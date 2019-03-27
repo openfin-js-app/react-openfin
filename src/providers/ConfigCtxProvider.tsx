@@ -18,7 +18,8 @@ const ConfigCtxProvider:React.FunctionComponent<{}> = (
 
     const { state, dispatch } = useContext(RootReduxContext);
 
-    const theme = state.config.application.theme;
+    // todo: feel like config state app tab obj is not populated correctly, and have to check of n/a over here
+    const theme = state.config.application?state.config.application.theme:MuiTheme.DARK;
 
     return (<React.Fragment>
         <ConfigContextProvider value={{

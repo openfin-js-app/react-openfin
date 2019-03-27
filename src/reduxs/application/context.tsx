@@ -3,13 +3,14 @@ import {WindowOptions} from 'redux-openfin';
 
 import { Omit } from '../../utils/typeHelper';
 
-import { IApplicationState } from './types'
+import { IApplicationState, IApplicationNewSnackbarOption } from './types'
 
 interface IWithApplication {
     state:IApplicationState,
     actions:{
         launchNewWin: (appJson:Partial<WindowOptions>) => void
         // snackbars
+        onNewSnackBar:(newSnackBar:IApplicationNewSnackbarOption)=>void,
         onSnackBarClose:(event: React.SyntheticEvent<any>, reason: string) => void,
         onSnackBarCloseBtnClick:()=>void,
         onSnackBarExited:()=>void,
