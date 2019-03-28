@@ -1,3 +1,5 @@
+export * from './GlobalTypes';
+
 export * from './reduxs/application/types';
 export * from './reduxs/config/types';
 

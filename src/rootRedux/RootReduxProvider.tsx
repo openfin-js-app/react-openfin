@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { createOpenfinMiddleware } from 'redux-openfin';
 import { IConfig } from 'redux-openfin/init'
@@ -25,8 +25,15 @@ const RootReduxProvider:React.FunctionComponent<IProps> = (
     }
 )=>{
 
+    const reduxOpenfinMiddleware = useMemo(()=>(
+        createOpenfinMiddleware(fin,{
+            ...finMiddlewareConfig,
+            libDispatchFieldName:REACT_OPENFIN_DISPATCH_FIELD_NAME
+        })
+    ),[1]);
+
     const [state, dispatch] = useEnhancedReducerAndSaga(rootReducer,buildInitState(),[
-        // createOpenfinMiddleware(fin,finMiddlewareConfig)
+        reduxOpenfinMiddleware
     ],rootSaga,{});
 
     useEffect(()=>{
