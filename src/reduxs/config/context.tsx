@@ -11,6 +11,7 @@ interface IWithConfig {
         onUpdateLangField:(lang:I18Language)=>void,
         onUpdateGlobalFilterString:(filterStr:string)=>void,
         onUpdateOneField:(tabName:string,fieldName:string,value:any)=>void,
+        onExtendCustomState:(customState:any)=>void,
     }
 }
 

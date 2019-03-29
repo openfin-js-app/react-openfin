@@ -1,6 +1,6 @@
 import {createAction, ActionFunctionAny, Action} from 'redux-actions';
 
-import makeType, {makeResType, makeReqType} from '../../utils/makeType'
+import makeType, {makeReqType, makeResType} from '../../utils/makeType'
 
 import {
     IConfigDexie,
@@ -14,12 +14,15 @@ export const CONFIG_RESET                           = makeType('CONFIG_RESET');
 // redux
 export const CONFIG_DO_UPDATE_ONE_FIELD             = makeType('CONFIG_DO_UPDATE_ONE_FIELD');
 export const CONFIG_UPDATE_GLOBAL_FILTER_STR        = makeType('CONFIG_UPDATE_GLOBAL_FILTER_STR');
+export const CONFIG_EXTEND_CUST_STATE               = makeReqType('CONFIG_EXTEND_CUST_STATE');
 export const configReset
     = createAction<IConfigResetOption,IConfigResetOption>(CONFIG_RESET, (option:IConfigResetOption)=>(option));
 export const configDoUpdateOneField
     = createAction<IConfigDoUpdateOneFieldOption,IConfigDoUpdateOneFieldOption>(CONFIG_DO_UPDATE_ONE_FIELD, (option:IConfigDoUpdateOneFieldOption)=>(option));
 export const configUpdateGlobalFilterStr
     = createAction<{configGlobalFilterString:string},string>(CONFIG_UPDATE_GLOBAL_FILTER_STR, (configGlobalFilterString:string)=>({configGlobalFilterString}));
+export const configExtendCustState
+    = createAction<any,any>(CONFIG_EXTEND_CUST_STATE,(option)=>(option));
 
 // saga
 export const CONFIG_LOAD_FROM_DEXIE                 = makeType('CONFIG_LOAD_FROM_DEXIE');

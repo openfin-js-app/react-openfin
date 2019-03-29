@@ -3,6 +3,7 @@ import { handleActions, Action } from 'redux-actions';
 import {
     CONFIG_RESET,CONFIG_DO_UPDATE_ONE_FIELD,
     CONFIG_UPDATE_GLOBAL_FILTER_STR,
+    CONFIG_EXTEND_CUST_STATE,
 
     CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA,
     CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP,
@@ -13,8 +14,7 @@ import {
     IConfigResetOption, IConfigDoUpdateOneFieldOption, IConfigState
 } from './types';
 
-import initState from '../../init';
-const configTabs = initState.configTabs;
+import configTabs  from './constant';
 
 export function buildDefaultConfigState(configTabs: IConfigTab[]):IConfigState{
     const result:IConfigState = {
@@ -68,6 +68,19 @@ const reducerMap:{[key:string]: (state:IConfigState, action?:Action<any>)=>IConf
             ...state,
             configGlobalFilterString,
         };
+    },
+    [CONFIG_EXTEND_CUST_STATE]: (state,action)=>{
+        const custState = action.payload;
+
+        if (custState.application){
+            delete custState.application;
+        }
+
+        return {
+            ...state,
+            ...custState,
+        }
+
     },
     [CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA]:(state,action)=>{
         const applicationConfig = state.application;
