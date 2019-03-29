@@ -26,7 +26,7 @@ interface IProps {
     i18n:typeof i18n,
     hist:History,
     launchBarItems:ILaunchBarItem[],
-    configTabs:IConfigTab[],
+    configTabs?:IConfigTab[],
 
 }
 
@@ -40,7 +40,7 @@ const ReactOpenfinProvider:React.FunctionComponent<IProps> = (
 )=>{
 
     useEffect(()=>{
-        setInitState(i18n, hist, launchBarItems, configTabs)
+        setInitState(i18n, hist, launchBarItems)
         return () => {
             resetInitState();
         }
@@ -57,7 +57,9 @@ const ReactOpenfinProvider:React.FunctionComponent<IProps> = (
             }}
         >
             <ApplicationCtxProvider>
-                <ConfigCtxProvider>
+                <ConfigCtxProvider
+                    configTabs = {configTabs}
+                >
                     {children}
                 </ConfigCtxProvider>
             </ApplicationCtxProvider>
