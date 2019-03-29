@@ -1,6 +1,8 @@
 import * as React from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
+import initState from '../../init';
+
 import { IConfigTab, IConfigField, MuiTheme, FieldType } from './types';
 
 const configTabs:IConfigTab[]=[
@@ -49,7 +51,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'application.newWinPos.newWinTop',
                 _name:'newWinTop',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
+                _defaultValue:initState.config.newWindowTop,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -60,7 +62,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'application.newWinPos.newWinLeft',
                 _name:'newWinLeft',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
+                _defaultValue:initState.config.newWindowLeft,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -71,7 +73,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'application.newWinPos.newWinWidth',
                 _name:'newWinWidth',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_WIDTH,10),
+                _defaultValue: initState.config.newWindowWidth,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -82,7 +84,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'application.newWinPos.newWinHeight',
                 _name:'newWinHeight',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_HEIGHT,10),
+                _defaultValue:initState.config.newWindowHeight,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -93,7 +95,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'application.newWinPos.newWindDeltaLeft',
                 _name:'newWindDeltaLeft',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_LEFT,10),
+                _defaultValue:initState.config.newWindowDeltaLeft,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>
@@ -104,7 +106,7 @@ const configTabs:IConfigTab[]=[
                 _type:FieldType.NUMBER,
                 _label:'application.newWinPos.newWindDeltaHeight',
                 _name:'newWindDeltaHeight',
-                _defaultValue:parseInt(process.env.REACT_APP_NEW_WINDOW_DELTA_HEIGHT,10),
+                _defaultValue:initState.config.newWindowDeltaHeight,
                 _props:{
                     InputProps:{
                         endAdornment:<InputAdornment position={'end'}>Pixel</InputAdornment>

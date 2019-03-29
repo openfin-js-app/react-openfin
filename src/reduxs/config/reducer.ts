@@ -100,14 +100,14 @@ const reducerMap:{[key:string]: (state:IConfigState, action?:Action<any>)=>IConf
         ...state,
         application:{
             ...state.application,
-            newWinTop: parseInt(process.env.REACT_APP_NEW_WINDOW_TOP,10),
+            newWinTop: initState.config.newWindowTop,
         }
     }),
     [CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT]:(state,action)=>({
         ...state,
         application:{
             ...state.application,
-            newWinLeft: parseInt(process.env.REACT_APP_NEW_WINDOW_LEFT,10),
+            newWinLeft: initState.config.newWindowLeft,
         }
     }),
 }

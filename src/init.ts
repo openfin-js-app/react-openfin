@@ -7,6 +7,7 @@ import {IDockingOptions} from "redux-openfin/docking";
 import {IConfigTab} from "./reduxs";
 
 interface IInitStateConfig{
+    logActions:boolean,
     enableLoadingView:boolean,
     enableAutoDocking:boolean,
     defaultViewUrl:string,
@@ -49,6 +50,7 @@ const initState:IInitState = {
     configTabs:[],
     clientReduxDispatch: void 0,
     config:{
+        logActions:false,
         enableLoadingView:true,
         enableAutoDocking:true,
         defaultViewUrl:'/dashboard/view-one',

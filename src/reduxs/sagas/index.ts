@@ -40,7 +40,7 @@ export default function* rootSaga(){
 
     const sagas = [resActInterceptor(), applicationSaga(),configSaga()];
 
-    if(process.env.REACT_APP_LOG_ACTION === 'true'){
+    if(initState.config.logActions){
         sagas.unshift(watchAndLogSaga());
     }
 

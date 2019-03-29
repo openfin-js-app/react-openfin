@@ -46,17 +46,17 @@ const hist = initState.hist;
 const i18n = initState.i18n;
 const launchBarItems = initState.launchBarItems;
 
-export const LOADING_VIEW_UUID='openfin-react-starter-loading-view';
+export const LOADING_VIEW_UUID=`${initState.finUuid}-loading-view`;
 let loadingWindow = null;
-export const LAUNCHBAR_VIEW_UUID='openfin-react-starter-launchbar-view';
+export const LAUNCHBAR_VIEW_UUID=`${initState.finUuid}-launchbar-view`;
 let launchbarWindow = null;
 
-const ENABLE_LOADING_VIEW=process.env.REACT_APP_ENABLE_LOADING_VIEW.toLowerCase() === 'true';
+const ENABLE_LOADING_VIEW=initState.config.enableLoadingView;
 
-const LOADING_BANNER_WIDTH = parseInt(process.env.REACT_APP_LOADING_BANNER_WIDTH, 10);
-const LOADING_BANNER_HEIGHT = parseInt(process.env.REACT_APP_LOADING_BANNER_HEIGHT, 10);
-const DEFAULT_WIDTH = parseInt(process.env.REACT_APP_DEFAULT_APP_WIDTH, 10);
-const DEFAULT_HEIGHT = parseInt(process.env.REACT_APP_DEFAULT_APP_HEIGHT, 10);
+const LOADING_BANNER_WIDTH = initState.config.defaultLoadingBannerWidth;
+const LOADING_BANNER_HEIGHT = initState.config.defaultLoadingBannerHeight;
+const DEFAULT_WIDTH = initState.config.defaultAppWidth;
+const DEFAULT_HEIGHT = initState.config.defaultAppHeight;
 
 
 export const getSnackBarOpen = (state:IRootState) => state.application.snackBarOpen;
@@ -103,17 +103,11 @@ export function* handleHideFromLoadingView(monitorRect, targetUrl?:string) {
 
     // after the sagas loaded, redirect to default page/view
     if(targetUrl && targetUrl.length > 0){
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push(targetUrl);
-        }
-    }else if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
-        }
+        hist.push(targetUrl);
+    }else if ( initState.config.defaultViewUrl && initState.config.defaultViewUrl.length > 0){
+        hist.push( initState.config.defaultViewUrl );
     }else{
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push('/dashboard/view-one');
-        }
+        hist.push('/dashboard/view-one');
     }
 
     yield delay(200);
@@ -200,9 +194,7 @@ export function* handleApplicationChildLoading() {
     yield putResolve(applicationChildAwait());
     const {payload:{targetUrl}} = yield take(APPLICATION_CHILD_READY);
     if(targetUrl && targetUrl.length > 0){
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push(targetUrl);
-        }
+        hist.push(targetUrl);
     }
     yield putResolve(applicationChildStarted());
 
@@ -223,9 +215,7 @@ export function* handleApplicationNotificationLoading() {
     yield putResolve(applicationNotificationAwait());
     const {payload:{targetUrl}} = yield take(APPLICATION_NOTIFICATION_READY);
     if(targetUrl && targetUrl.length > 0){
-        if (process.env.NODE_ENV !== 'test'){
-            hist.push(targetUrl);
-        }
+        hist.push(targetUrl);
     }
     yield putResolve(applicationNotificationStarted());
 
@@ -279,13 +269,13 @@ export function* handleApplicationLaunchBarToggle(){
     const getBoundsActionPayload = getBoundsAction.payload;
 
     const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
-        appUuid: process.env.REACT_APP_FIN_UUID,
-        windowName: process.env.REACT_APP_FIN_UUID,
+        appUuid: initState.finUuid,
+        windowName: initState.finUuid,
     }));
     const mainWindow = mainWindowAction.payload.window;
 
     const launchbarWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
-        appUuid: process.env.REACT_APP_FIN_UUID,
+        appUuid: initState.finUuid,
         windowName: LAUNCHBAR_VIEW_UUID,
     }));
 
@@ -359,8 +349,8 @@ export function* handleApplicationLaunchBarToggleCollapse() {
 
 export function* handleApplicationLaunchBarClose() {
     const mainWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
-        appUuid: process.env.REACT_APP_FIN_UUID,
-        windowName: process.env.REACT_APP_FIN_UUID,
+        appUuid: initState.finUuid,
+        windowName: initState.finUuid,
     }));
     const mainWindow = mainWindowAction.payload.window;
     mainWindow.close(false);
@@ -368,13 +358,13 @@ export function* handleApplicationLaunchBarClose() {
 
 export function* handleApplicationLaunchNewWindow(action) {
 
-    if (window.name === process.env.REACT_APP_FIN_UUID){
+    if (window.name === initState.finUuid){
 
         const appJson = action.payload;
         const windowName = appJson.name;
 
         const wrapWindowAction:Action<WrapResPayload> = yield call(Window.asyncs.wrap,Window.actions.wrap({
-            appUuid: process.env.REACT_APP_FIN_UUID,
+            appUuid: initState.finUuid,
             windowName,
         }));
 
