@@ -8,6 +8,7 @@ import {
     I18Language, MuiTheme,
     // actions
     configUpdateOneField,
+    configUpdateGlobalFilterStr,
 } from '../reduxs';
 import { ConfigContextProvider } from '../reduxs/config/context';
 
@@ -26,17 +27,29 @@ const ConfigCtxProvider:React.FunctionComponent<{}> = (
             config:state.config,
             actions:{
                 onUpdateLangField:(value:I18Language)=>{
-                    dispatch(configUpdateOneField({
-                        name:'application.language',
-                        value,
-                    }))
+                    dispatch(configUpdateOneField(
+                        'application',
+                        'language',
+                        value
+                    ))
                 },
                 onToggleThemeField: ()=>{
-                    dispatch(configUpdateOneField({
-                        name:'application.theme',
-                        value: theme === MuiTheme.DARK ?MuiTheme.LIGHT:MuiTheme.DARK,
-                    }))
-                }
+                    dispatch(configUpdateOneField(
+                        'application',
+                        'theme',
+                        theme === MuiTheme.DARK ?MuiTheme.LIGHT:MuiTheme.DARK,
+                    ))
+                },
+                onUpdateGlobalFilterString:(filterString:string)=>{
+                    dispatch(configUpdateGlobalFilterStr(filterString));
+                },
+                onUpdateOneField:(tabName:string,fieldName:string,value:any)=>{
+                    dispatch(configUpdateOneField(
+                        tabName,
+                        fieldName,
+                        value
+                    ))
+                },
             }
 
         }}>

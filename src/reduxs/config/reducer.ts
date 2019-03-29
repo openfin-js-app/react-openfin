@@ -10,7 +10,7 @@ import {
 } from './actions';
 import {
     IConfigTab, IConfigField, FieldType,
-    IConfigResetOption, IConfigDoUpdateOneFieldOption, IConfigUpdateGlobalFilterStrOption, IConfigState
+    IConfigResetOption, IConfigDoUpdateOneFieldOption, IConfigState
 } from './types';
 
 import initState from '../../init';
@@ -63,7 +63,7 @@ const reducerMap:{[key:string]: (state:IConfigState, action?:Action<any>)=>IConf
         };
     },
     [CONFIG_UPDATE_GLOBAL_FILTER_STR]:(state,action)=>{
-        const { configGlobalFilterString } = action.payload as IConfigUpdateGlobalFilterStrOption;
+        const { configGlobalFilterString } = action.payload;
         return{
             ...state,
             configGlobalFilterString,

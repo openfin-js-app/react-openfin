@@ -8,10 +8,16 @@ export enum MuiTheme{
     DARK='dark',
 }
 
-export enum I18Language{
-    en_US='en-US',
-    zh_CN ='zh-CN',
-}
+export type I18Language =
+    'en-US' |
+    'en-GB' |
+    'en-CA' |
+    'zh-CN' |
+    'zh-HK' |
+    'de-DE' |
+    'fr-FR' |
+    'es-ES' |
+    string;
 
 export enum FieldType{
     CUSTOM_FIELD = 1,
@@ -75,10 +81,6 @@ export interface IConfigDoUpdateOneFieldOption {
     value:any,
 }
 
-export interface IConfigUpdateGlobalFilterStrOption {
-    configGlobalFilterString:string,
-}
-
 export interface IConfigRuntimeState{
     application?:Partial<{
         theme:MuiTheme,
@@ -89,13 +91,6 @@ export interface IConfigRuntimeState{
         newWinHeight:number,
         newWindDeltaLeft:number,
         newWindDeltaHeight:number,
-    }>,
-    sample?:Partial<{
-        strValue:string,
-        crrValue:number,
-        dateValue:Date,
-        timeValue:Date,
-        datetimeValue:Date,
     }>
 }
 

@@ -6,7 +6,6 @@ import {
     IConfigDexie,
     IConfigResetOption,
     IConfigUpdateOneFieldOption,
-    IConfigUpdateGlobalFilterStrOption,
     IConfigDoUpdateOneFieldOption
 } from './types';
 
@@ -20,7 +19,7 @@ export const configReset
 export const configDoUpdateOneField
     = createAction<IConfigDoUpdateOneFieldOption,IConfigDoUpdateOneFieldOption>(CONFIG_DO_UPDATE_ONE_FIELD, (option:IConfigDoUpdateOneFieldOption)=>(option));
 export const configUpdateGlobalFilterStr
-    = createAction<IConfigUpdateGlobalFilterStrOption,IConfigUpdateGlobalFilterStrOption>(CONFIG_UPDATE_GLOBAL_FILTER_STR, (option:IConfigUpdateGlobalFilterStrOption)=>(option));
+    = createAction<{configGlobalFilterString:string},string>(CONFIG_UPDATE_GLOBAL_FILTER_STR, (configGlobalFilterString:string)=>({configGlobalFilterString}));
 
 // saga
 export const CONFIG_LOAD_FROM_DEXIE                 = makeType('CONFIG_LOAD_FROM_DEXIE');
@@ -32,7 +31,13 @@ export const configDoUpdateOneFieldInDexie
 
 export const CONFIG_UPDATE_ONE_FIELD                = makeType('CONFIG_UPDATE_ONE_FIELD');
 export const configUpdateOneField
-    = createAction<IConfigUpdateOneFieldOption,IConfigUpdateOneFieldOption>(CONFIG_UPDATE_ONE_FIELD, (option:IConfigUpdateOneFieldOption)=>(option));
+    = createAction<IConfigUpdateOneFieldOption,string,string,any>(CONFIG_UPDATE_ONE_FIELD,
+    (tabName:string,fieldName:string,value:any)=>({
+        name:`${tabName}.${fieldName}`,
+        value,
+
+    })
+);
 
 
 

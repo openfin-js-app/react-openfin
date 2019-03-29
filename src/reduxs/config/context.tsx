@@ -2,14 +2,16 @@ import * as React from 'react';
 
 import { Omit } from '../../utils/typeHelper';
 
-import { I18Language, IConfigRuntimeState } from './types';
+import { I18Language, IConfigState } from './types';
 
 interface IWithConfig {
-    config:Partial<IConfigRuntimeState>,
-    actions:Partial<{
+    config:Partial<IConfigState>,
+    actions:{
         onToggleThemeField:()=>void,
         onUpdateLangField:(lang:I18Language)=>void,
-    }>
+        onUpdateGlobalFilterString:(filterStr:string)=>void,
+        onUpdateOneField:(tabName:string,fieldName:string,value:any)=>void,
+    }
 }
 
 interface IWithConfigContext {
