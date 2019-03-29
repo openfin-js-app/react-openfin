@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useEffect } from 'react'
 
+import { Store } from 'redux'
+
 import i18n  from 'i18next';
 import {History} from 'history'
 
@@ -28,19 +30,21 @@ interface IProps {
     launchBarItems:ILaunchBarItem[],
     configTabs?:IConfigTab[],
 
+    clientReduxStore?:Store<any>,
+
 }
 
 const ReactOpenfinProvider:React.FunctionComponent<IProps> = (
     {
         children,
         fin, finUuid, sharedActions, enableAutoDocking, dockingOptions,
-        i18n, hist, launchBarItems, configTabs,
+        i18n, hist, launchBarItems, configTabs, clientReduxStore
 
     }
 )=>{
 
     useEffect(()=>{
-        setInitState(i18n, hist, launchBarItems)
+        setInitState(i18n, hist, launchBarItems, clientReduxStore.dispatch);
         return () => {
             resetInitState();
         }
