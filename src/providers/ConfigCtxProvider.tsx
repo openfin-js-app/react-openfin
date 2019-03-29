@@ -17,26 +17,24 @@ import {buildDefaultConfigState} from '../reduxs/config/reducer';
 
 import { ConfigContextProvider } from '../reduxs/config/context';
 
-export interface IProps{
-    configTabs?:IConfigTab[],
-}
 
-const ConfigCtxProvider:React.FunctionComponent<IProps> = (
-    { children, configTabs }
+const ConfigCtxProvider:React.FunctionComponent<{}> = (
+    { children }
 ) => {
 
     const { state, dispatch } = useContext(RootReduxContext);
 
-    // todo: feel like config state app tab obj is not populated correctly, and have to check of n/a over here
+    // todo: [might be fixed] feel like config state app tab obj is not populated correctly, and have to check of n/a over here
     // const theme = state.config.application?state.config.application.theme:MuiTheme.DARK;
     const theme = state.config.application.theme;
 
-    const customStateCb = useCallback(()=>{
-        if (configTabs && configTabs.length>0){
-            const customState = buildDefaultConfigState(configTabs)
-            dispatch(configExtendCustState(customState));
-        }
-    },[configTabs]);
+    // todo: consider remove configExtendCustState act if initState works
+    // const customStateCb = useCallback(()=>{
+    //     if (configTabs && configTabs.length>0){
+    //         const customState = buildDefaultConfigState(configTabs)
+    //         dispatch(configExtendCustState(customState));
+    //     }
+    // },[configTabs]);
 
     return (<React.Fragment>
         <ConfigContextProvider value={{

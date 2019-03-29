@@ -1,5 +1,7 @@
 import { handleActions, Action } from 'redux-actions';
 
+import initState from '../../init'
+
 import {
     CONFIG_RESET,CONFIG_DO_UPDATE_ONE_FIELD,
     CONFIG_UPDATE_GLOBAL_FILTER_STR,
@@ -34,7 +36,7 @@ export function buildDefaultConfigState(configTabs: IConfigTab[]):IConfigState{
     return result;
 }
 
-export const defaultState:IConfigState = buildDefaultConfigState(configTabs);
+export const defaultState:IConfigState = buildDefaultConfigState([...configTabs,...initState.configTabs]);
 
 export const buildInitState = (parentWindowState?:IConfigState) =>{
     return defaultState;

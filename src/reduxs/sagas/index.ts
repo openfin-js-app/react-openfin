@@ -18,8 +18,8 @@ export function* handleClientResponseActions(action){
     if (
         initState.clientReduxDispatch &&
         (
-            isReduxOpenfinResAct(action) ||
-            isResAct(action)
+            isReduxOpenfinResAct(action.type) ||
+            isResAct(action.type)
         )
 
     ){
