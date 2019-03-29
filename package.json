@@ -28,7 +28,7 @@
     "i18next": "^15.0.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "redux-openfin": "^0.70.2-beta",
+    "redux-openfin": "^0.70.3-beta",
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {
