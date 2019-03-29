@@ -3,17 +3,37 @@ import {WindowOptions} from 'redux-openfin';
 
 import { Omit } from '../../utils/typeHelper';
 
-import { IApplicationState, IApplicationNewSnackbarOption } from './types'
+import { IApplicationState, IApplicationNewSnackbarOption, IReadyPayload } from './types'
 
 interface IWithApplication {
     state:IApplicationState,
     actions:{
-        launchNewWin: (appJson:Partial<WindowOptions>) => void
+        // application
+        launchNewWin: (appJson:Partial<WindowOptions>) => void,
+        onSetLoadingMsg: (label:string) => void,
+        onApplicationStart: () => void,
+        onApplicationReady: (readyConfig:IReadyPayload) => void,
+        onChildWinStart: () => void,
+        onChildWinReady: (readyConfig:IReadyPayload) => void,
+        onNotificationStart: () => void,
+        onNotificationReady: (readyConfig:IReadyPayload) => void,
         // snackbars
         onNewSnackBar:(newSnackBar:IApplicationNewSnackbarOption)=>void,
         onSnackBarClose:(event: React.SyntheticEvent<any>, reason: string) => void,
         onSnackBarCloseBtnClick:()=>void,
         onSnackBarExited:()=>void,
+        // dashboard
+        onDrawerToggle:()=>void,
+        // launch bar
+        onLaunchBarClose:()=>void,
+        onLaunchBarToggleCollapse:()=>void,
+        onLaunchBarToggle:()=>void,
+        // windows
+        onSetAsForeground:()=>void,
+        onUndock:()=>void,
+        onMinimize:()=>void,
+        onWinClose:()=>void,
+        onWinForceClose:()=>void,
     }
 }
 

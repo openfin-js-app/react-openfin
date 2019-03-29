@@ -9,6 +9,8 @@ import {
 import {
     APPLICATION_SET_LOADING_MSG,
     APPLICATION_READY,
+    APPLICATION_CHILD_READY,
+    APPLICATION_NOTIFICATION_READY,
     APPLICATION_DRAWER_TOGGLE,
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_SET_SNACKBAR_STATUS,
@@ -178,6 +180,14 @@ const reducerMap:{[key:string]:(state:IApplicationState,action?:Action<any>)=>IA
         loadingMsg:action.payload.loadingMsg,
     }),
     [APPLICATION_READY]:(state,action)=>({
+        ...state,
+        loading:false,
+    }),
+    [APPLICATION_CHILD_READY]:(state,action)=>({
+        ...state,
+        loading:false,
+    }),
+    [APPLICATION_NOTIFICATION_READY]:(state,action)=>({
         ...state,
         loading:false,
     }),

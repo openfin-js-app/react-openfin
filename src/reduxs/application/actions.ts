@@ -1,33 +1,78 @@
 import { createAction, ActionFunctionAny, Action } from 'redux-actions';
 import {WindowOptions} from 'redux-openfin';
 
-import makeType, {makeResType, makeReqType} from '../../utils/makeType'
+import makeType, {makeReqType, makeResType} from '../../utils/makeType'
 
-import { IApplicationNewSnackbarOption, IApplicationCloseSnackBarOption } from './types';
+import {
+    IReadyPayload,
+    IApplicationNewSnackbarOption, IApplicationCloseSnackBarOption
+} from './types';
 import * as React from "react";
 
+// application general
 export const APPLICATION_SET_LOADING_MSG        = makeType('APPLICATION_SET_LOADING_MSG');
-export const APPLICATION_STARTED                = makeType('APPLICATION_STARTED');
-export const APPLICATION_CHILD_STARTED          = makeType('APPLICATION_CHILD_STARTED');
-export const APPLICATION_NOTIFICATION_STARTED   = makeType('APPLICATION_NOTIFICATION_STARTED');
-export const APPLICATION_READY                  = makeType('APPLICATION_READY');
+// app
+export const APPLICATION_START                  = makeReqType('APPLICATION_START');
+export const APPLICATION_AWAIT                  = makeResType('APPLICATION_AWAIT');
+export const APPLICATION_READY                  = makeReqType('APPLICATION_READY');
+export const APPLICATION_STARTED                = makeResType('APPLICATION_STARTED');
+// child win
+export const APPLICATION_CHILD_START            = makeReqType('APPLICATION_CHILD_START');
+export const APPLICATION_CHILD_AWAIT            = makeResType('APPLICATION_CHILD_AWAIT');
+export const APPLICATION_CHILD_READY            = makeReqType('APPLICATION_CHILD_READY');
+export const APPLICATION_CHILD_STARTED          = makeResType('APPLICATION_CHILD_STARTED');
+// notification win
+export const APPLICATION_NOTIFICATION_START     = makeReqType('APPLICATION_NOTIFICATION_START');
+export const APPLICATION_NOTIFICATION_AWAIT     = makeResType('APPLICATION_NOTIFICATION_AWAIT');
+export const APPLICATION_NOTIFICATION_READY     = makeReqType('APPLICATION_NOTIFICATION_READY');
+export const APPLICATION_NOTIFICATION_STARTED   = makeResType('APPLICATION_NOTIFICATION_STARTED');
+// ---- ----
 export const APPLICATION_DRAWER_TOGGLE          = makeType('APPLICATION_DRAWER_TOGGLE');
 export const APPLICATION_TOGGLE_WINDOW_STATE    = makeType('APPLICATION_TOGGLE_WINDOW_STATE');
 
+
+export const APPLICATION_CUR_WIN_CLOSING        = makeResType('APPLICATION_CUR_WIN_CLOSING');
+export const APPLICATION_CUR_WIN_READY_TO_CLOSE = makeReqType('APPLICATION_CUR_WIN_READY_TO_CLOSE');
+
 export const applicationSetLoadingMsg
     = createAction<{loadingMsg:string},string>(APPLICATION_SET_LOADING_MSG,(loadingMsg:string)=>({loadingMsg}));
+
+export const applicationStart
+    = createAction<void>(APPLICATION_START);
+export const applicationAwait
+    = createAction<void>(APPLICATION_AWAIT);
+export const applicationReady
+    = createAction<IReadyPayload,IReadyPayload>(APPLICATION_READY,(option:IReadyPayload)=>(option));
 export const applicationStarted
     = createAction<void>(APPLICATION_STARTED);
+
+export const applicationChildStart
+    = createAction<void>(APPLICATION_CHILD_START);
+export const applicationChildAwait
+    = createAction<void>(APPLICATION_CHILD_AWAIT);
+export const applicationChildReady
+    = createAction<IReadyPayload,IReadyPayload>(APPLICATION_CHILD_READY,(option:IReadyPayload)=>(option));
 export const applicationChildStarted:ActionFunctionAny<Action<void>>
     = createAction(APPLICATION_CHILD_STARTED);
+
+export const applicationNotificationStart
+    = createAction<void>(APPLICATION_NOTIFICATION_START);
+export const applicationNotificationAwait
+    = createAction<void>(APPLICATION_NOTIFICATION_AWAIT);
+export const applicationNotificationReady
+    = createAction<IReadyPayload,IReadyPayload>(APPLICATION_NOTIFICATION_READY,(option:IReadyPayload)=>(option));
 export const applicationNotificationStarted
     = createAction<void>(APPLICATION_NOTIFICATION_STARTED);
-export const applicationReady
-    = createAction<void>(APPLICATION_READY);
+
 export const applicationDrawerToggle
     = createAction<void>(APPLICATION_DRAWER_TOGGLE);
 export const applicationToogleWindowState
     = createAction<void>(APPLICATION_TOGGLE_WINDOW_STATE);
+
+export const applicationCurWinClosing
+    = createAction<void>(APPLICATION_CUR_WIN_CLOSING);
+export const applicationCurWinReadyToClose
+    = createAction<void>(APPLICATION_CUR_WIN_READY_TO_CLOSE);
 
 // snackbar
 

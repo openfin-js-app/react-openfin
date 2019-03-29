@@ -16,6 +16,10 @@ export interface ISnackBarMsg {
     variant:'primary'|'success'|'warning'|'error'|'info'|'rose';
 }
 
+export interface IReadyPayload {
+    targetUrl?:string,
+}
+
 export interface IApplicationState {
     offline:boolean,
     username:string,

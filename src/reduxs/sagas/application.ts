@@ -12,15 +12,25 @@ import {
 
     // actions
     applicationSetLoadingMsg,
-    APPLICATION_STARTED,
-    APPLICATION_CHILD_STARTED,
-    APPLICATION_NOTIFICATION_STARTED,
+    APPLICATION_START,
+    applicationAwait,
+    APPLICATION_READY,
+    applicationStarted,
+    APPLICATION_CHILD_START,
+    applicationChildAwait,
+    APPLICATION_CHILD_READY,
+    applicationChildStarted,
+    APPLICATION_NOTIFICATION_START,
+    applicationNotificationAwait,
+    APPLICATION_NOTIFICATION_READY,
+    applicationNotificationStarted,
+    applicationCurWinClosing,
+    APPLICATION_CUR_WIN_READY_TO_CLOSE,
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
     applicationUpdateDockStatus,
     APPLICATION_TOGGLE_WINDOW_STATE,
     applicationNewSnackbar,
-    applicationReady,
     applicationSetSnackbarStatus,
     applicationProcessSnackbarQueue,
     APPLICATION_LAUNCH_BAR_TOGGLE,
@@ -57,7 +67,7 @@ export const getNewWindowLeft = (state:IRootState)  => state.config.application.
 export const getNewWindowWidth = (state:IRootState)  => state.config.application.newWinWidth;
 export const getNewWindowHeight = (state:IRootState)  => state.config.application.newWinHeight;
 
-export function* handleRedirectToLoadingView(monitorRect) {
+export function* handleShowLoadingView(monitorRect) {
 
     const WINDOW_WIDTH  = monitorRect.right - monitorRect.left;
     const WINDOW_HEIGHT = monitorRect.bottom - monitorRect.top;
@@ -89,10 +99,14 @@ export function* handleRedirectToLoadingView(monitorRect) {
 
 }
 
-export function* handleRedirectFromLoadingView(monitorRect) {
+export function* handleHideFromLoadingView(monitorRect, targetUrl?:string) {
 
     // after the sagas loaded, redirect to default page/view
-    if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
+    if(targetUrl && targetUrl.length > 0){
+        if (process.env.NODE_ENV !== 'test'){
+            hist.push(targetUrl);
+        }
+    }else if (process.env.REACT_APP_DEFAULT_VIEW_URL && process.env.REACT_APP_DEFAULT_VIEW_URL.length > 0){
         if (process.env.NODE_ENV !== 'test'){
             hist.push(process.env.REACT_APP_DEFAULT_VIEW_URL);
         }
@@ -126,7 +140,7 @@ export function* handleApplicationLoading() {
     const monitorRect = monitorInfoAction.payload.primaryMonitor.monitorRect;
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
-        yield* handleRedirectToLoadingView(monitorRect) as any;
+        yield* handleShowLoadingView(monitorRect) as any;
     }
 
     yield putResolve(applicationSetLoadingMsg('init'));
@@ -144,27 +158,17 @@ export function* handleApplicationLoading() {
         call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
         call(Window.asyncs.getState,Window.actions.getState({})),
         // delay for loading view render, could be removed
-        delay(1000),
+        delay(800),
     ]);
 
-    // BEGIN OF DEMO PURPOSE CODES
-    yield putResolve(applicationSetLoadingMsg('delay1'));
-    yield delay(1000),
-    yield putResolve(applicationSetLoadingMsg('delay2'));
-    yield delay(1000),
-    yield putResolve(applicationSetLoadingMsg('delay3'));
-    yield delay(1000),
-    yield putResolve(applicationSetLoadingMsg('delay4'));
-    yield delay(800),
-    yield putResolve(applicationSetLoadingMsg('delay5'));
-    // END OF DEMO PURPOSE CODES
-
-    yield putResolve(applicationReady());
+    yield putResolve(applicationAwait());
+    const {payload:{targetUrl}} = yield take(APPLICATION_READY);
+    yield putResolve(applicationStarted());
 
     yield putResolve(applicationSetLoadingMsg('ready'));
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
-        yield* handleRedirectFromLoadingView(monitorRect) as any;
+        yield* handleHideFromLoadingView(monitorRect, targetUrl) as any;
     }
 
     yield put(applicationSetLoadingMsg(''));
@@ -193,7 +197,15 @@ export function* handleApplicationChildLoading() {
         yield put(applicationUpdateDockStatus(false));
     }
 
-    yield putResolve(applicationReady());
+    yield putResolve(applicationChildAwait());
+    const {payload:{targetUrl}} = yield take(APPLICATION_CHILD_READY);
+    if(targetUrl && targetUrl.length > 0){
+        if (process.env.NODE_ENV !== 'test'){
+            hist.push(targetUrl);
+        }
+    }
+    yield putResolve(applicationChildStarted());
+
 }
 
 export function* handleApplicationNotificationLoading() {
@@ -206,6 +218,17 @@ export function* handleApplicationNotificationLoading() {
         call(Window.asyncs.getBounds,Window.actions.getBounds({})),
         putResolve(configLoadFromDexie()),
     ]);
+
+
+    yield putResolve(applicationNotificationAwait());
+    const {payload:{targetUrl}} = yield take(APPLICATION_NOTIFICATION_READY);
+    if(targetUrl && targetUrl.length > 0){
+        if (process.env.NODE_ENV !== 'test'){
+            hist.push(targetUrl);
+        }
+    }
+    yield putResolve(applicationNotificationStarted());
+
 }
 
 export function* handleApplicationExit() {
@@ -214,6 +237,9 @@ export function* handleApplicationExit() {
     // do something cleaning up before shutdonw~
 
     // ---------------------------------end of app codes -----------------------------------------------
+
+    putResolve(applicationCurWinClosing());
+    take(APPLICATION_CUR_WIN_READY_TO_CLOSE);
 
     yield putResolve(Window.actions.close({force:true}));
 
@@ -423,9 +449,9 @@ export function* handleGroupChanged(action){
 }
 
 export default function* (){
-    yield takeLatest(APPLICATION_STARTED,handleApplicationLoading);
-    yield takeLatest(APPLICATION_CHILD_STARTED,handleApplicationChildLoading);
-    yield takeLatest(APPLICATION_NOTIFICATION_STARTED,handleApplicationNotificationLoading);
+    yield takeLatest(APPLICATION_START,handleApplicationLoading);
+    yield takeLatest(APPLICATION_CHILD_START,handleApplicationChildLoading);
+    yield takeLatest(APPLICATION_NOTIFICATION_START,handleApplicationNotificationLoading);
     yield takeLatest(Event.actionDicts.windowEventDictByName['close-requested'].type,handleApplicationExit);
     yield takeLatest(APPLICATION_TOGGLE_WINDOW_STATE,handleToggleWindowState);
     yield takeLatest(APPLICATION_NEW_SNACKBAR,handleApplicationAddNewSnackBar);
