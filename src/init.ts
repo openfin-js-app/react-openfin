@@ -6,6 +6,8 @@ import {ILaunchBarItem} from "./GlobalTypes";
 import {IDockingOptions} from "redux-openfin/docking";
 import {IConfigTab} from "./reduxs";
 
+import reactOpenfinSharedActions from './reduxs/sharedActions';
+
 interface IInitStateConfig{
     logActions:boolean,
     enableLoadingView:boolean,
@@ -42,7 +44,7 @@ interface IInitState {
 const initState:IInitState = {
     fin: void 0,
     finUuid: void '',
-    sharedActions:[],
+    sharedActions:[...reactOpenfinSharedActions],
     i18n: void 0,
     hist: void 0,
     dockingOptions:{},
@@ -93,7 +95,7 @@ export const initReactOpenfin = (
 )=>{
     initState.fin           = params.fin;
     initState.finUuid       = params.finUuid;
-    initState.sharedActions = params.sharedActions;
+    initState.sharedActions = [...reactOpenfinSharedActions,...params.sharedActions];
 
     initState.i18n = params.i18n;
     initState.hist = params.hist;

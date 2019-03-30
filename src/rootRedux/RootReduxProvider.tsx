@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import { createOpenfinMiddleware } from 'redux-openfin';
 import { IConfig } from 'redux-openfin/init'
@@ -8,7 +8,15 @@ import initState from '../init';
 
 import { REACT_OPENFIN_STATE_FIELD_NAME, REACT_OPENFIN_DISPATCH_FIELD_NAME } from '../GlobalTypes';
 import { useEnhancedReducerAndSaga } from '../utils/useEnhancedReducerAndSaga'
-import rootReducer, {IRootState, buildInitState} from '../reduxs'
+import rootReducer, {
+    // types
+    IRootState,
+    // actions
+    applicationNetworkOnline,
+    applicationNetworkOffline,
+    // utils
+    buildInitState,
+} from '../reduxs'
 import rootSaga from '../reduxs/sagas'
 
 import { RootReduxContextProvider } from './RootReduxContext'
@@ -38,6 +46,17 @@ const RootReduxProvider:React.FunctionComponent<{}> = (
     ),[
         reduxOpenfinMiddleware
     ],rootSaga,{});
+
+
+    const registerNetEvntCb = useCallback(()=>{
+        console.log('[react-openfin]RootReduxProvider::registerNetEvntCb');
+        window.addEventListener('online',()=>{
+            dispatch(applicationNetworkOnline());
+        })
+        window.addEventListener('offline',()=>{
+            dispatch(applicationNetworkOffline());
+        })
+    },[dispatch])
 
     useEffect(()=>{
         window[REACT_OPENFIN_STATE_FIELD_NAME] = state;
