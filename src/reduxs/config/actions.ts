@@ -13,7 +13,7 @@ export const CONFIG_RESET                           = makeType('CONFIG_RESET');
 
 // redux
 export const CONFIG_DO_UPDATE_ONE_FIELD             = makeType('CONFIG_DO_UPDATE_ONE_FIELD');
-export const CONFIG_UPDATE_GLOBAL_FILTER_STR        = makeType('CONFIG_UPDATE_GLOBAL_FILTER_STR');
+export const CONFIG_UPDATE_GLOBAL_FILTER_STR        = makeReqType('CONFIG_UPDATE_GLOBAL_FILTER_STR');
 export const CONFIG_EXTEND_CUST_STATE               = makeReqType('CONFIG_EXTEND_CUST_STATE');
 export const configReset
     = createAction<IConfigResetOption,IConfigResetOption>(CONFIG_RESET, (option:IConfigResetOption)=>(option));
@@ -32,7 +32,7 @@ export const CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE    = makeType('CONFIG_DO_UPDATE
 export const configDoUpdateOneFieldInDexie
     = createAction<IConfigDexie,IConfigDexie>(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, (option:IConfigDexie)=>(option));
 
-export const CONFIG_UPDATE_ONE_FIELD                = makeType('CONFIG_UPDATE_ONE_FIELD');
+export const CONFIG_UPDATE_ONE_FIELD                = makeReqType('CONFIG_UPDATE_ONE_FIELD');
 export const configUpdateOneField
     = createAction<IConfigUpdateOneFieldOption,string,string,any>(CONFIG_UPDATE_ONE_FIELD,
     (tabName:string,fieldName:string,value:any)=>({

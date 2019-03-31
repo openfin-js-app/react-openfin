@@ -10,7 +10,7 @@ import {
 import * as React from "react";
 
 // application general
-export const APPLICATION_SET_LOADING_MSG        = makeType('APPLICATION_SET_LOADING_MSG');
+export const APPLICATION_SET_LOADING_MSG        = makeReqType('APPLICATION_SET_LOADING_MSG');
 // app
 export const APPLICATION_START                  = makeReqType('APPLICATION_START');
 export const APPLICATION_AWAIT                  = makeResType('APPLICATION_AWAIT');
@@ -27,8 +27,8 @@ export const APPLICATION_NOTIFICATION_AWAIT     = makeResType('APPLICATION_NOTIF
 export const APPLICATION_NOTIFICATION_READY     = makeReqType('APPLICATION_NOTIFICATION_READY');
 export const APPLICATION_NOTIFICATION_STARTED   = makeResType('APPLICATION_NOTIFICATION_STARTED');
 // ---- ----
-export const APPLICATION_DRAWER_TOGGLE          = makeType('APPLICATION_DRAWER_TOGGLE');
-export const APPLICATION_TOGGLE_WINDOW_STATE    = makeType('APPLICATION_TOGGLE_WINDOW_STATE');
+export const APPLICATION_DRAWER_TOGGLE          = makeReqType('APPLICATION_DRAWER_TOGGLE');
+export const APPLICATION_TOGGLE_WINDOW_STATE    = makeReqType('APPLICATION_TOGGLE_WINDOW_STATE');
 
 
 export const APPLICATION_CUR_WIN_CLOSING        = makeResType('APPLICATION_CUR_WIN_CLOSING');
@@ -76,10 +76,10 @@ export const applicationCurWinReadyToClose
 
 // snackbar
 
-export const APPLICATION_NEW_SNACKBAR               = makeType('APPLICATION_NEW_SNACKBAR');
-export const APPLICATION_SET_SNACKBAR_STATUS        = makeType('APPLICATION_SET_SNACKBAR_STATUS');
-export const APPLICATION_PROCESS_SNACKBAR_QUEUE     = makeType('APPLICATION_PROCESS_SNACKBAR_QUEUE');
-export const APPLICATION_CLOSE_SNACKBAR             = makeType('APPLICATION_CLOSE_SNACKBAR');
+export const APPLICATION_NEW_SNACKBAR               = makeReqType('APPLICATION_NEW_SNACKBAR');
+export const APPLICATION_SET_SNACKBAR_STATUS        = makeReqType('APPLICATION_SET_SNACKBAR_STATUS');
+export const APPLICATION_PROCESS_SNACKBAR_QUEUE     = makeReqType('APPLICATION_PROCESS_SNACKBAR_QUEUE');
+export const APPLICATION_CLOSE_SNACKBAR             = makeReqType('APPLICATION_CLOSE_SNACKBAR');
 
 export const applicationNewSnackbar
     = createAction<IApplicationNewSnackbarOption,IApplicationNewSnackbarOption>(APPLICATION_NEW_SNACKBAR, (option:IApplicationNewSnackbarOption)=>(option));
@@ -99,10 +99,10 @@ export const applicationUpdateDockStatus
     = createAction<{docked},boolean>(APPLICATION_UPDATE_DOCK_STATUS, (docked:boolean)=>({docked}));
 
 // launch bar
-export const APPLICATION_LAUNCH_BAR_TOGGLE              = makeType('APPLICATION_LAUNCH_BAR_TOGGLE');
-export const APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE     = makeType('APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE');
-export const APPLICATION_LAUNCH_NEW_WINDOW              = makeType('APPLICATION_LAUNCH_NEW_WINDOW');
-export const APPLICATION_LAUNCH_BAR_CLOSE               = makeType('APPLICATION_LAUNCH_BAR_CLOSE');
+export const APPLICATION_LAUNCH_BAR_TOGGLE              = makeReqType('APPLICATION_LAUNCH_BAR_TOGGLE');
+export const APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE     = makeReqType('APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE');
+export const APPLICATION_LAUNCH_NEW_WINDOW              = makeReqType('APPLICATION_LAUNCH_NEW_WINDOW');
+export const APPLICATION_LAUNCH_BAR_CLOSE               = makeReqType('APPLICATION_LAUNCH_BAR_CLOSE');
 export const applicationLaunchBarToggle
     = createAction<void>(APPLICATION_LAUNCH_BAR_TOGGLE);
 export const applicationLaunchBarToggleCollapse
