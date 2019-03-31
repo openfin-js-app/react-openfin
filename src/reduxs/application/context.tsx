@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {WindowOptions} from 'redux-openfin';
+import { CreateNotificationPayload } from 'redux-openfin/notification/types';
 
 import { Omit } from '../../utils/typeHelper';
 
@@ -35,6 +36,9 @@ interface IWithApplication {
         onMinimize:()=>void,
         onWinClose:()=>void,
         onWinForceClose:()=>void,
+        // notification
+        launchNewNotification:(options:CreateNotificationPayload)=>void,
+        onNotificationClose:()=>void,
     }
 }
 

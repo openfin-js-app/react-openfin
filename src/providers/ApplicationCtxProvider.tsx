@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useContext } from 'react';
 
-import { WindowOptions, Window } from "redux-openfin";
+import { WindowOptions, Window, Notification } from "redux-openfin";
+
+import { CreateNotificationPayload } from 'redux-openfin/notification/types';
 
 import { RootReduxContext } from '../rootRedux/RootReduxContext'
 import { IReadyPayload } from '../reduxs';
@@ -61,6 +63,10 @@ const ApplicationCtxProivder:React.FunctionComponent<{}> = (
                 onMinimize:()=>{dispatch((Window.actions.minimize({})))},
                 onWinClose:()=>{dispatch((Window.actions.close({force:false})))},
                 onWinForceClose:()=>{dispatch((Window.actions.close({force:true})))},
+                launchNewNotification:(options:CreateNotificationPayload)=>{
+                    dispatch((Notification.actions.createNotification(options)))
+                },
+                onNotificationClose:()=>{dispatch((Notification.actions.close({})))},
             }
         }}>
             {children}
