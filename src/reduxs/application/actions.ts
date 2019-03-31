@@ -66,7 +66,7 @@ export const applicationNotificationStarted
 
 export const applicationDrawerToggle
     = createAction<void>(APPLICATION_DRAWER_TOGGLE);
-export const applicationToogleWindowState
+export const applicationToggleWindowState
     = createAction<void>(APPLICATION_TOGGLE_WINDOW_STATE);
 
 export const applicationCurWinClosing
