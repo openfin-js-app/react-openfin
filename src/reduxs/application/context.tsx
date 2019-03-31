@@ -31,6 +31,7 @@ interface IWithApplication {
         // windows
         onSetAsForeground:()=>void,
         onUndock:()=>void,
+        onToggleWinState:()=>void,
         onMinimize:()=>void,
         onWinClose:()=>void,
         onWinForceClose:()=>void,
