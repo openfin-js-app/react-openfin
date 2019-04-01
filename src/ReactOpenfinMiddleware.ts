@@ -3,6 +3,15 @@ import {
 } from 'redux';
 
 import { isReqAct as isOpenfinReduxReqAct } from 'redux-openfin';
+
+import {
+    APPLICATION_READY,
+    APPLICATION_CHILD_READY,
+    APPLICATION_NOTIFICATION_READY,
+} from './reduxs';
+
+import { onStartReady } from './init';
+
 import { isReqAct} from './utils/makeType';
 
 import { REACT_OPENFIN_DISPATCH_FIELD_NAME } from './GlobalTypes';
@@ -19,6 +28,16 @@ export default function middlewareCreator():Middleware {
             ){
                 if (window[REACT_OPENFIN_DISPATCH_FIELD_NAME]){
                     window[REACT_OPENFIN_DISPATCH_FIELD_NAME](action);
+
+                    // hijack the ready actions
+                    if (
+                        (action.type == APPLICATION_READY) ||
+                        (action.type == APPLICATION_CHILD_READY) ||
+                        (action.type == APPLICATION_NOTIFICATION_READY)
+                    ){
+                        onStartReady(action.payload);
+                    }
+
                 }
             }else{
                 return next(action);

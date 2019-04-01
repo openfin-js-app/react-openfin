@@ -5,6 +5,8 @@ import { WindowOptions, Window, Notification } from "redux-openfin";
 
 import { CreateNotificationPayload } from 'redux-openfin/notification/types';
 
+import { onStartReady } from '../init';
+
 import { RootReduxContext } from '../rootRedux/RootReduxContext'
 import { IReadyPayload } from '../reduxs';
 import { ApplicationContextProvider } from '../reduxs/application/context'
@@ -44,11 +46,23 @@ const ApplicationCtxProivder:React.FunctionComponent<{}> = (
                 launchNewWin: (appJson:Partial<WindowOptions>)=>{dispatch(applicationLaunchNewWindow(appJson))},
                 onSetLoadingMsg:(label:string)=>{dispatch(applicationSetLoadingMsg(label))},
                 onApplicationStart:()=>{dispatch(applicationStart())},
-                onApplicationReady:(readyConfig:IReadyPayload)=>{dispatch(applicationReady(readyConfig))},
+                onApplicationReady:(readyConfig:IReadyPayload)=>{
+                    // temp on start on stop payload solution
+                    onStartReady(readyConfig);
+                    dispatch(applicationReady(readyConfig))
+                },
                 onChildWinStart:()=>{dispatch(applicationChildStart())},
-                onChildWinReady:(readyConfig:IReadyPayload)=>{dispatch(applicationChildReady(readyConfig))},
+                onChildWinReady:(readyConfig:IReadyPayload)=>{
+                    // temp on start on stop payload solution
+                    onStartReady(readyConfig);
+                    dispatch(applicationChildReady(readyConfig))
+                },
                 onNotificationStart:()=>{dispatch(applicationNotificationStart())},
-                onNotificationReady:(readyConfig:IReadyPayload)=>{dispatch(applicationNotificationReady(readyConfig))},
+                onNotificationReady:(readyConfig:IReadyPayload)=>{
+                    // temp on start on stop payload solution
+                    onStartReady(readyConfig);
+                    dispatch(applicationNotificationReady(readyConfig))
+                },
                 onNewSnackBar:(newSnackBar:IApplicationNewSnackbarOption)=>{dispatch(applicationNewSnackbar(newSnackBar))},
                 onSnackBarClose:(event: React.SyntheticEvent<any>, reason: string) => {dispatch(applicationCloseSnackbar(event,reason))},
                 onSnackBarCloseBtnClick:()=> {dispatch(applicationSetSnackbarStatus(false))},

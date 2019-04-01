@@ -29,15 +29,16 @@ const RootReduxProvider:React.FunctionComponent<{}> = (
     }
 )=>{
 
-    const reduxOpenfinMiddleware = useMemo(()=>(
-        createOpenfinMiddleware(initState.fin,{
+    const reduxOpenfinMiddleware = useMemo(()=>{
+        // console.log("[react-openfin]::RootReduxProvider createReduxOpenfinMiddleware");
+        return createOpenfinMiddleware(initState.fin,{
             finUuid: initState.finUuid,
             sharedActions: initState.sharedActions,
             autoDocking: initState.config.enableAutoDocking,
             dockingOptions:initState.dockingOptions,
-            libDispatchFieldName:REACT_OPENFIN_DISPATCH_FIELD_NAME
+            // libDispatchFieldName:REACT_OPENFIN_DISPATCH_FIELD_NAME
         })
-    ),[1]);
+    },[]);
 
     const [state, dispatch] = useEnhancedReducerAndSaga(rootReducer,buildInitState(
         window.name == initState.finUuid ?
@@ -48,24 +49,32 @@ const RootReduxProvider:React.FunctionComponent<{}> = (
     ],rootSaga,{});
 
 
-    const registerNetEvntCb = useCallback(()=>{
-        console.log('[react-openfin]RootReduxProvider::registerNetEvntCb');
-        window.addEventListener('online',()=>{
-            dispatch(applicationNetworkOnline());
-        })
-        window.addEventListener('offline',()=>{
-            dispatch(applicationNetworkOffline());
-        })
-    },[dispatch])
-
     useEffect(()=>{
+        // console.log('[react-openfin]RootReduxProvider::registerNetEvntCb and dispatch');
+
+        const applicationNetworkOnlineListener = ()=>{
+            dispatch(applicationNetworkOnline());
+        }
+
+        const applicationNetworkOfflineListener = ()=>{
+            dispatch(applicationNetworkOffline());
+        }
+
         window[REACT_OPENFIN_STATE_FIELD_NAME] = state;
         window[REACT_OPENFIN_DISPATCH_FIELD_NAME] = dispatch;
+
+        window.addEventListener('online', applicationNetworkOnlineListener);
+        window.addEventListener('offline', applicationNetworkOfflineListener);
+
         return ()=>{
+
+            window.removeEventListener('online', applicationNetworkOnlineListener);
+            window.removeEventListener('offline', applicationNetworkOfflineListener);
+
             window[REACT_OPENFIN_STATE_FIELD_NAME] = void 0;
             window[REACT_OPENFIN_DISPATCH_FIELD_NAME] = void 0;
         }
-    })
+    },[])
 
     return(<React.Fragment>
         <RootReduxContextProvider value={{state,dispatch}}>

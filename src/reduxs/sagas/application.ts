@@ -1,6 +1,5 @@
 import {Action} from "redux-actions";
-import { buffers } from 'redux-saga';
-import { all, call, delay, put, putResolve, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
+import { all, call, delay, put, putResolve, race, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import { Docking ,System, Event, Window } from 'redux-openfin';
 import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "redux-openfin/window";
 
@@ -42,9 +41,6 @@ import {
 } from '..';
 
 import initState from '../../init';
-const hist = initState.hist;
-const i18n = initState.i18n;
-const launchBarItems = initState.launchBarItems;
 
 export const LOADING_VIEW_UUID=`${initState.finUuid}-loading-view`;
 let loadingWindow = null;
@@ -57,6 +53,10 @@ const LOADING_BANNER_WIDTH = initState.config.defaultLoadingBannerWidth;
 const LOADING_BANNER_HEIGHT = initState.config.defaultLoadingBannerHeight;
 const DEFAULT_WIDTH = initState.config.defaultAppWidth;
 const DEFAULT_HEIGHT = initState.config.defaultAppHeight;
+
+const ON_APP_AWAIT_DELAY_TIME = 4000;
+const ON_CHILD_AWAIT_DELAY_TIME = 1000;
+const ON_NOTITFICATION_AWAIT_DELAY_TIME = 200;
 
 
 export const getSnackBarOpen = (state:IRootState) => state.application.snackBarOpen;
@@ -103,11 +103,11 @@ export function* handleHideFromLoadingView(monitorRect, targetUrl?:string) {
 
     // after the sagas loaded, redirect to default page/view
     if(targetUrl && targetUrl.length > 0){
-        hist.push(targetUrl);
+        initState.hist.push(targetUrl);
     }else if ( initState.config.defaultViewUrl && initState.config.defaultViewUrl.length > 0){
-        hist.push( initState.config.defaultViewUrl );
+        initState.hist.push( initState.config.defaultViewUrl );
     }else{
-        hist.push('/dashboard/view-one');
+        initState.hist.push('/dashboard/view-one');
     }
 
     yield delay(200);
@@ -122,7 +122,7 @@ export function* handleApplicationLoading() {
 
     const dbSavedLang = yield call(findOneFieldVal,'application','language');
     if (dbSavedLang){
-        i18n.changeLanguage(dbSavedLang);
+        initState.i18n.changeLanguage(dbSavedLang);
     }
 
     const currentIsLoadingView =
@@ -151,20 +151,23 @@ export function* handleApplicationLoading() {
         call(System.asyncs.getVersion,System.actions.getVersion({})),
         call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
         call(Window.asyncs.getState,Window.actions.getState({})),
+        putResolve(applicationAwait()),
         // delay for loading view render, could be removed
-        delay(800),
+        // delay(800),
     ]);
 
-    yield putResolve(applicationAwait());
-    const {payload:{targetUrl}} = yield take(APPLICATION_READY);
-    yield putResolve(applicationStarted());
+    yield delay(ON_APP_AWAIT_DELAY_TIME);
+
+    // console.log("[react-openfin]::app saga  put applicationAwait() start waiting");
+    const readyPayload = initState.readyPayload;
+    // console.log("[react-openfin]::app saga take APPLICATION_READY or time out", readyPayload);
 
     yield putResolve(applicationSetLoadingMsg('ready'));
+    yield putResolve(applicationStarted());
 
     if (ENABLE_LOADING_VIEW && currentIsLoadingView){
-        yield* handleHideFromLoadingView(monitorRect, targetUrl) as any;
+        yield* handleHideFromLoadingView(monitorRect, (readyPayload && readyPayload.targetUrl)?readyPayload.targetUrl:void 0) as any;
     }
-
     yield put(applicationSetLoadingMsg(''));
 
     yield call(Window.asyncs.bringToFront,Window.actions.bringToFront({}));
@@ -175,7 +178,7 @@ export function* handleApplicationChildLoading() {
 
     const dbSavedLang = yield call(findOneFieldVal,'application','language');
     if (dbSavedLang){
-        i18n.changeLanguage(dbSavedLang);
+        initState.i18n.changeLanguage(dbSavedLang);
     }
 
     yield all([
@@ -194,7 +197,7 @@ export function* handleApplicationChildLoading() {
     yield putResolve(applicationChildAwait());
     const {payload:{targetUrl}} = yield take(APPLICATION_CHILD_READY);
     if(targetUrl && targetUrl.length > 0){
-        hist.push(targetUrl);
+        initState.hist.push(targetUrl);
     }
     yield putResolve(applicationChildStarted());
 
@@ -203,7 +206,7 @@ export function* handleApplicationChildLoading() {
 export function* handleApplicationNotificationLoading() {
     const dbSavedLang = yield call(findOneFieldVal,'application','language');
     if (dbSavedLang){
-        i18n.changeLanguage(dbSavedLang);
+        initState.i18n.changeLanguage(dbSavedLang);
     }
 
     yield all([
@@ -215,7 +218,7 @@ export function* handleApplicationNotificationLoading() {
     yield putResolve(applicationNotificationAwait());
     const {payload:{targetUrl}} = yield take(APPLICATION_NOTIFICATION_READY);
     if(targetUrl && targetUrl.length > 0){
-        hist.push(targetUrl);
+        initState.hist.push(targetUrl);
     }
     yield putResolve(applicationNotificationStarted());
 
@@ -295,7 +298,7 @@ export function* handleApplicationLaunchBarToggle(){
             autoShow:true,
             defaultLeft:getBoundsActionPayload.left,
             defaultTop:getBoundsActionPayload.top,
-            defaultWidth:launchBarItems.length<10? launchBarItems.length*64+88:664,
+            defaultWidth:initState.launchBarItems.length<10? initState.launchBarItems.length*64+88:664,
             defaultHeight: 64,
             minWidth:88,
             minHeight:64,
@@ -313,7 +316,7 @@ export function* handleApplicationLaunchBarToggle(){
             launchbarWindow.setBounds(
                 getBoundsActionPayload.left,
                 getBoundsActionPayload.top,
-                launchBarItems.length<10? launchBarItems.length*64+88:664,
+                initState.launchBarItems.length<10? initState.launchBarItems.length*64+88:664,
                 64,
             );
         }
@@ -341,7 +344,7 @@ export function* handleApplicationLaunchBarToggleCollapse() {
         yield call(Window.asyncs.setBounds,Window.actions.setBounds({
             left:getBoundsActionPayload.left,
             top:getBoundsActionPayload.top,
-            width:launchBarItems.length<10? launchBarItems.length*64+88:664,
+            width:initState.launchBarItems.length<10? initState.launchBarItems.length*64+88:664,
             height:64,
         }));
     }

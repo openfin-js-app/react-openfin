@@ -1,8 +1,5 @@
 import { all, takeEvery, select, fork } from 'redux-saga/effects';
 
-import { isResAct as isReduxOpenfinResAct } from 'redux-openfin';
-import { isResAct } from '../../utils/makeType';
-
 import initState from '../../init'
 
 import applicationSaga from './application';
@@ -13,32 +10,13 @@ export function* handleLogAllActions(action) {
     console.log(`${action.type}`,action,'state after',state);
 }
 
-export function* handleClientResponseActions(action){
-
-    if (
-        initState.clientReduxDispatch &&
-        (
-            isReduxOpenfinResAct(action.type) ||
-            isResAct(action.type)
-        )
-
-    ){
-        initState.clientReduxDispatch(action);
-    }
-
-}
-
 export function* watchAndLogSaga(){
     yield takeEvery('*',handleLogAllActions)
 }
 
-export function* resActInterceptor(){
-    yield takeEvery('*',handleClientResponseActions)
-}
-
 export default function* rootSaga(){
 
-    const sagas = [resActInterceptor(), applicationSaga(),configSaga()];
+    const sagas = [ applicationSaga(), configSaga() ];
 
     if(initState.config.logActions){
         sagas.unshift(watchAndLogSaga());

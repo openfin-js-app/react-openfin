@@ -4,7 +4,7 @@ import {Dispatch, Store} from 'redux'
 
 import {ILaunchBarItem} from "./GlobalTypes";
 import {IDockingOptions} from "redux-openfin/docking";
-import {IConfigTab} from "./reduxs";
+import { IConfigTab, IReadyPayload, } from "./reduxs";
 
 import reactOpenfinSharedActions from './reduxs/sharedActions';
 
@@ -39,6 +39,8 @@ interface IInitState {
     configTabs:IConfigTab[],
     clientReduxDispatch:Dispatch<any>,
     config:IInitStateConfig,
+    // temp on start on stop payload solution
+    readyPayload:IReadyPayload,
 }
 
 const initState:IInitState = {
@@ -69,8 +71,19 @@ const initState:IInitState = {
         newWindowHeight:320,
         newWindowDeltaLeft:20,
         newWindowDeltaHeight:20,
-    }
+    },
+    // temp on start on stop payload solution
+    readyPayload:void 0,
 }
+
+// ---- on start ----
+export function onStartReady(readyPayload:IReadyPayload,){
+    initState.readyPayload = readyPayload;
+}
+// ---- on stop ----
+
+
+// ---- init ----
 
 export interface IInitReactOpenfinParametersObj {
     fin:any,

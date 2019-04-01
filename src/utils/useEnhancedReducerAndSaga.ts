@@ -2,6 +2,11 @@ import { useReducer, useEffect, useRef } from "react";
 import { runSaga, stdChannel } from "redux-saga";
 import { take, call, effectTypes } from "redux-saga/effects";
 
+import { isResAct as isReduxOpenfinResAct } from 'redux-openfin';
+
+import initState  from '../init';
+import { isResAct } from './makeType';
+
 function compose(...fns) {
     if (fns.length === 0) return arg => arg
     if (fns.length === 1) return fns[0]
@@ -18,8 +23,19 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
     const sagaEnv = useRef({ state: state0, pendingActions: [], channel: void 0 });
 
     function dispatch(action){
-        console.log("[EnhancedReducerAndSaga] react dispatch", action);
+        // console.log("[EnhancedReducerAndSaga] react dispatch", action);
         reactDispatch(action);
+        // dispatch to client store if necessary
+        if (
+            initState.clientReduxDispatch &&
+            (
+                isReduxOpenfinResAct(action.type) ||
+                isResAct(action.type)
+            )
+
+        ){
+            initState.clientReduxDispatch(action);
+        }
         console.log("[EnhancedReducerAndSaga] post react dispatch", action);
         // dispatch to sagas is done in the commit phase
         sagaEnv.current.pendingActions.push(action);
@@ -33,24 +49,9 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
     const chain = middlewares.map(middleware => middleware(store))
     enhancedDispatch = compose.apply(void 0, chain)(dispatch);
 
-
-    useEffect(() => {
-        console.log("[EnhancedReducerAndSaga] update saga state");
-        // sync with react state, *should* be safe since we're in commit phase
-        sagaEnv.current.state = state;
-        const pendingActions = sagaEnv.current.pendingActions;
-        // flush any pending actions, since we're in commit phase, reducer
-        // should've handled all those actions
-        if (pendingActions.length > 0) {
-            sagaEnv.current.pendingActions = [];
-            console.log("[EnhancedReducerAndSaga] flush saga actions");
-            pendingActions.forEach(action => sagaEnv.current.channel.put(action));
-            sagaEnv.current.channel.put({ type: "REACT_STATE_READY", state });
-        }
-    });
-
     // This is a one-time effect that starts the root saga
     useEffect(() => {
+        // console.log("[EnhancedReducerAndSaga] init saga stdChannel");
         sagaEnv.current.channel = stdChannel();
 
         const task = runSaga(
@@ -82,6 +83,21 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
         );
         return () => task.cancel();
     }, []);
+
+    useEffect(() => {
+        // console.log("[EnhancedReducerAndSaga] update saga state");
+        // sync with react state, *should* be safe since we're in commit phase
+        sagaEnv.current.state = state;
+        const pendingActions = sagaEnv.current.pendingActions;
+        // flush any pending actions, since we're in commit phase, reducer
+        // should've handled all those actions
+        if (pendingActions.length > 0) {
+            sagaEnv.current.pendingActions = [];
+            // console.log("[EnhancedReducerAndSaga] flush saga actions");
+            pendingActions.forEach(action => sagaEnv.current.channel.put(action));
+            sagaEnv.current.channel.put({ type: "REACT_STATE_READY", state });
+        }
+    });
 
     return [state, enhancedDispatch];
 }
