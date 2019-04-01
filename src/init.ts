@@ -4,7 +4,7 @@ import {Dispatch, Store} from 'redux'
 
 import {ILaunchBarItem} from "./GlobalTypes";
 import {IDockingOptions} from "redux-openfin/docking";
-import { IConfigTab, IReadyPayload, } from "./reduxs";
+import { IConfigTab, IReadyPayload } from "./reduxs";
 
 import reactOpenfinSharedActions from './reduxs/sharedActions';
 
@@ -36,6 +36,7 @@ interface IInitState {
     fin:any,
     finUuid:string,
     sharedActions:string[],
+    sharedActionsDict:Set<string>,
     i18n:typeof i18n,
     hist:History,
     dockingOptions:Partial<IDockingOptions>,
@@ -47,10 +48,17 @@ interface IInitState {
     readyPayload:IReadyPayload,
 }
 
+const initSharedActionsDict:Set<string> = new Set();
+
+reactOpenfinSharedActions.forEach((actionType)=>{
+    initSharedActionsDict.add(actionType);
+});
+
 const initState:IInitState = {
     fin: void 0,
     finUuid: void '',
     sharedActions:[...reactOpenfinSharedActions],
+    sharedActionsDict: initSharedActionsDict,
     i18n: void 0,
     hist: void 0,
     dockingOptions:{},
@@ -116,7 +124,13 @@ export const initReactOpenfin = (
 )=>{
     initState.fin           = params.fin;
     initState.finUuid       = params.finUuid;
-    initState.sharedActions = [...reactOpenfinSharedActions,...params.sharedActions];
+
+    if (params.sharedActions && params.sharedActions.length > 0){
+        initState.sharedActions = [...reactOpenfinSharedActions,...params.sharedActions];
+        params.sharedActions.forEach(actionType => {
+            initState.sharedActionsDict.add(actionType);
+        })
+    }
 
     initState.i18n = params.i18n;
     initState.hist = params.hist;

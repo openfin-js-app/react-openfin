@@ -3,6 +3,7 @@ import { runSaga, stdChannel } from "redux-saga";
 import { take, call, effectTypes } from "redux-saga/effects";
 
 import { isResAct as isReduxOpenfinResAct } from 'redux-openfin';
+import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 
 import initState  from '../init';
 import { isResAct } from './makeType';
@@ -30,7 +31,13 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
             initState.clientReduxDispatch &&
             (
                 isReduxOpenfinResAct(action.type) ||
-                isResAct(action.type)
+                isResAct(action.type) ||
+                (
+                    action.payload[SHARED_ACTION_ORIGIN_TAG]
+                    && action.payload[SHARED_ACTION_ORIGIN_TAG] !== window[SHARED_ACTION_ORIGIN_TAG]
+                    // do not need to check sharedActionsDict since already has SHARED_ACTION_ORIGIN_TAG field
+                    // && initState.sharedActionsDict.has(action.type)
+                )
             )
 
         ){

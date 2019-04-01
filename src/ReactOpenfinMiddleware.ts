@@ -3,6 +3,7 @@ import {
 } from 'redux';
 
 import { isReqAct as isOpenfinReduxReqAct } from 'redux-openfin';
+import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 
 import {
     APPLICATION_READY,
@@ -10,7 +11,7 @@ import {
     APPLICATION_NOTIFICATION_READY,
 } from './reduxs';
 
-import { onStartReady } from './init';
+import initState, { onStartReady } from './init';
 
 import { isReqAct} from './utils/makeType';
 
@@ -39,6 +40,12 @@ export default function middlewareCreator():Middleware {
                     }
 
                 }
+            }else if (
+                (!action.payload[SHARED_ACTION_ORIGIN_TAG]) &&
+                window[REACT_OPENFIN_DISPATCH_FIELD_NAME] &&
+                initState.sharedActionsDict.has(action.type)
+            ){
+                window[REACT_OPENFIN_DISPATCH_FIELD_NAME](action);
             }else{
                 return next(action);
             }
