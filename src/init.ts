@@ -26,6 +26,10 @@ interface IInitStateConfig{
     newWindowHeight:number,
     newWindowDeltaLeft:number,
     newWindowDeltaHeight:number,
+    onAppAwaitDelayTime:number,
+    onAppChildAwaitDelayTime:number,
+    onAppNotificationAwaitDelayTime:number,
+    onAppClosingAwaitDelayTime:number,
 }
 
 interface IInitState {
@@ -71,6 +75,10 @@ const initState:IInitState = {
         newWindowHeight:320,
         newWindowDeltaLeft:20,
         newWindowDeltaHeight:20,
+        onAppAwaitDelayTime:4000,
+        onAppChildAwaitDelayTime:1000,
+        onAppNotificationAwaitDelayTime:200,
+        onAppClosingAwaitDelayTime:500,
     },
     // temp on start on stop payload solution
     readyPayload:void 0,

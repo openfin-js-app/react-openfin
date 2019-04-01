@@ -54,11 +54,6 @@ const LOADING_BANNER_HEIGHT = initState.config.defaultLoadingBannerHeight;
 const DEFAULT_WIDTH = initState.config.defaultAppWidth;
 const DEFAULT_HEIGHT = initState.config.defaultAppHeight;
 
-const ON_APP_AWAIT_DELAY_TIME = 4000;
-const ON_CHILD_AWAIT_DELAY_TIME = 1000;
-const ON_NOTITFICATION_AWAIT_DELAY_TIME = 200;
-
-
 export const getSnackBarOpen = (state:IRootState) => state.application.snackBarOpen;
 export const getLaunchBarCollapse = (state:IRootState) => state.application.launchBarCollapse;
 export const getWindowsState = (state:IRootState)  => state.application.windowsState;
@@ -156,7 +151,7 @@ export function* handleApplicationLoading() {
         // delay(800),
     ]);
 
-    yield delay(ON_APP_AWAIT_DELAY_TIME);
+    yield delay(initState.config.onAppAwaitDelayTime);
 
     // console.log("[react-openfin]::app saga  put applicationAwait() start waiting");
     const readyPayload = initState.readyPayload;
@@ -195,7 +190,7 @@ export function* handleApplicationChildLoading() {
     }
 
     yield putResolve(applicationChildAwait());
-    yield delay(ON_CHILD_AWAIT_DELAY_TIME);
+    yield delay(initState.config.onAppChildAwaitDelayTime);
     const readyPayload = initState.readyPayload;
     if(readyPayload && readyPayload.targetUrl){
         initState.hist.push(readyPayload.targetUrl);
@@ -217,7 +212,7 @@ export function* handleApplicationNotificationLoading() {
 
 
     yield putResolve(applicationNotificationAwait());
-    yield delay(ON_NOTITFICATION_AWAIT_DELAY_TIME);
+    yield delay(initState.config.onAppNotificationAwaitDelayTime);
     const readyPayload = initState.readyPayload;
     if(readyPayload && readyPayload.targetUrl){
         initState.hist.push(readyPayload.targetUrl);
@@ -234,8 +229,8 @@ export function* handleApplicationExit() {
     // ---------------------------------end of app codes -----------------------------------------------
 
     putResolve(applicationCurWinClosing());
-    take(APPLICATION_CUR_WIN_READY_TO_CLOSE);
-
+    // take(APPLICATION_CUR_WIN_READY_TO_CLOSE);
+    yield delay(initState.config.onAppClosingAwaitDelayTime);
     yield putResolve(Window.actions.close({force:true}));
 
 }
