@@ -195,9 +195,10 @@ export function* handleApplicationChildLoading() {
     }
 
     yield putResolve(applicationChildAwait());
-    const {payload:{targetUrl}} = yield take(APPLICATION_CHILD_READY);
-    if(targetUrl && targetUrl.length > 0){
-        initState.hist.push(targetUrl);
+    yield delay(ON_CHILD_AWAIT_DELAY_TIME);
+    const readyPayload = initState.readyPayload;
+    if(readyPayload && readyPayload.targetUrl){
+        initState.hist.push(readyPayload.targetUrl);
     }
     yield putResolve(applicationChildStarted());
 
@@ -216,9 +217,10 @@ export function* handleApplicationNotificationLoading() {
 
 
     yield putResolve(applicationNotificationAwait());
-    const {payload:{targetUrl}} = yield take(APPLICATION_NOTIFICATION_READY);
-    if(targetUrl && targetUrl.length > 0){
-        initState.hist.push(targetUrl);
+    yield delay(ON_NOTITFICATION_AWAIT_DELAY_TIME);
+    const readyPayload = initState.readyPayload;
+    if(readyPayload && readyPayload.targetUrl){
+        initState.hist.push(readyPayload.targetUrl);
     }
     yield putResolve(applicationNotificationStarted());
 
