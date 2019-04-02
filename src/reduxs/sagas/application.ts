@@ -108,7 +108,7 @@ export function* handleHideFromLoadingView(monitorRect, targetUrl?:string) {
     yield delay(200);
 
     if (loadingWindow){
-        loadingWindow.close()
+        loadingWindow.close(true);
     }
     yield put(Window.actions.show({force:true}))
 }

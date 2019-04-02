@@ -84,9 +84,9 @@ const initState:IInitState = {
         newWindowDeltaLeft:20,
         newWindowDeltaHeight:20,
         onAppAwaitDelayTime:4000,
-        onAppChildAwaitDelayTime:1000,
-        onAppNotificationAwaitDelayTime:200,
-        onAppClosingAwaitDelayTime:500,
+        onAppChildAwaitDelayTime:200,
+        onAppNotificationAwaitDelayTime:100,
+        onAppClosingAwaitDelayTime:200,
     },
     // temp on start on stop payload solution
     readyPayload:void 0,

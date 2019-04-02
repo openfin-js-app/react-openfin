@@ -22,10 +22,13 @@ declare const window:any;
 export default function middlewareCreator():Middleware {
     return (
         (store?:Store<any>) => (next: Dispatch<AnyAction>) => (action:any) => {
+
             // client actions
             if (
-                isOpenfinReduxReqAct(action.type) ||
-                isReqAct(action.type)
+                (!action[SHARED_ACTION_ORIGIN_TAG]) && (
+                    isOpenfinReduxReqAct(action.type) ||
+                    isReqAct(action.type)
+                )
             ){
                 if (window[REACT_OPENFIN_DISPATCH_FIELD_NAME]){
                     window[REACT_OPENFIN_DISPATCH_FIELD_NAME](action);
