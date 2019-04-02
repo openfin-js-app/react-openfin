@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { useContext, useCallback, } from 'react';
+import {useContext, useCallback, useEffect,} from 'react';
+
+import initState from '../init';
 
 import { RootReduxContext } from '../rootRedux/RootReduxContext'
 
@@ -17,6 +19,8 @@ import {buildDefaultConfigState} from '../reduxs/config/reducer';
 
 import { ConfigContextProvider } from '../reduxs/config/context';
 
+import defaultConfigConstant from '../reduxs/config/constant';
+
 
 const ConfigCtxProvider:React.FunctionComponent<{}> = (
     { children }
@@ -24,17 +28,17 @@ const ConfigCtxProvider:React.FunctionComponent<{}> = (
 
     const { state, dispatch } = useContext(RootReduxContext);
 
-    // todo: [might be fixed] feel like config state app tab obj is not populated correctly, and have to check of n/a over here
-    // const theme = state.config.application?state.config.application.theme:MuiTheme.DARK;
     const theme = state.config.application.theme;
 
     // todo: consider remove configExtendCustState act if initState works
-    // const customStateCb = useCallback(()=>{
-    //     if (configTabs && configTabs.length>0){
-    //         const customState = buildDefaultConfigState(configTabs)
-    //         dispatch(configExtendCustState(customState));
-    //     }
-    // },[configTabs]);
+    useEffect(()=>{
+        // console.log('ConfigCtxProvider::useEffect 0#',initState.configTabs);
+        if (initState.configTabs && initState.configTabs.length>0){
+            const customState = buildDefaultConfigState([ ...defaultConfigConstant, ...initState.configTabs])
+            // console.log('ConfigCtxProvider::useEffect 1#', customState);
+            dispatch(configExtendCustState(customState));
+        }
+    },[]);
 
     return (<React.Fragment>
         <ConfigContextProvider value={{

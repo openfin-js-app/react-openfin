@@ -33,8 +33,8 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
                 isReduxOpenfinResAct(action.type) ||
                 isResAct(action.type) ||
                 (
-                    action.payload[SHARED_ACTION_ORIGIN_TAG]
-                    && action.payload[SHARED_ACTION_ORIGIN_TAG] !== window[SHARED_ACTION_ORIGIN_TAG]
+                    action[SHARED_ACTION_ORIGIN_TAG]
+                    && action[SHARED_ACTION_ORIGIN_TAG] !== window[SHARED_ACTION_ORIGIN_TAG]
                     // do not need to check sharedActionsDict since already has SHARED_ACTION_ORIGIN_TAG field
                     // && initState.sharedActionsDict.has(action.type)
                 )

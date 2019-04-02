@@ -36,7 +36,7 @@ export function buildDefaultConfigState(configTabs: IConfigTab[]):IConfigState{
     return result;
 }
 
-export const defaultState:IConfigState = buildDefaultConfigState([...configTabs,...initState.configTabs]);
+export const defaultState:IConfigState = buildDefaultConfigState(configTabs);
 
 export const buildInitState = (parentWindowState?:IConfigState) =>{
     return defaultState;

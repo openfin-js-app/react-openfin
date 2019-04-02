@@ -41,7 +41,7 @@ export default function middlewareCreator():Middleware {
 
                 }
             }else if (
-                (!action.payload[SHARED_ACTION_ORIGIN_TAG]) &&
+                (!action[SHARED_ACTION_ORIGIN_TAG]) &&
                 window[REACT_OPENFIN_DISPATCH_FIELD_NAME] &&
                 initState.sharedActionsDict.has(action.type)
             ){
