@@ -42,7 +42,7 @@ export const buildInitState = (parentWindowState?:IConfigState) =>{
     return defaultState;
 }
 
-const reducerMap:{[key:string]: (state:IConfigState, action?:Action<any>)=>IConfigState} = {
+export const reducerMap:{[key:string]: (state:IConfigState, action?:Action<any>)=>IConfigState} = {
     [CONFIG_RESET]:(state,action)=>{
         const {tabName} = action.payload as IConfigResetOption;
         if(tabName){

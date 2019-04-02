@@ -69,7 +69,7 @@ export const buildInitState = (parentWindowState?:Partial<IApplicationState>):Pa
     }
 }
 
-const reducerMap:{[key:string]:(state:IApplicationState,action?:Action<any>)=>IApplicationState} = {
+export const reducerMap:{[key:string]:(state:IApplicationState,action?:Action<any>)=>IApplicationState} = {
     [System.actions.GET_MACHINE_ID_RES]:(state,action)=>{
         const {id} = action.payload as any;
         return {
