@@ -8,6 +8,8 @@ import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 import initState  from '../init';
 import { isResAct } from './makeType';
 
+const REACT_STATE_READY = 'REACT_STATE_READY';
+
 function compose(...fns) {
     if (fns.length === 0) return arg => arg
     if (fns.length === 1) return fns[0]
@@ -15,7 +17,7 @@ function compose(...fns) {
 }
 
 function* selectAsyncSaga(selector, args) {
-    const { state } = yield take("REACT_STATE_READY");
+    const { state } = yield take(REACT_STATE_READY);
     return selector(state, ...args);
 }
 
@@ -102,7 +104,7 @@ export function useEnhancedReducerAndSaga(reducer, state0, middlewares=[], saga,
             sagaEnv.current.pendingActions = [];
             // console.log("[EnhancedReducerAndSaga] flush saga actions");
             pendingActions.forEach(action => sagaEnv.current.channel.put(action));
-            sagaEnv.current.channel.put({ type: "REACT_STATE_READY", state });
+            sagaEnv.current.channel.put({ type: REACT_STATE_READY, state });
         }
     });
 
