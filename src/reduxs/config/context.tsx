@@ -4,15 +4,17 @@ import { Omit } from '../../utils/typeHelper';
 
 import { I18Language, IConfigState } from './types';
 
-interface IWithConfig {
+export interface IWithConfigActions {
+    onToggleThemeField:()=>void,
+    onUpdateLangField:(lang:I18Language)=>void,
+    onUpdateGlobalFilterString:(filterStr:string)=>void,
+    onUpdateOneField:(tabName:string,fieldName:string,value:any)=>void,
+    onExtendCustomState:(customState:any)=>void,
+}
+
+export interface IWithConfig {
     config:Partial<IConfigState>,
-    actions:{
-        onToggleThemeField:()=>void,
-        onUpdateLangField:(lang:I18Language)=>void,
-        onUpdateGlobalFilterString:(filterStr:string)=>void,
-        onUpdateOneField:(tabName:string,fieldName:string,value:any)=>void,
-        onExtendCustomState:(customState:any)=>void,
-    }
+    actions:IWithConfigActions,
 }
 
 interface IWithConfigContext {

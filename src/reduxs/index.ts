@@ -3,10 +3,10 @@ import {IConfigState} from './config/types';
 
 import combineReducers from '../utils/combineReducers';
 
-import application from './application/reducer';
+import applicationReducerCreator from './application/reducer';
 import { defaultState as applicationDefaultState } from './application/reducer';
 import { buildInitState as applicationbBuildInitState } from './application/reducer';
-import config from './config/reducer';
+import configReducerCreator from './config/reducer';
 import { defaultState as configDefaultState } from './config/reducer';
 import { buildInitState as configBuildInitState } from './config/reducer';
 
@@ -30,7 +30,18 @@ export const buildInitState = (parentRootState?:IRootState) => ({
     config:configBuildInitState(parentRootState?parentRootState.config:void 0),
 })
 
-export default combineReducers({
-    application,
-    config,
-})
+export const buildRootReducer = (parentRootState?:IRootState)=>{
+    if (parentRootState){
+        return combineReducers({
+            application:applicationReducerCreator(parentRootState.application),
+            config:configReducerCreator(parentRootState.config),
+        })
+    }else{
+        return combineReducers({
+            application:applicationReducerCreator(),
+            config:configReducerCreator(),
+        });
+    }
+}
+
+export default buildRootReducer;

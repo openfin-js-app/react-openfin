@@ -112,14 +112,19 @@ export const reducerMap:{[key:string]: (state:IConfigState, action?:Action<any>)
     }),
 }
 
-const reducer = (state:IConfigState, action:Action<any>):IConfigState => {
+// const reducer = (state:IConfigState, action:Action<any>):IConfigState => {
+//
+//     if (action.type && reducerMap[action.type]){
+//         return reducerMap[action.type](state,action);
+//     }else{
+//         return state;
+//     }
+//
+// }
 
-    if (action.type && reducerMap[action.type]){
-        return reducerMap[action.type](state,action);
-    }else{
-        return state;
-    }
+export const reducerCreator = (parentState?:IConfigState)=>{
+    return handleActions(reducerMap,buildInitState(parentState));
+};
 
-}
 
-export default reducer;
+export default reducerCreator;

@@ -23,6 +23,7 @@ export default function middlewareCreator():Middleware {
     return (
         (store?:Store<any>) => (next: Dispatch<AnyAction>) => (action:any) => {
 
+            console.log(`[react-openfin] middleware ${action.type}`, action);
             // client actions
             if (
                 (!action[SHARED_ACTION_ORIGIN_TAG]) && (

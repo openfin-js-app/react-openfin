@@ -1,4 +1,4 @@
-import { Action } from 'redux-actions';
+import { Action, handleActions } from 'redux-actions';
 import { Docking, System, Window, Event } from 'redux-openfin';
 
 import {
@@ -242,12 +242,16 @@ export const reducerMap:{[key:string]:(state:IApplicationState,action?:Action<an
     }),
 };
 
-const reducer = (state:IApplicationState, action:Action<any>):IApplicationState => {
-    if (action.type && reducerMap[action.type]){
-        return reducerMap[action.type](state,action);
-    }else{
-        return state;
-    }
+// const reducer = (state:IApplicationState, action:Action<any>):IApplicationState => {
+//     if (action.type && reducerMap[action.type]){
+//         return reducerMap[action.type](state,action);
+//     }else{
+//         return state;
+//     }
+// };
+
+export const reducerCreator = (parentState?:Partial<IApplicationState>)=>{
+    return handleActions(reducerMap,buildInitState(parentState));
 };
 
-export default reducer;
+export default reducerCreator;

@@ -26,8 +26,10 @@
     "@types/redux-actions": "^2.3.2",
     "dexie": "^2.0.4",
     "i18next": "^15.0.7",
+    "openfin-browser-adapter": "^0.35.21",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-openfin": "^0.70.3-beta",
     "redux-saga": "^1.0.2"

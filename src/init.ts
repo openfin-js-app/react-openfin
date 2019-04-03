@@ -1,10 +1,12 @@
 import i18n from "i18next";
 import {History} from "history";
 import {Dispatch, Store} from 'redux'
+import { BrowserAdapter } from 'openfin-browser-adapter';
 
-import {ILaunchBarItem} from "./GlobalTypes";
+import {InitSeed, ILaunchBarItem } from "./GlobalTypes";
 import {IDockingOptions} from "redux-openfin/docking";
-import { IConfigTab, IReadyPayload } from "./reduxs";
+import { IReadyPayload } from "./reduxs/application/types";
+import { IConfigTab } from "./reduxs/config/types";
 
 import reactOpenfinSharedActions from './reduxs/sharedActions';
 
@@ -33,7 +35,7 @@ interface IInitStateConfig{
 }
 
 interface IInitState {
-    fin:any,
+    fin?:any,
     finUuid:string,
     sharedActions:string[],
     sharedActionsDict:Set<string>,
@@ -44,10 +46,12 @@ interface IInitState {
     configTabs:IConfigTab[],
     clientReduxDispatch:Dispatch<any>,
     config:IInitStateConfig,
+    seed:InitSeed,
     // temp on start on stop payload solution
     readyPayload:IReadyPayload,
 }
 
+declare const window:any;
 const initSharedActionsDict:Set<string> = new Set();
 
 reactOpenfinSharedActions.forEach((actionType)=>{
@@ -81,13 +85,14 @@ const initState:IInitState = {
         newWindowLeft:300,
         newWindowWidth:640,
         newWindowHeight:320,
-        newWindowDeltaLeft:20,
-        newWindowDeltaHeight:20,
+        newWindowDeltaLeft:40,
+        newWindowDeltaHeight:40,
         onAppAwaitDelayTime:4000,
         onAppChildAwaitDelayTime:200,
         onAppNotificationAwaitDelayTime:100,
         onAppClosingAwaitDelayTime:200,
     },
+    seed: void 0,
     // temp on start on stop payload solution
     readyPayload:void 0,
 }
@@ -119,10 +124,20 @@ export interface IInitReactOpenfinParametersObj {
     clientReduxStore?:Store<any>,
 }
 
-export const initReactOpenfin = (
+export const InitializeReactOpenfin = (
     params:IInitReactOpenfinParametersObj
 )=>{
-    initState.fin           = params.fin;
+    if (params.fin){
+        window.fin              = params.fin;
+        initState.fin           = params.fin;
+    }else{
+        window.fin = new BrowserAdapter({
+            finUuid:params.finUuid,
+            silentMode:true,
+        });
+        initState.fin           = window.fin;
+
+    }
     initState.finUuid       = params.finUuid;
 
     if (params.sharedActions && params.sharedActions.length > 0){
