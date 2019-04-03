@@ -146,12 +146,13 @@ export function* handleApplicationLoading() {
         call(System.asyncs.getVersion,System.actions.getVersion({})),
         call(System.asyncs.getHostSpecs,System.actions.getHostSpecs({})),
         call(Window.asyncs.getState,Window.actions.getState({})),
-        putResolve(applicationAwait()),
         // delay for loading view render, could be removed
         // delay(800),
     ]);
 
 
+
+    putResolve(applicationAwait());
     const { readyRes, timeout } = yield race({
         readyRes: take(APPLICATION_READY),
         timeout:delay(initState.config.onAppAwaitDelayTime),
@@ -240,8 +241,13 @@ export function* handleApplicationExit() {
     // ---------------------------------end of app codes -----------------------------------------------
 
     putResolve(applicationCurWinClosing());
-    // take(APPLICATION_CUR_WIN_READY_TO_CLOSE);
-    yield delay(initState.config.onAppClosingAwaitDelayTime);
+    const { readyToClose, timeout } = yield race({
+        readyToClose : take(APPLICATION_CUR_WIN_READY_TO_CLOSE),
+        timeout : delay(initState.config.onAppClosingAwaitDelayTime),
+    });
+    if (readyToClose){
+        console.log("[react-openfin]::app saga client response and ready to close");
+    }
     yield putResolve(Window.actions.close({force:true}));
 
 }
