@@ -5,7 +5,6 @@ import { BrowserAdapter } from 'openfin-browser-adapter';
 
 import {InitSeed, ILaunchBarItem } from "./GlobalTypes";
 import {IDockingOptions} from "redux-openfin/docking";
-import { IReadyPayload } from "./reduxs/application/types";
 import { IConfigTab } from "./reduxs/config/types";
 
 import reactOpenfinSharedActions from './reduxs/sharedActions';
@@ -47,8 +46,6 @@ interface IInitState {
     clientReduxDispatch:Dispatch<any>,
     config:IInitStateConfig,
     seed:InitSeed,
-    // temp on start on stop payload solution
-    readyPayload:IReadyPayload,
 }
 
 declare const window:any;
@@ -93,16 +90,7 @@ const initState:IInitState = {
         onAppClosingAwaitDelayTime:200,
     },
     seed: void 0,
-    // temp on start on stop payload solution
-    readyPayload:void 0,
 }
-
-// ---- on start ----
-export function onStartReady(readyPayload:IReadyPayload,){
-    initState.readyPayload = readyPayload;
-}
-// ---- on stop ----
-
 
 // ---- init ----
 

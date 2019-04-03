@@ -151,10 +151,13 @@ export function* handleApplicationLoading() {
         // delay(800),
     ]);
 
-    yield delay(initState.config.onAppAwaitDelayTime);
 
+    const { readyRes, timeout } = yield race({
+        readyRes: take(APPLICATION_READY),
+        timeout:delay(initState.config.onAppAwaitDelayTime),
+    });
     // console.log("[react-openfin]::app saga  put applicationAwait() start waiting");
-    const readyPayload = initState.readyPayload;
+    const readyPayload = readyRes?readyRes.payload:{};
     // console.log("[react-openfin]::app saga take APPLICATION_READY or time out", readyPayload);
 
     yield putResolve(applicationSetLoadingMsg('ready'));
@@ -190,8 +193,12 @@ export function* handleApplicationChildLoading() {
     }
 
     yield putResolve(applicationChildAwait());
-    yield delay(initState.config.onAppChildAwaitDelayTime);
-    const readyPayload = initState.readyPayload;
+    const { readyRes, timeout } = yield race({
+        readyRes: take(APPLICATION_CHILD_READY),
+        timeout:delay(initState.config.onAppChildAwaitDelayTime),
+    });
+    // console.log("[react-openfin]::app saga  put applicationChildAwait() start waiting");
+    const readyPayload = readyRes?readyRes.payload:{};
     if(readyPayload && readyPayload.targetUrl){
         initState.hist.push(readyPayload.targetUrl);
     }
@@ -212,8 +219,12 @@ export function* handleApplicationNotificationLoading() {
 
 
     yield putResolve(applicationNotificationAwait());
-    yield delay(initState.config.onAppNotificationAwaitDelayTime);
-    const readyPayload = initState.readyPayload;
+    const { readyRes, timeout } = yield race({
+        readyRes: take(APPLICATION_NOTIFICATION_READY),
+        timeout:delay(initState.config.onAppNotificationAwaitDelayTime),
+    });
+    // console.log("[react-openfin]::app saga  put applicationNotificationAwait() start waiting");
+    const readyPayload = readyRes?readyRes.payload:{};
     if(readyPayload && readyPayload.targetUrl){
         initState.hist.push(readyPayload.targetUrl);
     }

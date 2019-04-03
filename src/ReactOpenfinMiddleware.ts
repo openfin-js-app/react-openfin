@@ -1,17 +1,11 @@
 import {
-    Action, Store, Middleware, Dispatch, AnyAction,
+    Store, Middleware, Dispatch, AnyAction,
 } from 'redux';
 
 import { isReqAct as isOpenfinReduxReqAct } from 'redux-openfin';
 import { SHARED_ACTION_ORIGIN_TAG } from 'redux-openfin/channel';
 
-import {
-    APPLICATION_READY,
-    APPLICATION_CHILD_READY,
-    APPLICATION_NOTIFICATION_READY,
-} from './reduxs';
-
-import initState, { onStartReady } from './init';
+import initState from './init';
 
 import { isReqAct} from './utils/makeType';
 
@@ -23,7 +17,10 @@ export default function middlewareCreator():Middleware {
     return (
         (store?:Store<any>) => (next: Dispatch<AnyAction>) => (action:any) => {
 
-            console.log(`[react-openfin] middleware ${action.type}`, action);
+            if (!initState.clientReduxDispatch){
+                initState.clientReduxDispatch = store.dispatch;
+            }
+            // console.log(`[react-openfin] middleware 0# ${action.type}`, action);
             // client actions
             if (
                 (!action[SHARED_ACTION_ORIGIN_TAG]) && (
@@ -32,23 +29,15 @@ export default function middlewareCreator():Middleware {
                 )
             ){
                 if (window[REACT_OPENFIN_DISPATCH_FIELD_NAME]){
+                    // console.log(`[react-openfin] middleware 1# ${action.type}`, action);
                     window[REACT_OPENFIN_DISPATCH_FIELD_NAME](action);
-
-                    // hijack the ready actions
-                    if (
-                        (action.type == APPLICATION_READY) ||
-                        (action.type == APPLICATION_CHILD_READY) ||
-                        (action.type == APPLICATION_NOTIFICATION_READY)
-                    ){
-                        onStartReady(action.payload);
-                    }
-
                 }
             }else if (
                 (!action[SHARED_ACTION_ORIGIN_TAG]) &&
                 window[REACT_OPENFIN_DISPATCH_FIELD_NAME] &&
                 initState.sharedActionsDict.has(action.type)
             ){
+                // console.log(`[react-openfin] middleware 2# ${action.type}`, action);
                 window[REACT_OPENFIN_DISPATCH_FIELD_NAME](action);
                 return next(action);
             }else{

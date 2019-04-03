@@ -114,21 +114,6 @@ const configTabs:IConfigTab[]=[
                 }
             },
         ]
-    },
-    {
-        _order: 1 ,
-        _label: 'about.label',
-        _name:'about',
-        _svgUrl: void 0,
-        _fields:[
-            {
-                _type:FieldType.CUSTOM_FIELD,
-                _label:'About openfin starter',
-                _custom:<React.Fragment/>,
-                _cols:12,
-                _rows:12,
-            }
-        ]
     }
 ];
 

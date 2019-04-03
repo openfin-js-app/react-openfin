@@ -4,8 +4,6 @@ import { WindowOptions, Window, Notification } from "redux-openfin";
 
 import { CreateNotificationPayload } from 'redux-openfin/notification/types';
 
-import { onStartReady } from '../init';
-
 import { REACT_OPENFIN_STORE_CTX } from '../GlobalTypes'
 import { IRootState, IReadyPayload } from '../reduxs';
 import { IWithApplication, ApplicationContextProvider } from '../reduxs/application/context'
@@ -60,20 +58,14 @@ export default connect(
             onSetLoadingMsg:(label:string)=>{dispatch(applicationSetLoadingMsg(label))},
             onApplicationStart:()=>{dispatch(applicationStart())},
             onApplicationReady:(readyConfig:IReadyPayload)=>{
-                // temp on start on stop payload solution
-                onStartReady(readyConfig);
                 dispatch(applicationReady(readyConfig))
             },
             onChildWinStart:()=>{dispatch(applicationChildStart())},
             onChildWinReady:(readyConfig:IReadyPayload)=>{
-                // temp on start on stop payload solution
-                onStartReady(readyConfig);
                 dispatch(applicationChildReady(readyConfig))
             },
             onNotificationStart:()=>{dispatch(applicationNotificationStart())},
             onNotificationReady:(readyConfig:IReadyPayload)=>{
-                // temp on start on stop payload solution
-                onStartReady(readyConfig);
                 dispatch(applicationNotificationReady(readyConfig))
             },
             onNewSnackBar:(newSnackBar:IApplicationNewSnackbarOption)=>{dispatch(applicationNewSnackbar(newSnackBar))},
