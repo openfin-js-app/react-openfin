@@ -50,6 +50,7 @@ export default function middlewareCreator():Middleware {
                 initState.sharedActionsDict.has(action.type)
             ){
                 window[REACT_OPENFIN_DISPATCH_FIELD_NAME](action);
+                return next(action);
             }else{
                 return next(action);
             }
