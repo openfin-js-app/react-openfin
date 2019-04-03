@@ -86,7 +86,7 @@ const initState:IInitState = {
         newWindowDeltaHeight:40,
         onAppAwaitDelayTime:4000,
         onAppChildAwaitDelayTime:200,
-        onAppNotificationAwaitDelayTime:100,
+        onAppNotificationAwaitDelayTime:200,
         onAppClosingAwaitDelayTime:200,
     },
     seed: void 0,

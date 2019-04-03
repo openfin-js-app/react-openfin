@@ -152,14 +152,13 @@ export function* handleApplicationLoading() {
 
 
 
-    putResolve(applicationAwait());
+    yield putResolve(applicationAwait());
     const { readyRes, timeout } = yield race({
         readyRes: take(APPLICATION_READY),
         timeout:delay(initState.config.onAppAwaitDelayTime),
     });
-    // console.log("[react-openfin]::app saga  put applicationAwait() start waiting");
+    // console.log("[react-openfin]::app saga take APPLICATION_READY or time out", readyRes, timeout);
     const readyPayload = readyRes?readyRes.payload:{};
-    // console.log("[react-openfin]::app saga take APPLICATION_READY or time out", readyPayload);
 
     yield putResolve(applicationSetLoadingMsg('ready'));
     yield putResolve(applicationStarted());
@@ -198,7 +197,7 @@ export function* handleApplicationChildLoading() {
         readyRes: take(APPLICATION_CHILD_READY),
         timeout:delay(initState.config.onAppChildAwaitDelayTime),
     });
-    // console.log("[react-openfin]::app saga  put applicationChildAwait() start waiting");
+    // console.log("[react-openfin]::app saga take APPLICATION_CHILD_READY or time out", readyRes, timeout);
     const readyPayload = readyRes?readyRes.payload:{};
     if(readyPayload && readyPayload.targetUrl){
         initState.hist.push(readyPayload.targetUrl);
@@ -224,7 +223,7 @@ export function* handleApplicationNotificationLoading() {
         readyRes: take(APPLICATION_NOTIFICATION_READY),
         timeout:delay(initState.config.onAppNotificationAwaitDelayTime),
     });
-    // console.log("[react-openfin]::app saga  put applicationNotificationAwait() start waiting");
+    // console.log("[react-openfin]::app saga take APPLICATION_NOTIFICATION_READY or time out", readyRes, timeout);
     const readyPayload = readyRes?readyRes.payload:{};
     if(readyPayload && readyPayload.targetUrl){
         initState.hist.push(readyPayload.targetUrl);
@@ -240,11 +239,12 @@ export function* handleApplicationExit() {
 
     // ---------------------------------end of app codes -----------------------------------------------
 
-    putResolve(applicationCurWinClosing());
+    yield putResolve(applicationCurWinClosing());
     const { readyToClose, timeout } = yield race({
         readyToClose : take(APPLICATION_CUR_WIN_READY_TO_CLOSE),
         timeout : delay(initState.config.onAppClosingAwaitDelayTime),
     });
+    // console.log("[react-openfin]::app saga take APPLICATION_CUR_WIN_READY_TO_CLOSE or time out", readyToClose, timeout);
     if (readyToClose){
         console.log("[react-openfin]::app saga client response and ready to close");
     }
