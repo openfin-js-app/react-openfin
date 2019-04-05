@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@albertli.ddns.net:open-fin/react-openfin.git"
+    "url": "git@github.com:openfin-js-app/react-openfin.git"
   },
   "author": "Wentao Li <liwentao90@yahoo.com>",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
-    "redux-openfin": "^0.70.3-beta",
+    "redux-openfin": "^0.70.1-0.beta",
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {
