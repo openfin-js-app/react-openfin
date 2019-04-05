@@ -2,6 +2,7 @@
   "name": "react-openfin",
   "version": "0.70.10.beta",
   "description": "React utils for openfin app development",
+  "homepage": "https://albertleigh.github.io/openfin-react-latest",
   "main": "index.ts",
   "scripts": {
     "prebuild": "rimraf build",
@@ -9,6 +10,7 @@
     "build:copy-files": "node ./scripts/copy-files.js",
     "build": "yarn prebuild && yarn build:es2016 && yarn build:copy-files",
     "release-staging": "yarn build && npm publish build --registry=https://albertli.ddns.net:9004/repository/npm-private/",
+    "release":"yarn build && npm publish build --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
