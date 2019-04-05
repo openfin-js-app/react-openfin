@@ -19,11 +19,12 @@ React utils for Openfin Application development
 
 ## Usage
 
+index.tsx
 ```typescript jsx
 import { InitializeReactOpenfin, ReactOpenfin } from 'react-openfin';
 declare const window:any;
 
-//  first initialized the react-openfin with all required parameters before rendering
+//  first initialized the react-openfin with all required parameters before rendering anthing
 InitializeReactOpenfin({
     fin:window.fin,
     finUuid: process.env.REACT_APP_FIN_UUID,
@@ -53,7 +54,56 @@ ReactDOM.render(
 );
 ```
 
+App.tsx
+```typescript jsx
+// ...
+import * as React from 'react';
+import { useContext, useEffect} from 'react';
+import { ApplicationContext, ConfigContext } from 'react-openfin';
+
+// ...
+
+const App:React.FunctionComponent<{}> = (
+    {
+    }
+)=>{
+
+    const {
+        state:{
+            loading,
+        },
+        actions:{
+            onApplicationStart,
+            onChildWinStart,
+            onNotificationStart,
+        }
+    } = useContext(ApplicationContext);
+
+    useEffect(()=>{
+        // !!!README!!!
+        // make sure to start the application/childWindow/Notification at the Entry component to boot react-openfin 
+        if (window.name === process.env.REACT_APP_FIN_UUID){
+            onApplicationStart();
+        }else if (window.location && window.location.pathname.toLowerCase().indexOf('notification')>-1){
+            onNotificationStart();
+        }else{
+            onChildWinStart();
+        }
+    },[]);
+
+    const {
+        config:{
+            application:{
+                theme
+            }
+        }
+    } = useContext(ConfigContext);
+}
+// ...
+```
+
 ## Advance features
+
 ```typescript
 import { applyMiddleware, createStore, compose } from 'redux';
 import { createReactOpenfinMiddleware } from 'react-openfin';
@@ -63,6 +113,7 @@ declare const window:any;
 export default (
 )=>{
 
+    // !!!README!!!
     // use the built-in middleware to communicate with react-openfin for advanced features
     const reactOpenfinMiddleware = createReactOpenfinMiddleware();
 
