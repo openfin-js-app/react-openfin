@@ -1,0 +1,35 @@
+{
+  "defaultSeverity": "warn",
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions":{
+    "exclude":[
+      "node_modules/**",
+      "package/**",
+      "build/**",
+      "coverage/**",
+      "config/**",
+      "Openfin/**",
+      "openfin/**",
+      "public/**",
+      "scripts/**"
+    ]
+  },
+  "jsRules": {
+    "curly":false,
+    "no-console":false
+  },
+  "rules": {
+    "curly": false,
+    "no-console": false,
+    "no-construct":false,
+    "no-shadowed-variable": false,
+    "no-var-requires": false,
+    "member-access": false,
+    "max-classes-per-file": false,
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false
+  },
+  "rulesDirectory": []
+}

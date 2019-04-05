@@ -1,0 +1,58 @@
+{
+  "name": "react-openfin",
+  "version": "0.70.10.beta",
+  "description": "React utils for openfin app development",
+  "homepage": "https://albertleigh.github.io/openfin-react-latest",
+  "main": "index.ts",
+  "scripts": {
+    "prebuild": "rimraf build",
+    "build:es2016": "tsc",
+    "build:copy-files": "node ./scripts/copy-files.js",
+    "build": "yarn prebuild && yarn build:es2016 && yarn build:copy-files",
+    "release-staging": "yarn build && npm publish build --registry=https://albertli.ddns.net:9004/repository/npm-private/",
+    "release":"yarn build && npm publish build --access public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:openfin-js-app/react-openfin.git"
+  },
+  "author": "Wentao Li <liwentao90@yahoo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dexie": "^2.0.4",
+    "i18next": "15.0.7",
+    "openfin-browser-adapter": "^0.35.21",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-openfin": "^0.70.1-0.beta",
+    "redux-saga": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/history": "^4.7.2",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-redux": "^7.0.5",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/redux-actions": "^2.3.2",
+    "@date-io/core": "^1.1.0",
+    "@material-ui/core": "^3.9.2",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.5",
+    "fake-indexeddb": "^2.1.0",
+    "fs-extra": "^7.0.1",
+    "jest": "24.5.0",
+    "jest-environment-jsdom": "^24.5.0",
+    "jest-environment-jsdom-global": "^1.2.0",
+    "jest-pnp-resolver": "1.0.2",
+    "jest-resolve": "23.6.0",
+    "jest-watch-typeahead": "^0.2.1",
+    "material-ui-pickers": "^2.2.4",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333"
+  }
+}
