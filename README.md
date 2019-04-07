@@ -9,6 +9,8 @@ React utils for Openfin Application development
 
 ![](https://albertleigh.github.io/openfin-react-latest/img/screenshoot.gif)
 
+[DOCUMENTATION](./DOCUMENTATION.md)
+
 ## Installation
 
 ```text
