@@ -3,6 +3,8 @@ import * as React from "react";
 export interface IApplicationNewSnackbarOption {
     message:string;
     variant?:'primary'|'success'|'warning'|'error'|'info'|'rose';
+    vertical?:'top'|'bottom';
+    horizontal?:'left'|'right'|'center';
 }
 
 export interface IApplicationCloseSnackBarOption {
@@ -10,10 +12,8 @@ export interface IApplicationCloseSnackBarOption {
     reason:string;
 }
 
-export interface ISnackBarMsg {
+export interface ISnackBarMsg extends IApplicationNewSnackbarOption{
     key:number;
-    message:string;
-    variant:'primary'|'success'|'warning'|'error'|'info'|'rose';
 }
 
 export interface IReadyPayload {

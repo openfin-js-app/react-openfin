@@ -1,6 +1,6 @@
 {
   "name": "react-openfin",
-  "version": "0.70.10.beta",
+  "version": "0.70.11.beta",
   "description": "React utils for openfin app development",
   "homepage": "https://albertleigh.github.io/openfin-react-latest",
   "main": "index.ts",

@@ -198,9 +198,8 @@ export const reducerMap:{[key:string]:(state:IApplicationState,action?:Action<an
     [APPLICATION_NEW_SNACKBAR]:(state,action)=>{
         const option:IApplicationNewSnackbarOption = action.payload as IApplicationNewSnackbarOption;
         const newMsgQueue = state.snackBarMsgQueue.concat([{
-            message:option.message,
+            ...option,
             key: new Date().getTime(),
-            variant:option.variant,
         }]);
         return{
             ...state,
