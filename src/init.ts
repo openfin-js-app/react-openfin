@@ -34,7 +34,7 @@ interface IInitStateConfig{
 }
 
 interface IInitState {
-    fin?:any,
+    fin:any,
     finUuid:string,
     sharedActions:string[],
     sharedActionsDict:Set<string>,
@@ -95,9 +95,9 @@ const initState:IInitState = {
 // ---- init ----
 
 export interface IInitReactOpenfinParametersObj {
-    fin:any,
+    fin?:any,
     finUuid: string,
-    sharedActions: string[],
+    sharedActions?: string[],
 
     i18n:typeof i18n,
     hist:History,
