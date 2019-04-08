@@ -1,6 +1,6 @@
 {
   "name": "react-openfin",
-  "version": "0.70.11.beta",
+  "version": "0.70.12.beta",
   "description": "React utils for openfin app development",
   "homepage": "https://albertleigh.github.io/openfin-react-latest",
   "main": "index.ts",
@@ -10,7 +10,7 @@
     "build:copy-files": "node ./scripts/copy-files.js",
     "build": "yarn prebuild && yarn build:es2016 && yarn build:copy-files",
     "release-staging": "yarn build && npm publish build --registry=https://albertli.ddns.net:9004/repository/npm-private/",
-    "release":"yarn build && npm publish build --access public",
+    "release": "yarn build && npm publish build --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,21 +28,22 @@
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-openfin": "^0.70.1-0.beta",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "fake-indexeddb": "^2.1.0"
   },
   "devDependencies": {
+    "@date-io/core": "^1.1.0",
+    "@material-ui/core": "^3.9.2",
     "@types/history": "^4.7.2",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.5",
     "@types/react-router-dom": "^4.3.1",
     "@types/redux-actions": "^2.3.2",
-    "@date-io/core": "^1.1.0",
-    "@material-ui/core": "^3.9.2",
+    "@types/jest": "^24.0.11",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-to-json": "^3.3.5",
-    "fake-indexeddb": "^2.1.0",
     "fs-extra": "^7.0.1",
     "jest": "24.5.0",
     "jest-environment-jsdom": "^24.5.0",
@@ -54,5 +55,59 @@
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.0",
     "typescript": "^3.3.3333"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx,js,jsx,mjs}",
+      "!src/**/*.d.ts",
+      "!src/serviceWorker.js",
+      "!src/i18n.ts",
+      "!src/index.tsx"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/jest/setupTests.js",
+      "<rootDir>/config/jest/jestMockUps.js"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.{ts,tsx,js,jsx,mjs}",
+      "**/?(*.)(spec|test).{ts,tsx,js,jsx,mjs}"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "globals": {},
+    "testEnvironment": "jest-environment-jsdom-global",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.(ts|tsx|js|jsx|mjs)$": "<rootDir>/config/jest/babelTransform.js",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|ts|tsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node",
+      "mjs"
+    ]
   }
 }
