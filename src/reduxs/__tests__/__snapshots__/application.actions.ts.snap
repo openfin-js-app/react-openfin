@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application actions applicationSetLoadingMsg action 1`] = `
+Object {
+  "payload": Object {
+    "loadingMsg": "loadingMsg",
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_SET_LOADING_MSG",
+}
+`;
