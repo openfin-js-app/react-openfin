@@ -96,6 +96,7 @@ const initState:IInitState = {
 
 export interface IInitReactOpenfinParametersObj {
     fin?:any,
+    finMockupForceSilentMode?:boolean,
     finUuid: string,
     sharedActions?: string[],
 
@@ -121,7 +122,7 @@ export const InitializeReactOpenfin = (
     }else{
         window.fin = new BrowserAdapter({
             finUuid:params.finUuid,
-            silentMode:true,
+            silentMode:!params.finMockupForceSilentMode,
         });
         initState.fin           = window.fin;
 
