@@ -26,8 +26,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1",
-    "redux-openfin": "^0.70.1-0.beta",
+    "redux-openfin": "^0.70.1-2.beta",
     "redux-saga": "^1.0.2",
     "fake-indexeddb": "^2.1.0"
   },
