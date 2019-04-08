@@ -122,7 +122,7 @@ export const InitializeReactOpenfin = (
     }else{
         window.fin = new BrowserAdapter({
             finUuid:params.finUuid,
-            silentMode:!params.finMockupForceSilentMode,
+            silentMode:params.finMockupForceSilentMode?true:false,
         });
         initState.fin           = window.fin;
 
