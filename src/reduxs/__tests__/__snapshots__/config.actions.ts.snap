@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Config actions configDoUpdateOneField action 1`] = `
+Object {
+  "payload": Object {
+    "fieldName": "fieldName",
+    "tabName": "tabName",
+    "value": "value",
+  },
+  "type": "REACT_OPENFIN::CONFIG_DO_UPDATE_ONE_FIELD",
+}
+`;
+
+exports[`Config actions configDoUpdateOneFieldInDexie action 1`] = `
+Object {
+  "payload": Object {
+    "fieldName": "fieldName",
+    "id": 1,
+    "tabName": "tableName",
+    "value": "value",
+    "version": 1,
+  },
+  "type": "REACT_OPENFIN::CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE",
+}
+`;
+
+exports[`Config actions configLoadFromDexie action 1`] = `
+Object {
+  "type": "REACT_OPENFIN::CONFIG_LOAD_FROM_DEXIE",
+}
+`;
+
+exports[`Config actions configReset action 1`] = `
+Object {
+  "payload": Object {},
+  "type": "REACT_OPENFIN::CONFIG_RESET",
+}
+`;
+
+exports[`Config actions configUpdateGlobalFilterStr action 1`] = `
+Object {
+  "payload": Object {
+    "configGlobalFilterString": "string",
+  },
+  "type": "REACT_OPENFIN_REQ::CONFIG_UPDATE_GLOBAL_FILTER_STR",
+}
+`;
+
+exports[`Config actions configUpdateNewWindowPosition action 1`] = `
+Object {
+  "type": "REACT_OPENFIN::CONFIG_UPDATE_NEW_WINDOW_POSITION",
+}
+`;
+
+exports[`Config actions configUpdateNewWindowPositionAddDelta action 1`] = `
+Object {
+  "type": "REACT_OPENFIN::CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA",
+}
+`;
+
+exports[`Config actions configUpdateNewWindowPositionResetLeft action 1`] = `
+Object {
+  "type": "REACT_OPENFIN::CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT",
+}
+`;
+
+exports[`Config actions configUpdateNewWindowPositionResetTop action 1`] = `
+Object {
+  "type": "REACT_OPENFIN::CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP",
+}
+`;
+
+exports[`Config actions configUpdateOneField action 1`] = `
+Object {
+  "payload": Object {
+    "name": "str1.str2",
+    "value": Object {},
+  },
+  "type": "REACT_OPENFIN_REQ::CONFIG_UPDATE_ONE_FIELD",
+}
+`;
+
+exports[`Config actions configUpdateOneField action 2`] = `
+Object {
+  "payload": Object {
+    "name": "str1.str2",
+    "value": Object {},
+  },
+  "type": "REACT_OPENFIN_REQ::CONFIG_UPDATE_ONE_FIELD",
+}
+`;
