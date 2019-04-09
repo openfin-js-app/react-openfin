@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigDao findAll async 1`] = `Array []`;
+
+exports[`ConfigDao findAllOfCurrentVersion async 1`] = `Array []`;
+
+exports[`ConfigDao findOneField async 1`] = `undefined`;
+
+exports[`ConfigDao findOneFieldVal with null async 1`] = `null`;
+
+exports[`ConfigDao saveOrUpdateOneByTabNameFieldName async 1`] = `
+Object {
+  "fieldName": "fieldName",
+  "id": 1,
+  "tabName": "tabName",
+  "value": "value",
+  "version": 2,
+}
+`;
+
+exports[`ConfigDao with preset findAll async with preset 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "id": 1,
+    "tabName": "tabName",
+    "value": "value",
+    "version": 2,
+  },
+  Object {
+    "fieldName": "fieldName",
+    "id": 2,
+    "tabName": "tabName",
+    "value": "value",
+    "version": 1,
+  },
+  Object {
+    "fieldName": "fieldName",
+    "id": 3,
+    "tabName": "tabName",
+    "value": "value",
+    "version": 2,
+  },
+  Object {
+    "fieldName": "fieldName",
+    "id": 4,
+    "tabName": "tabName",
+    "value": "value",
+    "version": 2,
+  },
+]
+`;
+
+exports[`ConfigDao with preset findAllOfCurrentVersion async with preset 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "id": 1,
+    "tabName": "tabName",
+    "value": "value",
+    "version": 2,
+  },
+  Object {
+    "fieldName": "fieldName",
+    "id": 3,
+    "tabName": "tabName",
+    "value": "value",
+    "version": 2,
+  },
+  Object {
+    "fieldName": "fieldName",
+    "id": 4,
+    "tabName": "tabName",
+    "value": "value",
+    "version": 2,
+  },
+]
+`;
+
+exports[`ConfigDao with preset findOneFieldVal null async 1`] = `"value2"`;
+
+exports[`ConfigDao with preset saveOrUpdateOneByTabNameFieldName async update 1`] = `
+Object {
+  "fieldName": "fieldName",
+  "id": 5,
+  "tabName": "tabName",
+  "value": "value2",
+  "version": 2,
+}
+`;
+
+exports[`ConfigDao with preset saveOrUpdateOneByTabNameFieldName async with preset 1`] = `
+Object {
+  "fieldName": "fieldName",
+  "id": 5,
+  "tabName": "tabName",
+  "value": "value",
+  "version": 2,
+}
+`;
