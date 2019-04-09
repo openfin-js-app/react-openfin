@@ -1,0 +1,1231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Config reducer CONFIG_DO_UPDATE_ONE_FIELD reduced correctly - valid 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "",
+  "tabName": Object {
+    "fieldName": "value",
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_EXTEND_CUST_STATE reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "",
+  "other": Object {},
+}
+`;
+
+exports[`Config reducer CONFIG_RESET reduced correctly - all 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "",
+}
+`;
+
+exports[`Config reducer CONFIG_RESET reduced correctly - application 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "",
+  "tabName": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_GLOBAL_FILTER_STR reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "configGlobalFilterString",
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_ADD_DELTA reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 340,
+    "newWinTop": 100,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "",
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_LEFT reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "",
+}
+`;
+
+exports[`Config reducer CONFIG_UPDATE_NEW_WINDOW_POSITION_RESET_TOP reduced correctly 1`] = `
+Object {
+  "_tabs": Array [
+    Object {
+      "_fieldLabels": "application.theme.labelThemeapplication.language.labellanguageapplication.newWinPos.labelapplication.newWinPos.newWinTopapplication.newWinPos.newWinLeftapplication.newWinPos.newWinWidthapplication.newWinPos.newWinHeightapplication.newWinPos.newWindDeltaLeftapplication.newWinPos.newWindDeltaHeight",
+      "_fields": Array [
+        Object {
+          "_cols": 2,
+          "_label": "application.theme.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "dark",
+          "_label": "Theme",
+          "_name": "theme",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 2,
+          "_label": "application.language.label",
+          "_rows": 1,
+          "_type": 9,
+        },
+        Object {
+          "_cols": 10,
+          "_custom": <React.Fragment />,
+          "_defaultValue": "en-US",
+          "_label": "language",
+          "_name": "language",
+          "_rows": 1,
+          "_type": 1,
+        },
+        Object {
+          "_cols": 12,
+          "_label": "application.newWinPos.label",
+          "_type": 9,
+        },
+        Object {
+          "_defaultValue": 60,
+          "_label": "application.newWinPos.newWinTop",
+          "_name": "newWinTop",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 300,
+          "_label": "application.newWinPos.newWinLeft",
+          "_name": "newWinLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 640,
+          "_label": "application.newWinPos.newWinWidth",
+          "_name": "newWinWidth",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 320,
+          "_label": "application.newWinPos.newWinHeight",
+          "_name": "newWinHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaLeft",
+          "_name": "newWindDeltaLeft",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+        Object {
+          "_defaultValue": 40,
+          "_label": "application.newWinPos.newWindDeltaHeight",
+          "_name": "newWindDeltaHeight",
+          "_props": Object {
+            "InputProps": Object {
+              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+                position="end"
+              >
+                Pixel
+              </WithStyles(WithFormControlContext(InputAdornment))>,
+            },
+          },
+          "_type": 6,
+        },
+      ],
+      "_label": "application.label",
+      "_name": "application",
+      "_order": 0,
+      "_svgUrl": undefined,
+    },
+  ],
+  "application": Object {
+    "language": "en-US",
+    "newWinHeight": 320,
+    "newWinLeft": 300,
+    "newWinTop": 60,
+    "newWinWidth": 640,
+    "newWindDeltaHeight": 40,
+    "newWindDeltaLeft": 40,
+    "theme": "dark",
+  },
+  "configGlobalFilterString": "",
+}
+`;
