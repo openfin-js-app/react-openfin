@@ -1,4 +1,4 @@
-import { createAction, ActionFunctionAny, Action } from 'redux-actions';
+import { createAction } from 'redux-actions';
 import {WindowOptions} from 'redux-openfin';
 
 import makeType, {makeReqType, makeResType} from '../../utils/makeType'
@@ -52,8 +52,8 @@ export const applicationChildAwait
     = createAction<void>(APPLICATION_CHILD_AWAIT);
 export const applicationChildReady
     = createAction<IReadyPayload,IReadyPayload>(APPLICATION_CHILD_READY,(option:IReadyPayload)=>(option));
-export const applicationChildStarted:ActionFunctionAny<Action<void>>
-    = createAction(APPLICATION_CHILD_STARTED);
+export const applicationChildStarted
+    = createAction<void>(APPLICATION_CHILD_STARTED);
 
 export const applicationNotificationStart
     = createAction<void>(APPLICATION_NOTIFICATION_START);
@@ -87,7 +87,7 @@ export const applicationSetSnackbarStatus
     = createAction<{snackBarOpen:boolean},boolean>(APPLICATION_SET_SNACKBAR_STATUS, (snackBarOpen:boolean)=>({snackBarOpen}));
 export const applicationProcessSnackbarQueue
     = createAction<void>(APPLICATION_PROCESS_SNACKBAR_QUEUE);
-export const applicationCloseSnackbar:ActionFunctionAny<Action<IApplicationCloseSnackBarOption>>
+export const applicationCloseSnackbar
     = createAction<{event:React.SyntheticEvent<any>,reason:string},React.SyntheticEvent<any>, string>(
         APPLICATION_CLOSE_SNACKBAR, (event: React.SyntheticEvent<any>, reason: string)=>({event,reason})
 );
@@ -109,7 +109,8 @@ export const applicationLaunchBarToggleCollapse
     = createAction<void>(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE);
 export const applicationLaunchNewWindow
     = createAction<Partial<WindowOptions>,Partial<WindowOptions>>(APPLICATION_LAUNCH_NEW_WINDOW,(appJson:Partial<WindowOptions>)=>(appJson));
-export const applicationLaunchBarClose:ActionFunctionAny<Action<void>> = createAction(APPLICATION_LAUNCH_BAR_CLOSE);
+export const applicationLaunchBarClose
+    = createAction<void>(APPLICATION_LAUNCH_BAR_CLOSE);
 
 // network
 export const APPLICATION_NETWORK_ONLINE                 = makeType('APPLICATION_NETWORK_ONLINE');

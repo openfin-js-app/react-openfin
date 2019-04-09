@@ -11,7 +11,7 @@
     "build": "yarn prebuild && yarn build:es2016 && yarn build:copy-files",
     "release-staging": "yarn build && npm publish build --registry=https://albertli.ddns.net:9004/repository/npm-private/",
     "release": "yarn build && npm publish build --access public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --clearCache && node scripts/test.js"
   },
   "repository": {
     "type": "git",
