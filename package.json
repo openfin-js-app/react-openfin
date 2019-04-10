@@ -62,8 +62,7 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx,js,jsx,mjs}",
       "!src/**/*.d.ts",
-      "!src/serviceWorker.js",
-      "!src/i18n.ts",
+      "!src/utils/use*.ts",
       "!src/index.tsx"
     ],
     "setupFiles": [
