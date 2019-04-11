@@ -90,6 +90,8 @@ Object {
   "defaultExtAct": Object {
     "REDUX_OPENFIN_LIB_REDUX_DISPATCH_FIELD_NAME": "REACT_OPENFIN_DISPATCH",
   },
+  "getAllShownItems": [Function],
+  "shown": [Function],
   "withApplicationContext": [Function],
   "withConfigContext": [Function],
 }

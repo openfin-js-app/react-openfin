@@ -14,9 +14,13 @@ export const defaultExtAct = {
 
 export type InitSeed = Store;
 
+export type ShownFunction = () => boolean;
+export type ShownField = boolean | ShownFunction;
+
 export interface ILaunchBarItem {
     icon:any,
     disabled:boolean,
     svg:string,
     appJson:any,
+    shown?:ShownField,
 }

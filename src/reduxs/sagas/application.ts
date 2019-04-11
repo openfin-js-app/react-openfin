@@ -3,6 +3,8 @@ import { all, call, delay, put, putResolve, race, take, takeLatest, takeEvery, f
 import { Docking ,System, Event, Window } from 'redux-openfin';
 import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "redux-openfin/window";
 
+import { getAllShownItems } from '../../utils/generalUtils';
+
 import { findOneFieldVal } from '../../dexies/configDao';
 
 import {
@@ -312,7 +314,7 @@ export function* handleApplicationLaunchBarToggle(){
             autoShow:true,
             defaultLeft:getBoundsActionPayload.left,
             defaultTop:getBoundsActionPayload.top,
-            defaultWidth:initState.launchBarItems.length<10? initState.launchBarItems.length*64+88:664,
+            defaultWidth:getAllShownItems(initState.launchBarItems).length<10? getAllShownItems(initState.launchBarItems).length*64+88:664,
             defaultHeight: 64,
             minWidth:88,
             minHeight:64,
@@ -330,7 +332,7 @@ export function* handleApplicationLaunchBarToggle(){
             launchbarWindow.setBounds(
                 getBoundsActionPayload.left,
                 getBoundsActionPayload.top,
-                initState.launchBarItems.length<10? initState.launchBarItems.length*64+88:664,
+                getAllShownItems(initState.launchBarItems).length<10? getAllShownItems(initState.launchBarItems).length*64+88:664,
                 64,
             );
         }
@@ -358,7 +360,7 @@ export function* handleApplicationLaunchBarToggleCollapse() {
         yield call(Window.asyncs.setBounds,Window.actions.setBounds({
             left:getBoundsActionPayload.left,
             top:getBoundsActionPayload.top,
-            width:initState.launchBarItems.length<10? initState.launchBarItems.length*64+88:664,
+            width:getAllShownItems(initState.launchBarItems).length<10? getAllShownItems(initState.launchBarItems).length*64+88:664,
             height:64,
         }));
     }
