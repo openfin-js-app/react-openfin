@@ -1,5 +1,7 @@
 # React Openfin
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
+[![Build Status](https://travis-ci.com/openfin-js-app/react-openfin.svg?branch=master)](https://travis-ci.com/openfin-js-app/react-openfin)
+[![Coverage Status](https://coveralls.io/repos/github/openfin-js-app/react-openfin/badge.svg?branch=master)](https://coveralls.io/github/openfin-js-app/react-openfin?branch=master)
 
 React utils for Openfin Application development
 
@@ -142,5 +144,5 @@ export default (
 [CHANGELOG]: ./CHANGELOG.md
 
 
-[version-badge]: https://img.shields.io/badge/version-0.70.10.beta-blue.svg
+[version-badge]: https://img.shields.io/badge/version-0.70.20.beta-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg

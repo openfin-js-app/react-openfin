@@ -1,6 +1,6 @@
 {
   "name": "react-openfin",
-  "version": "0.70.12.beta",
+  "version": "0.70.13.beta",
   "description": "React utils for openfin app development",
   "homepage": "https://albertleigh.github.io/openfin-react-latest",
   "main": "index.ts",
@@ -28,7 +28,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
-    "redux-openfin": "^0.70.1-2.beta",
+    "redux-openfin": "^0.70.20",
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {
