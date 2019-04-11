@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index all 1`] = `
+Object {
+  "ApplicationContext": Object {
+    "$$typeof": Symbol(react.context),
+    "Consumer": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": [Circular],
+    },
+    "Provider": Object {
+      "$$typeof": Symbol(react.provider),
+      "_context": [Circular],
+    },
+    "_calculateChangedBits": null,
+    "_currentRenderer": null,
+    "_currentRenderer2": null,
+    "_currentValue": null,
+    "_currentValue2": null,
+    "_threadCount": 0,
+  },
+  "ConfigContext": Object {
+    "$$typeof": Symbol(react.context),
+    "Consumer": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": [Circular],
+    },
+    "Provider": Object {
+      "$$typeof": Symbol(react.provider),
+      "_context": [Circular],
+    },
+    "_calculateChangedBits": null,
+    "_currentRenderer": null,
+    "_currentRenderer2": null,
+    "_currentValue": null,
+    "_currentValue2": null,
+    "_threadCount": 0,
+  },
+  "FieldType": Object {
+    "1": "CUSTOM_FIELD",
+    "10": "BODY1",
+    "2": "STRING",
+    "3": "DATETIME",
+    "4": "DATE",
+    "5": "TIME",
+    "6": "NUMBER",
+    "7": "CURRENCY",
+    "8": "TITLE",
+    "9": "SUBHEADING",
+    "BODY1": 10,
+    "CURRENCY": 7,
+    "CUSTOM_FIELD": 1,
+    "DATE": 4,
+    "DATETIME": 3,
+    "NUMBER": 6,
+    "STRING": 2,
+    "SUBHEADING": 9,
+    "TIME": 5,
+    "TITLE": 8,
+  },
+  "InitializeReactOpenfin": [Function],
+  "MuiTheme": Object {
+    "DARK": "dark",
+    "LIGHT": "light",
+  },
+  "REACT_OPENFIN_DISPATCH_FIELD_NAME": "REACT_OPENFIN_DISPATCH",
+  "REACT_OPENFIN_STORE": "REACT_OPENFIN_STORE",
+  "REACT_OPENFIN_STORE_CTX": Object {
+    "$$typeof": Symbol(react.context),
+    "Consumer": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": [Circular],
+    },
+    "Provider": Object {
+      "$$typeof": Symbol(react.provider),
+      "_context": [Circular],
+    },
+    "_calculateChangedBits": null,
+    "_currentRenderer": null,
+    "_currentRenderer2": null,
+    "_currentValue": null,
+    "_currentValue2": null,
+    "_threadCount": 0,
+  },
+  "ReactOpenfin": [Function],
+  "createReactOpenfinMiddleware": [Function],
+  "defaultExtAct": Object {
+    "REDUX_OPENFIN_LIB_REDUX_DISPATCH_FIELD_NAME": "REACT_OPENFIN_DISPATCH",
+  },
+  "getAllShownItems": [Function],
+  "shown": [Function],
+  "withApplicationContext": [Function],
+  "withConfigContext": [Function],
+}
+`;
