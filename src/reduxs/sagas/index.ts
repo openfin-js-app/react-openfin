@@ -22,7 +22,7 @@ export function* watchAndLogSaga(){
 // client redux correspondent
 
 export function* correspondClientReduxAction(action){
-    console.log("[react-openfin]::ActCorresSaga 0#",`${action.type}`,action);
+    // console.log("[react-openfin]::ActCorresSaga 0#",`${action.type}`,action);
     if (
         initState.clientReduxDispatch &&
         (

@@ -1,4 +1,4 @@
-import {createAction, ActionFunctionAny, Action} from 'redux-actions';
+import {createAction} from 'redux-actions';
 
 import makeType, {makeReqType, makeResType} from '../../utils/makeType'
 

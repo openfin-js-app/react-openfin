@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application actions applicationAwait action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_RES::APPLICATION_AWAIT",
+}
+`;
+
+exports[`Application actions applicationChildAwait action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_RES::APPLICATION_CHILD_AWAIT",
+}
+`;
+
+exports[`Application actions applicationChildReady action 1`] = `
+Object {
+  "payload": Object {
+    "targetUrl": "targetUrl",
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_CHILD_READY",
+}
+`;
+
+exports[`Application actions applicationChildStart action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_CHILD_START",
+}
+`;
+
+exports[`Application actions applicationChildStarted action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_RES::APPLICATION_CHILD_STARTED",
+}
+`;
+
+exports[`Application actions applicationCloseSnackbar action 1`] = `
+Object {
+  "payload": Object {
+    "event": Object {},
+    "reason": "reason",
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_CLOSE_SNACKBAR",
+}
+`;
+
+exports[`Application actions applicationCurWinClosing action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_RES::APPLICATION_CUR_WIN_CLOSING",
+}
+`;
+
+exports[`Application actions applicationCurWinReadyToClose action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_CUR_WIN_READY_TO_CLOSE",
+}
+`;
+
+exports[`Application actions applicationDrawerToggle action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_DRAWER_TOGGLE",
+}
+`;
+
+exports[`Application actions applicationLaunchBarClose action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_LAUNCH_BAR_CLOSE",
+}
+`;
+
+exports[`Application actions applicationLaunchBarToggle action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_LAUNCH_BAR_TOGGLE",
+}
+`;
+
+exports[`Application actions applicationLaunchBarToggleCollapse action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE",
+}
+`;
+
+exports[`Application actions applicationLaunchNewWindow action 1`] = `
+Object {
+  "payload": Object {},
+  "type": "REACT_OPENFIN_REQ::APPLICATION_LAUNCH_NEW_WINDOW",
+}
+`;
+
+exports[`Application actions applicationNetworkOffline action 1`] = `
+Object {
+  "type": "REACT_OPENFIN::APPLICATION_NETWORK_OFF_LINE",
+}
+`;
+
+exports[`Application actions applicationNetworkOnline action 1`] = `
+Object {
+  "type": "REACT_OPENFIN::APPLICATION_NETWORK_ONLINE",
+}
+`;
+
+exports[`Application actions applicationNewSnackbar action 1`] = `
+Object {
+  "payload": Object {
+    "message": "message",
+    "variant": "primary",
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_NEW_SNACKBAR",
+}
+`;
+
+exports[`Application actions applicationNotificationAwait action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_RES::APPLICATION_NOTIFICATION_AWAIT",
+}
+`;
+
+exports[`Application actions applicationNotificationReady action 1`] = `
+Object {
+  "payload": Object {
+    "targetUrl": "targetUrl",
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_NOTIFICATION_READY",
+}
+`;
+
+exports[`Application actions applicationNotificationStart action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_NOTIFICATION_START",
+}
+`;
+
+exports[`Application actions applicationNotificationStarted action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_RES::APPLICATION_NOTIFICATION_STARTED",
+}
+`;
+
+exports[`Application actions applicationProcessSnackbarQueue action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_PROCESS_SNACKBAR_QUEUE",
+}
+`;
+
+exports[`Application actions applicationReady action 1`] = `
+Object {
+  "payload": Object {
+    "targetUrl": "targetUrl",
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_READY",
+}
+`;
+
+exports[`Application actions applicationSetLoadingMsg action 1`] = `
+Object {
+  "payload": Object {
+    "loadingMsg": "loadingMsg",
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_SET_LOADING_MSG",
+}
+`;
+
+exports[`Application actions applicationSetSnackbarStatus action 1`] = `
+Object {
+  "payload": Object {
+    "snackBarOpen": true,
+  },
+  "type": "REACT_OPENFIN_REQ::APPLICATION_SET_SNACKBAR_STATUS",
+}
+`;
+
+exports[`Application actions applicationStart action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_START",
+}
+`;
+
+exports[`Application actions applicationStarted action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_RES::APPLICATION_STARTED",
+}
+`;
+
+exports[`Application actions applicationToggleWindowState action 1`] = `
+Object {
+  "type": "REACT_OPENFIN_REQ::APPLICATION_TOGGLE_WINDOW_STATE",
+}
+`;
+
+exports[`Application actions applicationUpdateDockStatus action 1`] = `
+Object {
+  "payload": Object {
+    "docked": true,
+  },
+  "type": "REACT_OPENFIN::APPLICATION_UPDATE_DOCK_STATUS",
+}
+`;

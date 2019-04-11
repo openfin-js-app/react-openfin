@@ -1,5 +1,7 @@
 export * from './GlobalTypes';
 
+export * from './utils/generalUtils';
+
 export { InitializeReactOpenfin } from './init';
 
 export * from './reduxs/application/types';

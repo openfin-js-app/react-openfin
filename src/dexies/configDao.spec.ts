@@ -6,8 +6,6 @@ import {
 } from './configDao';
 import db from './db';
 
-jest.mock('./db');
-
 describe('ConfigDao',()=>{
 
     it('findAll async',async ()=>{

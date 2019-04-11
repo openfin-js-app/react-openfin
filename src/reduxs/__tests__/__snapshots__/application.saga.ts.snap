@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect back to main window 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      true,
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect back to main window 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect to collapsed launchBar window 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect to collapsed launchBar window 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect to collapsed launchBar window 3`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      0,
+      0,
+      88,
+      64,
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-collapsed launchBar window 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-collapsed launchBar window 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-collapsed launchBar window 3`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      0,
+      0,
+      88,
+      64,
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchNewWindow saga bring up the old one 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      true,
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchNewWindow saga bring up the old one 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Application saga handleApplicationLaunchNewWindow saga do create a new one 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

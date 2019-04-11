@@ -34,7 +34,7 @@ interface IInitStateConfig{
 }
 
 interface IInitState {
-    fin?:any,
+    fin:any,
     finUuid:string,
     sharedActions:string[],
     sharedActionsDict:Set<string>,
@@ -95,9 +95,10 @@ const initState:IInitState = {
 // ---- init ----
 
 export interface IInitReactOpenfinParametersObj {
-    fin:any,
+    fin?:any,
+    finMockupForceSilentMode?:boolean,
     finUuid: string,
-    sharedActions: string[],
+    sharedActions?: string[],
 
     i18n:typeof i18n,
     hist:History,
@@ -121,7 +122,7 @@ export const InitializeReactOpenfin = (
     }else{
         window.fin = new BrowserAdapter({
             finUuid:params.finUuid,
-            silentMode:true,
+            silentMode:params.finMockupForceSilentMode?true:false,
         });
         initState.fin           = window.fin;
 
