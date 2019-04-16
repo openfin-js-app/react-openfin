@@ -52,3 +52,18 @@ export async function saveOrUpdateOneByTabNameFieldName(tabName:string, fieldNam
     });
     return one;
 }
+
+export async function removeOneByTabNameAndFieldName(tabName:string,fieldName:string):Promise<number> {
+    const configs = db.table('configs');
+    let result:number = 0;
+    await db.transaction('rw',configs,async()=>{
+        const founds:IConfigDexie[] = await configs
+            .where({tabName,fieldName,version:CONFIG_VERSION})
+            .toArray();
+        if (founds.length){
+            await configs.bulkDelete(founds.map(one => one.id));
+        }
+        result = founds.length;
+    });
+    return result;
+}

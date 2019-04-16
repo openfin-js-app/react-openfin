@@ -6,6 +6,7 @@ import {
     IConfigDexie,
     IConfigResetOption,
     IConfigUpdateOneFieldOption,
+    IConfigRemoveOneFieldOption,
     IConfigDoUpdateOneFieldOption
 } from './types';
 
@@ -38,8 +39,15 @@ export const configUpdateOneField
     (tabName:string,fieldName:string,value:any)=>({
         name:`${tabName}.${fieldName}`,
         value,
-
     })
+);
+
+// todo get one field
+// todo remove one field
+export const CONFIG_REMOVE_ONE_FIELD                = makeReqType('CONFIG_REMOVE_ONE_FIELD');
+export const configRemoveOneField
+    = createAction<IConfigRemoveOneFieldOption,IConfigRemoveOneFieldOption>(CONFIG_REMOVE_ONE_FIELD,
+    (option:IConfigRemoveOneFieldOption)=>(option)
 );
 
 

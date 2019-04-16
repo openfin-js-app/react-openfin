@@ -5,6 +5,7 @@ import {
     CONFIG_LOAD_FROM_DEXIE,
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
     CONFIG_UPDATE_ONE_FIELD,
+    CONFIG_REMOVE_ONE_FIELD,
     CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE,
 
     configDoUpdateOneField,
@@ -14,11 +15,12 @@ import {
     configUpdateNewWindowPositionResetTop,
 
     IConfigDexie,
-    IConfigUpdateOneFieldOption
+    IConfigUpdateOneFieldOption,
+    IConfigRemoveOneFieldOption,
 } from '..';
 
 import {
-    findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName,
+    findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName, removeOneByTabNameAndFieldName,
 } from '../../dexies/configDao';
 
 export const getNewWindowTop = state => state.config.application.newWinTop;
@@ -52,6 +54,26 @@ export function* handleConfigUpdateOneField(action) {
             value,
         }))
     }
+}
+
+export function* handleConfigRemoveOneField(action){
+    const { tabName, fieldName } = action.payload as IConfigRemoveOneFieldOption;
+    yield call(removeOneByTabNameAndFieldName,tabName, fieldName);
+
+    if ('value' in action.payload){
+        yield putResolve(configDoUpdateOneField({
+            tabName,
+            fieldName,
+            value:action.payload.value,
+        }));
+    }else{
+        yield putResolve(configDoUpdateOneField({
+            tabName,
+            fieldName,
+            value:{},
+        }));
+    }
+
 }
 
 export function* handleConfigUpdateOneFieldInDexie(action) {
@@ -90,6 +112,7 @@ export function* handleConfigUpdateNewWindowPosition() {
 export default function* () {
     yield takeEvery(CONFIG_LOAD_FROM_DEXIE, handleConfigLoadFromDexie);
     yield takeEvery(CONFIG_UPDATE_ONE_FIELD, handleConfigUpdateOneField);
+    yield takeEvery(CONFIG_REMOVE_ONE_FIELD, handleConfigRemoveOneField);
     yield takeLatest(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, handleConfigUpdateOneFieldInDexie);
     yield takeLatest(CONFIG_UPDATE_NEW_WINDOW_POSITION,handleConfigUpdateNewWindowPosition);
 }

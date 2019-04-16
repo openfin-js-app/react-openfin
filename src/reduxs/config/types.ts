@@ -75,6 +75,12 @@ export interface IConfigUpdateOneFieldOption {
     value:any,
 }
 
+export interface IConfigRemoveOneFieldOption {
+    tabName:string,
+    fieldName:string,
+    value?:any,
+}
+
 export interface IConfigDoUpdateOneFieldOption {
     tabName:string,
     fieldName:string,
