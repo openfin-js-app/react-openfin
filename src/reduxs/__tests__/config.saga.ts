@@ -4,15 +4,17 @@ import {call, delay, put, select, take, takeEvery, takeLatest,} from 'redux-saga
 
 import {
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
+    configSelectOneFieldRes,
     configDoUpdateOneFieldInDexie,
     configUpdateNewWindowPositionAddDelta,
     configUpdateNewWindowPositionResetLeft,
-    configUpdateNewWindowPositionResetTop,
+    configUpdateNewWindowPositionResetTop, CONFIG_SELECT_ONE_FIELD, CONFIG_REMOVE_ONE_FIELD,
 } from '..';
 import {System, Window} from "redux-openfin";
 
 import {
     // selectors
+    getOneConfigField,
     getNewWindowTop,
     getNewWindowLeft,
     getNewWindowWidth,
@@ -21,6 +23,8 @@ import {
     handleConfigUpdateNewWindowPosition,
     handleConfigLoadFromDexie,
     handleConfigUpdateOneField,
+    handleConfigSelectOneField,
+    handleConfigRemoveOneField,
     handleConfigUpdateOneFieldInDexie
 } from '../sagas/config';
 
@@ -29,7 +33,9 @@ import {
     CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, CONFIG_LOAD_FROM_DEXIE, CONFIG_UPDATE_ONE_FIELD,
     configDoUpdateOneField
 } from "..";
-import {findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName} from "../../dexies/configDao";
+import {
+    findAllOfCurrentVersion, saveOrUpdateOneByTabNameFieldName, removeOneByTabNameAndFieldName
+} from "../../dexies/configDao";
 
 describe('Config saga',()=>{
 
@@ -74,6 +80,107 @@ describe('Config saga',()=>{
                 .run();
         })
     });
+
+    describe('handleConfigSelectOneField',()=>{
+
+        it('dynamic selector function',()=>{
+            const tabName       = 'tabName';
+            const fieldName     = 'fieldName';
+
+            const generatedFun = getOneConfigField(tabName,fieldName);
+
+            expect(
+                generatedFun({
+                    tabName:{
+                        fieldName:'value'
+                    }
+                })
+            ).toMatchSnapshot();
+
+            expect(
+                generatedFun({
+                    tabName:{
+                    }
+                })
+            ).toMatchSnapshot();
+
+            expect(
+                generatedFun({})
+            ).toMatchSnapshot();
+
+
+        })
+
+        it('with userObj',()=>{
+            const tabName       = 'tabName';
+            const fieldName     = 'fieldname';
+            const userObj       = 'userObj';
+            const value         = 'value';
+
+            testSaga(handleConfigSelectOneField,{payload:{ tabName, fieldName, userObj }})
+                .next()
+                // .select(getOneConfigField(tabName,fieldName))
+                .next(value)
+                // @ts-ignore
+                .putResolve(configSelectOneFieldRes({
+                    tabName,fieldName,value,userObj,
+                }))
+                .next()
+                .isDone();
+        })
+
+        it('without userObj',()=>{
+            const tabName       = 'tabName';
+            const fieldName     = 'fieldname';
+            const value         = 'value';
+
+            testSaga(handleConfigSelectOneField,{payload:{ tabName, fieldName }})
+                .next()
+                // .select(getOneConfigField(tabName,fieldName))
+                .next(value)
+                // @ts-ignore
+                .putResolve(configSelectOneFieldRes({
+                    tabName,fieldName,value,userObj:null,
+                }))
+                .next()
+                .isDone();
+        })
+    })
+
+    describe('handleConfigRemoveOneField',()=>{
+
+        it ('with reset value',()=>{
+            const tabName       = 'tabName';
+            const fieldName     = 'fieldname';
+            const value         = 'value';
+            testSaga(handleConfigRemoveOneField,{payload:{tabName,fieldName, value}})
+                .next()
+                .call(removeOneByTabNameAndFieldName,tabName, fieldName)
+                .next()
+                // @ts-ignore
+                .putResolve(configDoUpdateOneField({
+                    tabName,fieldName, value
+                }))
+                .next()
+                .isDone();
+        })
+
+        it ('without reset value',()=>{
+            const tabName       = 'tabName';
+            const fieldName     = 'fieldname';
+            testSaga(handleConfigRemoveOneField,{payload:{tabName,fieldName}})
+                .next()
+                .call(removeOneByTabNameAndFieldName,tabName, fieldName)
+                .next()
+                // @ts-ignore
+                .putResolve(configDoUpdateOneField({
+                    tabName,fieldName, value:{}
+                }))
+                .next()
+                .isDone();
+        })
+
+    })
 
     describe('handleConfigUpdateNewWindowPosition saga',()=>{
         it('add delta to new win pos',()=>{
@@ -159,6 +266,10 @@ describe('Config saga',()=>{
             .takeEvery(CONFIG_LOAD_FROM_DEXIE, handleConfigLoadFromDexie)
             .next()
             .takeEvery(CONFIG_UPDATE_ONE_FIELD, handleConfigUpdateOneField)
+            .next()
+            .takeEvery(CONFIG_SELECT_ONE_FIELD,handleConfigSelectOneField)
+            .next()
+            .takeEvery(CONFIG_REMOVE_ONE_FIELD,handleConfigRemoveOneField)
             .next()
             .takeLatest(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, handleConfigUpdateOneFieldInDexie)
             .next()

@@ -27,6 +27,14 @@ import {
     findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName, removeOneByTabNameAndFieldName,
 } from '../../dexies/configDao';
 
+export const getOneConfigField = (tabName,fieldName) => state => {
+    if ( tabName in state && fieldName in state[tabName]){
+        return state[tabName][fieldName];
+    }else{
+        return null;
+    }
+};
+
 export const getNewWindowTop = state => state.config.application.newWinTop;
 export const getNewWindowLeft = state => state.config.application.newWinLeft;
 export const getNewWindowWidth = state => state.config.application.newWinWidth;
@@ -63,20 +71,14 @@ export function* handleConfigUpdateOneField(action) {
 export function* handleConfigSelectOneField(action){
     const { tabName, fieldName } = action.payload as IConfigSelectOneFieldOption;
 
-    const value = yield select( state => {
-        if ( tabName in state && fieldName in state[tabName]){
-            return state[tabName][fieldName];
-        }else{
-            return null;
-        }
-    });
+    const value = yield select(getOneConfigField(tabName,fieldName));
 
     const result:IConfigSelectOneFieldResPayload={
         tabName,fieldName,value,
         userObj: 'userObj' in action.payload ? action.payload.userObj : null,
     };
 
-    putResolve(configSelectOneFieldRes(result));
+    yield putResolve(configSelectOneFieldRes(result));
 }
 
 export function* handleConfigRemoveOneField(action){
