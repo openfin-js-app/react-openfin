@@ -36,8 +36,16 @@ describe('Config actions',()=>{
         expect(Actions.configUpdateOneField('str1','str2',{})).toMatchSnapshot();
     })
 
-    it('configUpdateOneField action',()=>{
-        expect(Actions.configUpdateOneField('str1','str2',{})).toMatchSnapshot();
+    it('configSelectOneField action',()=>{
+        expect(Actions.configSelectOneField({tabName:'tabName', fieldName:'fieldName', userObj:{}})).toMatchSnapshot();
+    })
+
+    it('configRemoveOneField action',()=>{
+        expect(Actions.configRemoveOneField({tabName:'tabName', fieldName:'fieldName', value:{}})).toMatchSnapshot();
+    })
+
+    it('configSelectOneFieldRes action',()=>{
+        expect(Actions.configSelectOneFieldRes({tabName:'tabName', fieldName:'fieldName', userObj:{}, value:{}})).toMatchSnapshot();
     })
 
     it('configUpdateNewWindowPosition action',()=>{

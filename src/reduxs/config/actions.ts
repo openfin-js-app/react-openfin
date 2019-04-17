@@ -6,6 +6,9 @@ import {
     IConfigDexie,
     IConfigResetOption,
     IConfigUpdateOneFieldOption,
+    IConfigSelectOneFieldOption,
+    IConfigSelectOneFieldResPayload,
+    IConfigRemoveOneFieldOption,
     IConfigDoUpdateOneFieldOption
 } from './types';
 
@@ -38,10 +41,23 @@ export const configUpdateOneField
     (tabName:string,fieldName:string,value:any)=>({
         name:`${tabName}.${fieldName}`,
         value,
-
     })
 );
 
+export const CONFIG_SELECT_ONE_FIELD                = makeReqType('CONFIG_SELECT_ONE_FIELD');
+export const configSelectOneField
+    = createAction<IConfigSelectOneFieldOption,IConfigSelectOneFieldOption>(CONFIG_SELECT_ONE_FIELD,(option)=>(option));
+
+export const CONFIG_REMOVE_ONE_FIELD                = makeReqType('CONFIG_REMOVE_ONE_FIELD');
+export const configRemoveOneField
+    = createAction<IConfigRemoveOneFieldOption,IConfigRemoveOneFieldOption>(CONFIG_REMOVE_ONE_FIELD,
+    (option:IConfigRemoveOneFieldOption)=>(option)
+);
+
+// response actions
+export const CONFIG_SELECT_ONE_FIELD_RES            = makeResType('CONFIG_SELECT_ONE_FIELD_RES');
+export const configSelectOneFieldRes
+    = createAction<IConfigSelectOneFieldResPayload,IConfigSelectOneFieldResPayload>(CONFIG_SELECT_ONE_FIELD_RES,(option)=>(option));
 
 
 // optional actions depending on the config application values

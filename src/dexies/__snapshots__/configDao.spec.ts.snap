@@ -8,6 +8,8 @@ exports[`ConfigDao findOneField async 1`] = `undefined`;
 
 exports[`ConfigDao findOneFieldVal with null async 1`] = `null`;
 
+exports[`ConfigDao removeOneByTabNameAndFieldName async 1`] = `1`;
+
 exports[`ConfigDao saveOrUpdateOneByTabNameFieldName async 1`] = `
 Object {
   "fieldName": "fieldName",
@@ -20,13 +22,6 @@ Object {
 
 exports[`ConfigDao with preset findAll async with preset 1`] = `
 Array [
-  Object {
-    "fieldName": "fieldName",
-    "id": 1,
-    "tabName": "tabName",
-    "value": "value",
-    "version": 2,
-  },
   Object {
     "fieldName": "fieldName",
     "id": 2,
@@ -55,13 +50,6 @@ exports[`ConfigDao with preset findAllOfCurrentVersion async with preset 1`] = `
 Array [
   Object {
     "fieldName": "fieldName",
-    "id": 1,
-    "tabName": "tabName",
-    "value": "value",
-    "version": 2,
-  },
-  Object {
-    "fieldName": "fieldName",
     "id": 3,
     "tabName": "tabName",
     "value": "value",
@@ -79,10 +67,12 @@ Array [
 
 exports[`ConfigDao with preset findOneFieldVal null async 1`] = `"value2"`;
 
+exports[`ConfigDao with preset removeOneByTabNameAndFieldName async 1`] = `1`;
+
 exports[`ConfigDao with preset saveOrUpdateOneByTabNameFieldName async update 1`] = `
 Object {
   "fieldName": "fieldName",
-  "id": 5,
+  "id": 6,
   "tabName": "tabName",
   "value": "value2",
   "version": 2,
@@ -92,7 +82,7 @@ Object {
 exports[`ConfigDao with preset saveOrUpdateOneByTabNameFieldName async with preset 1`] = `
 Object {
   "fieldName": "fieldName",
-  "id": 5,
+  "id": 6,
   "tabName": "tabName",
   "value": "value",
   "version": 2,
