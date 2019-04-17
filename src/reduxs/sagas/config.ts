@@ -5,17 +5,21 @@ import {
     CONFIG_LOAD_FROM_DEXIE,
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
     CONFIG_UPDATE_ONE_FIELD,
+    CONFIG_SELECT_ONE_FIELD,
     CONFIG_REMOVE_ONE_FIELD,
     CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE,
 
     configDoUpdateOneField,
     configDoUpdateOneFieldInDexie,
+    configSelectOneFieldRes,
     configUpdateNewWindowPositionAddDelta,
     configUpdateNewWindowPositionResetLeft,
     configUpdateNewWindowPositionResetTop,
 
     IConfigDexie,
     IConfigUpdateOneFieldOption,
+    IConfigSelectOneFieldOption,
+    IConfigSelectOneFieldResPayload,
     IConfigRemoveOneFieldOption,
 } from '..';
 
@@ -54,6 +58,25 @@ export function* handleConfigUpdateOneField(action) {
             value,
         }))
     }
+}
+
+export function* handleConfigSelectOneField(action){
+    const { tabName, fieldName } = action.payload as IConfigSelectOneFieldOption;
+
+    const value = yield select( state => {
+        if ( tabName in state && fieldName in state[tabName]){
+            return state[tabName][fieldName];
+        }else{
+            return null;
+        }
+    });
+
+    const result:IConfigSelectOneFieldResPayload={
+        tabName,fieldName,value,
+        userObj: 'userObj' in action.payload ? action.payload.userObj : null,
+    };
+
+    putResolve(configSelectOneFieldRes(result));
 }
 
 export function* handleConfigRemoveOneField(action){
@@ -112,6 +135,7 @@ export function* handleConfigUpdateNewWindowPosition() {
 export default function* () {
     yield takeEvery(CONFIG_LOAD_FROM_DEXIE, handleConfigLoadFromDexie);
     yield takeEvery(CONFIG_UPDATE_ONE_FIELD, handleConfigUpdateOneField);
+    yield takeEvery(CONFIG_SELECT_ONE_FIELD, handleConfigSelectOneField);
     yield takeEvery(CONFIG_REMOVE_ONE_FIELD, handleConfigRemoveOneField);
     yield takeLatest(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, handleConfigUpdateOneFieldInDexie);
     yield takeLatest(CONFIG_UPDATE_NEW_WINDOW_POSITION,handleConfigUpdateNewWindowPosition);
