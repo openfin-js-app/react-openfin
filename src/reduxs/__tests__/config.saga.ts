@@ -91,21 +91,28 @@ describe('Config saga',()=>{
 
             expect(
                 generatedFun({
-                    tabName:{
-                        fieldName:'value'
+                    config:{
+                        tabName:{
+                            fieldName:'value'
+                        }
                     }
                 })
             ).toMatchSnapshot();
 
             expect(
                 generatedFun({
-                    tabName:{
+                    config:{
+                        tabName:{
+                        }
                     }
                 })
             ).toMatchSnapshot();
 
             expect(
-                generatedFun({})
+                generatedFun({
+                    config:{
+                    }
+                })
             ).toMatchSnapshot();
 
 

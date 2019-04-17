@@ -16,6 +16,7 @@ import {
     configUpdateNewWindowPositionResetLeft,
     configUpdateNewWindowPositionResetTop,
 
+    IRootState,
     IConfigDexie,
     IConfigUpdateOneFieldOption,
     IConfigSelectOneFieldOption,
@@ -28,17 +29,17 @@ import {
 } from '../../dexies/configDao';
 
 export const getOneConfigField = (tabName,fieldName) => state => {
-    if ( tabName in state && fieldName in state[tabName]){
-        return state[tabName][fieldName];
+    if ( tabName in state.config && fieldName in state.config[tabName]){
+        return state.config[tabName][fieldName];
     }else{
         return null;
     }
 };
 
-export const getNewWindowTop = state => state.config.application.newWinTop;
-export const getNewWindowLeft = state => state.config.application.newWinLeft;
-export const getNewWindowWidth = state => state.config.application.newWinWidth;
-export const getNewWindowHeight = state => state.config.application.newWinHeight;
+export const getNewWindowTop = (state:IRootState) => state.config.application.newWinTop;
+export const getNewWindowLeft = (state:IRootState) => state.config.application.newWinLeft;
+export const getNewWindowWidth = (state:IRootState) => state.config.application.newWinWidth;
+export const getNewWindowHeight = (state:IRootState) => state.config.application.newWinHeight;
 
 export function* handleConfigLoadFromDexie() {
     const configs : IConfigDexie[] = yield call(findAllOfCurrentVersion);
