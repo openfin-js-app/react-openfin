@@ -75,6 +75,22 @@ export interface IConfigUpdateOneFieldOption {
     value:any,
 }
 
+export interface IConfigSelectOneFieldOption {
+    tabName:string,
+    fieldName:string,
+    userObj?:any,
+}
+
+export interface IConfigSelectOneFieldResPayload extends IConfigSelectOneFieldOption {
+    value:any,
+}
+
+export interface IConfigRemoveOneFieldOption {
+    tabName:string,
+    fieldName:string,
+    value?:any,
+}
+
 export interface IConfigDoUpdateOneFieldOption {
     tabName:string,
     fieldName:string,

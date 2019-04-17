@@ -2,7 +2,8 @@ import {
     CONFIG_VERSION,
     findAll, findAllOfCurrentVersion,
     findOneField, findOneFieldVal,
-    saveOrUpdateOneByTabNameFieldName
+    saveOrUpdateOneByTabNameFieldName,
+    removeOneByTabNameAndFieldName,
 } from './configDao';
 import db from './db';
 
@@ -35,6 +36,13 @@ describe('ConfigDao',()=>{
         expect(saved).toMatchSnapshot();
     })
 
+    it('removeOneByTabNameAndFieldName async',async ()=>{
+        const saved = await removeOneByTabNameAndFieldName(
+            'tabName', 'fieldName'
+        );
+        expect(saved).toMatchSnapshot();
+    })
+
     describe('with preset',()=>{
         beforeAll(()=>{
             const configs = db.table('configs');
@@ -47,6 +55,16 @@ describe('ConfigDao',()=>{
             configs.put({
                 tabName:'tabName', fieldName:'fieldName', value:'value', version:CONFIG_VERSION,
             });
+            configs.put({
+                tabName:'tabName', fieldName:'credential', value:'secret', version:CONFIG_VERSION,
+            });
+        })
+
+        it('removeOneByTabNameAndFieldName async',async ()=>{
+            const saved = await removeOneByTabNameAndFieldName(
+                'tabName', 'credential'
+            );
+            expect(saved).toMatchSnapshot();
         })
 
         it('findAll async with preset',async ()=>{

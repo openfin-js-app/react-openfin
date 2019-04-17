@@ -5,26 +5,41 @@ import {
     CONFIG_LOAD_FROM_DEXIE,
     CONFIG_UPDATE_NEW_WINDOW_POSITION,
     CONFIG_UPDATE_ONE_FIELD,
+    CONFIG_SELECT_ONE_FIELD,
+    CONFIG_REMOVE_ONE_FIELD,
     CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE,
 
     configDoUpdateOneField,
     configDoUpdateOneFieldInDexie,
+    configSelectOneFieldRes,
     configUpdateNewWindowPositionAddDelta,
     configUpdateNewWindowPositionResetLeft,
     configUpdateNewWindowPositionResetTop,
 
+    IRootState,
     IConfigDexie,
-    IConfigUpdateOneFieldOption
+    IConfigUpdateOneFieldOption,
+    IConfigSelectOneFieldOption,
+    IConfigSelectOneFieldResPayload,
+    IConfigRemoveOneFieldOption,
 } from '..';
 
 import {
-    findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName,
+    findAllOfCurrentVersion,saveOrUpdateOneByTabNameFieldName, removeOneByTabNameAndFieldName,
 } from '../../dexies/configDao';
 
-export const getNewWindowTop = state => state.config.application.newWinTop;
-export const getNewWindowLeft = state => state.config.application.newWinLeft;
-export const getNewWindowWidth = state => state.config.application.newWinWidth;
-export const getNewWindowHeight = state => state.config.application.newWinHeight;
+export const getOneConfigField = (tabName,fieldName) => state => {
+    if ( tabName in state.config && fieldName in state.config[tabName]){
+        return state.config[tabName][fieldName];
+    }else{
+        return null;
+    }
+};
+
+export const getNewWindowTop = (state:IRootState) => state.config.application.newWinTop;
+export const getNewWindowLeft = (state:IRootState) => state.config.application.newWinLeft;
+export const getNewWindowWidth = (state:IRootState) => state.config.application.newWinWidth;
+export const getNewWindowHeight = (state:IRootState) => state.config.application.newWinHeight;
 
 export function* handleConfigLoadFromDexie() {
     const configs : IConfigDexie[] = yield call(findAllOfCurrentVersion);
@@ -52,6 +67,39 @@ export function* handleConfigUpdateOneField(action) {
             value,
         }))
     }
+}
+
+export function* handleConfigSelectOneField(action){
+    const { tabName, fieldName } = action.payload as IConfigSelectOneFieldOption;
+
+    const value = yield select(getOneConfigField(tabName,fieldName));
+
+    const result:IConfigSelectOneFieldResPayload={
+        tabName,fieldName,value,
+        userObj: 'userObj' in action.payload ? action.payload.userObj : null,
+    };
+
+    yield putResolve(configSelectOneFieldRes(result));
+}
+
+export function* handleConfigRemoveOneField(action){
+    const { tabName, fieldName } = action.payload as IConfigRemoveOneFieldOption;
+    yield call(removeOneByTabNameAndFieldName,tabName, fieldName);
+
+    if ('value' in action.payload){
+        yield putResolve(configDoUpdateOneField({
+            tabName,
+            fieldName,
+            value:action.payload.value,
+        }));
+    }else{
+        yield putResolve(configDoUpdateOneField({
+            tabName,
+            fieldName,
+            value:{},
+        }));
+    }
+
 }
 
 export function* handleConfigUpdateOneFieldInDexie(action) {
@@ -90,6 +138,8 @@ export function* handleConfigUpdateNewWindowPosition() {
 export default function* () {
     yield takeEvery(CONFIG_LOAD_FROM_DEXIE, handleConfigLoadFromDexie);
     yield takeEvery(CONFIG_UPDATE_ONE_FIELD, handleConfigUpdateOneField);
+    yield takeEvery(CONFIG_SELECT_ONE_FIELD, handleConfigSelectOneField);
+    yield takeEvery(CONFIG_REMOVE_ONE_FIELD, handleConfigRemoveOneField);
     yield takeLatest(CONFIG_DO_UPDATE_ONE_FIELD_IN_DEXIE, handleConfigUpdateOneFieldInDexie);
     yield takeLatest(CONFIG_UPDATE_NEW_WINDOW_POSITION,handleConfigUpdateNewWindowPosition);
 }
