@@ -1,6 +1,8 @@
 import { Action, handleActions } from 'redux-actions';
 import { Docking, System, Window, Event } from 'redux-openfin';
 
+import initState from '../../init';
+
 import {
     IApplicationNewSnackbarOption,
     ISnackBarMsg, IApplicationState,
@@ -65,7 +67,10 @@ export const buildInitState = (parentWindowState?:Partial<IApplicationState>):Pa
         }
 
     }else{
-        return defaultState;
+        return {
+            ...defaultState,
+            drawerOpen:initState.config.defaultDashboardDrawerShown
+        };
     }
 }
 

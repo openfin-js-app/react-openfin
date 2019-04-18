@@ -1,3 +1,6 @@
+## [0.70.40] 2019-04-18
+- Add defaultDashboardDrawerShown config flag
+
 ## [0.70.30] 2019-04-17
 - support one request action configRemoveOneField to remove one config field
 - support one request action configSelectOneField to request to select one config field
