@@ -36,7 +36,7 @@ export const defaultState:Partial<IApplicationState>={
     winLeft:0,
     winWidth:0,
     winHeight:0,
-    drawerOpen:initState.config.defaultDashboardDrawerShown,
+    drawerOpen:true,
     launchBarCollapse:false,
     snackBarOpen:false,
     snackBarMsgInfo:{},
@@ -67,7 +67,10 @@ export const buildInitState = (parentWindowState?:Partial<IApplicationState>):Pa
         }
 
     }else{
-        return defaultState;
+        return {
+            ...defaultState,
+            drawerOpen:initState.config.defaultDashboardDrawerShown
+        };
     }
 }
 
