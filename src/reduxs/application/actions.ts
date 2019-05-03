@@ -4,6 +4,7 @@ import {WindowOptions} from 'redux-openfin';
 import makeType, {makeReqType, makeResType} from '../../utils/makeType'
 
 import {
+    APPLICATION_LAUNCH_BAR_STATUS,
     IReadyPayload,
     IApplicationNewSnackbarOption, IApplicationCloseSnackBarOption
 } from './types';
@@ -100,11 +101,14 @@ export const applicationUpdateDockStatus
 
 // launch bar
 export const APPLICATION_LAUNCH_BAR_TOGGLE              = makeReqType('APPLICATION_LAUNCH_BAR_TOGGLE');
+export const APPLICATION_LAUNCH_BAR_TOGGLED             = makeResType('APPLICATION_LAUNCH_BAR_TOGGLED');
 export const APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE     = makeReqType('APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE');
 export const APPLICATION_LAUNCH_NEW_WINDOW              = makeReqType('APPLICATION_LAUNCH_NEW_WINDOW');
 export const APPLICATION_LAUNCH_BAR_CLOSE               = makeReqType('APPLICATION_LAUNCH_BAR_CLOSE');
 export const applicationLaunchBarToggle
     = createAction<void>(APPLICATION_LAUNCH_BAR_TOGGLE);
+export const applicationLaunchBarToggled
+    = createAction<{status:APPLICATION_LAUNCH_BAR_STATUS},APPLICATION_LAUNCH_BAR_STATUS>(APPLICATION_LAUNCH_BAR_TOGGLED,(status)=>({status}));
 export const applicationLaunchBarToggleCollapse
     = createAction<void>(APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE);
 export const applicationLaunchNewWindow

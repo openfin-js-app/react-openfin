@@ -1,5 +1,10 @@
 import * as React from "react";
 
+export enum APPLICATION_LAUNCH_BAR_STATUS{
+    SWITCH_TO_LAUNCHBAR = 1,
+    SWITCH_TO_MAIN_WIN = 2,
+}
+
 export interface IApplicationNewSnackbarOption {
     message:string;
     variant?:'primary'|'success'|'warning'|'error'|'info'|'rose';
