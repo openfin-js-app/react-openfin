@@ -1,6 +1,6 @@
 {
   "name": "react-openfin",
-  "version": "0.70.40",
+  "version": "0.70.80",
   "description": "React utils for openfin app development",
   "homepage": "https://albertleigh.github.io/openfin-react-latest",
   "main": "index.ts",
@@ -9,7 +9,7 @@
     "build:es2016": "tsc",
     "build:copy-files": "node ./scripts/copy-files.js",
     "build": "yarn prebuild && yarn build:es2016 && yarn build:copy-files",
-    "release-staging": "yarn build && npm publish build --registry=https://albertli.ddns.net:9004/repository/npm-private/",
+    "release-staging": "yarn build && npm publish build --registry=https://albertli.ddns.net:9004/repository/npm-private/ --tag beta",
     "release": "yarn build && npm publish build --access public",
     "test": "jest --clearCache && node scripts/test.js",
     "test-coveralls": "node scripts/test.js --coverage --coverageReporters=text-lcov | coveralls"
