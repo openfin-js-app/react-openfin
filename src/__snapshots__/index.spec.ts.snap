@@ -2,6 +2,12 @@
 
 exports[`index all 1`] = `
 Object {
+  "APPLICATION_LAUNCH_BAR_STATUS": Object {
+    "1": "SWITCH_TO_LAUNCHBAR",
+    "2": "SWITCH_TO_MAIN_WIN",
+    "SWITCH_TO_LAUNCHBAR": 1,
+    "SWITCH_TO_MAIN_WIN": 2,
+  },
   "ApplicationContext": Object {
     "$$typeof": Symbol(react.context),
     "Consumer": Object {

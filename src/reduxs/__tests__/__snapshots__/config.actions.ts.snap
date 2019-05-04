@@ -113,13 +113,3 @@ Object {
   "type": "REACT_OPENFIN_REQ::CONFIG_UPDATE_ONE_FIELD",
 }
 `;
-
-exports[`Config actions configUpdateOneField action 2`] = `
-Object {
-  "payload": Object {
-    "name": "str1.str2",
-    "value": Object {},
-  },
-  "type": "REACT_OPENFIN_REQ::CONFIG_UPDATE_ONE_FIELD",
-}
-`;
