@@ -10,6 +10,7 @@ import { findOneFieldVal } from '../../dexies/configDao';
 import {
     // types
     IRootState,
+    APPLICATION_LAUNCH_BAR_STATUS,
 
     // actions
     applicationSetLoadingMsg,
@@ -35,6 +36,7 @@ import {
     applicationSetSnackbarStatus,
     applicationProcessSnackbarQueue,
     APPLICATION_LAUNCH_BAR_TOGGLE,
+    applicationLaunchBarToggled,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_LAUNCH_BAR_CLOSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
@@ -303,6 +305,7 @@ export function* handleApplicationLaunchBarToggle(){
         launchbarWindow = launchbarWindowAction.payload.window;
         mainWindow.show(true);
         launchbarWindow.close();
+        yield put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN));
     }else{
         launchbarWindow = null;
         const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
@@ -339,6 +342,7 @@ export function* handleApplicationLaunchBarToggle(){
 
         launchbarWindow.bringToFront();
         mainWindow.hide();
+        yield put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_LAUNCHBAR));
     }
 
 }

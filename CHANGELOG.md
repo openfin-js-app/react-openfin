@@ -1,3 +1,6 @@
+## [0.70.80] 2019-05-03
+- Add and support APPLICATION_LAUNCH_BAR_TOGGLED response action
+
 ## [0.70.40] 2019-04-18
 - Add defaultDashboardDrawerShown config flag
 
