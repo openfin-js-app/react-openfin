@@ -1,4 +1,5 @@
 import * as Actions from '../application/actions';
+import {APPLICATION_LAUNCH_BAR_STATUS} from "..";
 
 describe('Application actions',()=>{
 
@@ -95,6 +96,11 @@ describe('Application actions',()=>{
 
     it('applicationLaunchBarToggle action',()=>{
         expect(Actions.applicationLaunchBarToggle()).toMatchSnapshot();
+    })
+
+    it('applicationLaunchBarToggled action',()=>{
+        expect(Actions.applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_LAUNCHBAR)).toMatchSnapshot();
+        expect(Actions.applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN)).toMatchSnapshot();
     })
 
     it('applicationLaunchBarToggleCollapse action',()=>{

@@ -8,6 +8,9 @@ import {findOneFieldVal} from '../../dexies/configDao'
 
 
 import {
+    // types
+    APPLICATION_LAUNCH_BAR_STATUS,
+    // actions
     applicationSetLoadingMsg,
     APPLICATION_NEW_SNACKBAR,
     APPLICATION_CLOSE_SNACKBAR,
@@ -28,6 +31,7 @@ import {
     applicationSetSnackbarStatus,
     applicationProcessSnackbarQueue,
     APPLICATION_LAUNCH_BAR_TOGGLE,
+    applicationLaunchBarToggled,
     APPLICATION_LAUNCH_BAR_TOGGLE_COLLAPSE,
     APPLICATION_LAUNCH_NEW_WINDOW,
     APPLICATION_LAUNCH_BAR_CLOSE,
@@ -482,6 +486,8 @@ describe('Application saga',()=>{
                         window:launchbarWindow,
                     }
                 })
+                .put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN))
+                .next()
                 .isDone();
 
             expect(mainWindow.show).toMatchSnapshot();
@@ -541,6 +547,8 @@ describe('Application saga',()=>{
                         window:launchbarWindow,
                     }
                 })
+                .put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_LAUNCHBAR))
+                .next()
                 .isDone();
 
             expect(mainWindow.hide).toMatchSnapshot();
@@ -599,6 +607,8 @@ describe('Application saga',()=>{
                         window:launchbarWindow,
                     }
                 })
+                .put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_LAUNCHBAR))
+                .next()
                 .isDone();
 
             expect(mainWindow.hide).toMatchSnapshot();

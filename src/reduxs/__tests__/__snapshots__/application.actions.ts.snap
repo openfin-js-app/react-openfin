@@ -79,6 +79,24 @@ Object {
 }
 `;
 
+exports[`Application actions applicationLaunchBarToggled action 1`] = `
+Object {
+  "payload": Object {
+    "status": 1,
+  },
+  "type": "REACT_OPENFIN_RES::APPLICATION_LAUNCH_BAR_TOGGLED",
+}
+`;
+
+exports[`Application actions applicationLaunchBarToggled action 2`] = `
+Object {
+  "payload": Object {
+    "status": 2,
+  },
+  "type": "REACT_OPENFIN_RES::APPLICATION_LAUNCH_BAR_TOGGLED",
+}
+`;
+
 exports[`Application actions applicationLaunchNewWindow action 1`] = `
 Object {
   "payload": Object {},
