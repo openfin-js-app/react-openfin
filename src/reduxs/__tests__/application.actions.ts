@@ -68,7 +68,7 @@ describe('Application actions',()=>{
     })
 
     it('applicationCurWinReadyToClose action',()=>{
-        expect(Actions.applicationCurWinReadyToClose()).toMatchSnapshot();
+        expect(Actions.applicationCurWinReadyToClose({})).toMatchSnapshot();
     })
 
     it('applicationNewSnackbar action',()=>{

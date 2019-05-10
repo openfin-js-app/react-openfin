@@ -1,3 +1,7 @@
+## [0.80.20] 2019-05-10
+- [Fix bug] add the missing field to support block closing current window
+- Initially refactor README.md
+
 ## [0.70.80] 2019-05-03
 - Add and support APPLICATION_LAUNCH_BAR_TOGGLED response action
 
