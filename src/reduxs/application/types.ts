@@ -25,6 +25,10 @@ export interface IReadyPayload {
     targetUrl?:string,
 }
 
+export interface IReadyToClose {
+    skipClosing?:boolean,
+}
+
 export interface IApplicationState {
     offline:boolean,
     username:string,

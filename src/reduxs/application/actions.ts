@@ -5,7 +5,7 @@ import makeType, {makeReqType, makeResType} from '../../utils/makeType'
 
 import {
     APPLICATION_LAUNCH_BAR_STATUS,
-    IReadyPayload,
+    IReadyPayload, IReadyToClose,
     IApplicationNewSnackbarOption, IApplicationCloseSnackBarOption
 } from './types';
 import * as React from "react";
@@ -73,7 +73,7 @@ export const applicationToggleWindowState
 export const applicationCurWinClosing
     = createAction<void>(APPLICATION_CUR_WIN_CLOSING);
 export const applicationCurWinReadyToClose
-    = createAction<void>(APPLICATION_CUR_WIN_READY_TO_CLOSE);
+    = createAction<IReadyToClose,IReadyToClose>(APPLICATION_CUR_WIN_READY_TO_CLOSE,(option:IReadyToClose)=>(option));
 
 // snackbar
 
