@@ -51,6 +51,7 @@ Object {
 
 exports[`Application actions applicationCurWinReadyToClose action 1`] = `
 Object {
+  "payload": Object {},
   "type": "REACT_OPENFIN_REQ::APPLICATION_CUR_WIN_READY_TO_CLOSE",
 }
 `;
