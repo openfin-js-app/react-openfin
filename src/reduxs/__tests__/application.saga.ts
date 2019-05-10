@@ -352,7 +352,8 @@ describe('Application saga',()=>{
     })
 
     describe('handleApplicationExit saga', ()=>{
-        it('basically works',()=>{
+
+        it('close by default',()=>{
             testSaga(handleApplicationExit)
                 .next()
                 // @ts-ignore
@@ -362,9 +363,23 @@ describe('Application saga',()=>{
                     readyToClose : take(APPLICATION_CUR_WIN_READY_TO_CLOSE),
                     timeout : delay(initState.config.onAppClosingAwaitDelayTime),
                 })
-                .next({readyToClose:{}})
+                .next({readyToClose:{payload:{}}})
                 .putResolve(Window.actions.close({force:true}))
                 .next()
+                .isDone();
+        })
+
+        it('skip to close',()=>{
+            testSaga(handleApplicationExit)
+                .next()
+                // @ts-ignore
+                .putResolve(applicationCurWinClosing())
+                .next()
+                .race({
+                    readyToClose : take(APPLICATION_CUR_WIN_READY_TO_CLOSE),
+                    timeout : delay(initState.config.onAppClosingAwaitDelayTime),
+                })
+                .next({readyToClose:{payload:{skipClosing:true}}})
                 .isDone();
         })
     });

@@ -10,6 +10,7 @@ import { findOneFieldVal } from '../../dexies/configDao';
 import {
     // types
     IRootState,
+    IReadyToClose,
     APPLICATION_LAUNCH_BAR_STATUS,
 
     // actions
@@ -237,11 +238,6 @@ export function* handleApplicationNotificationLoading() {
 }
 
 export function* handleApplicationExit() {
-    // -------------------------------start of app codes -----------------------------------------------
-
-    // do something cleaning up before shutdonw~
-
-    // ---------------------------------end of app codes -----------------------------------------------
 
     yield putResolve(applicationCurWinClosing());
     const { readyToClose, timeout } = yield race({
@@ -249,10 +245,21 @@ export function* handleApplicationExit() {
         timeout : delay(initState.config.onAppClosingAwaitDelayTime),
     });
     // console.log("[react-openfin]::app saga take APPLICATION_CUR_WIN_READY_TO_CLOSE or time out", readyToClose, timeout);
+
+    let forceToClose:boolean = true;
+
     if (readyToClose){
         console.log("[react-openfin]::app saga client response and ready to close");
+        const payload:IReadyToClose = readyToClose.payload;
+        if (payload.skipClosing){
+            console.log("[react-openfin]::app saga client response to skip closing");
+            forceToClose = false;
+        }
     }
-    yield putResolve(Window.actions.close({force:true}));
+
+    if (forceToClose){
+        yield putResolve(Window.actions.close({force:true}));
+    }
 
 }
 
