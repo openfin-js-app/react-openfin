@@ -2,7 +2,12 @@
   "name": "react-openfin",
   "version": "0.90.2-beta",
   "description": "React utils for openfin app development",
-  "homepage": "https://albertleigh.github.io/openfin-react-latest",
+  "homepage": "https://www.albertli90.com/openfin-react-latest",
+  "keywords": [
+    "openfin",
+    "react",
+    "albert"
+  ],
   "main": "index.ts",
   "scripts": {
     "prebuild": "rimraf build",
