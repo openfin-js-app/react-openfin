@@ -1,7 +1,7 @@
 import {Action} from "redux-actions";
 import { all, call, delay, put, putResolve, race, take, takeLatest, takeEvery, fork, select, actionChannel } from 'redux-saga/effects';
 import { Docking ,System, Event, Window } from 'redux-openfin';
-import { GetGroupResPayload, NewWindowResPayload, WrapResPayload } from "redux-openfin/window";
+import { GetGroupResPayload, CreateWindowResPayload, WrapResPayload } from "redux-openfin/window";
 
 import { getAllShownItems } from '../../utils/generalUtils';
 
@@ -74,7 +74,7 @@ export function* handleShowLoadingView(monitorRect) {
     const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
     const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
 
-    const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
+    const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow({
         name:LOADING_VIEW_UUID,
         url:'/loading',
         frame:false,
@@ -307,15 +307,16 @@ export function* handleApplicationLaunchBarToggle(){
         windowName: LAUNCHBAR_VIEW_UUID,
     }));
 
+    console.log('[react-openfin] application.ts#310',mainWindowAction, launchbarWindowAction)
 
-    if (launchbarWindowAction.payload.window.nativeWindow){
+    if (window.name === LAUNCHBAR_VIEW_UUID){
         launchbarWindow = launchbarWindowAction.payload.window;
         mainWindow.show(true);
-        launchbarWindow.close();
         yield put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN));
+        launchbarWindow.close();
     }else{
         launchbarWindow = null;
-        const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow({
+        const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow({
             name:LAUNCHBAR_VIEW_UUID,
             url:'/launchBar',
             frame:false,
@@ -419,7 +420,7 @@ export function* handleApplicationLaunchNewWindow(action) {
             if(!appJson.defaultTop){ appJson.defaultTop = defaultTop}
             if(!appJson.defaultLeft){ appJson.defaultLeft = defaultLeft}
 
-            const newWindowResAction:Action<NewWindowResPayload> = yield call(Window.asyncs.newWindow,Window.actions.newWindow(appJson));
+            const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow(appJson));
             const newWindow = newWindowResAction.payload.window;
             newWindow.bringToFront();
 
