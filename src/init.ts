@@ -124,7 +124,7 @@ export const InitializeReactOpenfin = (
     }else{
         window.fin = new BrowserAdapter({
             finUuid:params.finUuid,
-            silentMode:params.finMockupForceSilentMode?true:false,
+            silentMode:params.finMockupForceSilentMode,
         });
         initState.fin           = window.fin;
 

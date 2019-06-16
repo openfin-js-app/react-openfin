@@ -47,11 +47,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -62,11 +62,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -77,11 +77,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -92,11 +92,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -107,11 +107,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -122,11 +122,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -202,11 +202,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -217,11 +217,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -232,11 +232,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -247,11 +247,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -262,11 +262,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -277,11 +277,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -355,11 +355,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -370,11 +370,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -385,11 +385,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -400,11 +400,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -415,11 +415,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -430,11 +430,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -507,11 +507,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -522,11 +522,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -537,11 +537,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -552,11 +552,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -567,11 +567,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -582,11 +582,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -669,11 +669,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -684,11 +684,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -699,11 +699,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -714,11 +714,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -729,11 +729,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -744,11 +744,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -821,11 +821,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -836,11 +836,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -851,11 +851,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -866,11 +866,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -881,11 +881,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -896,11 +896,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -973,11 +973,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -988,11 +988,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1003,11 +1003,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1018,11 +1018,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1033,11 +1033,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1048,11 +1048,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1125,11 +1125,11 @@ Object {
           "_name": "newWinTop",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1140,11 +1140,11 @@ Object {
           "_name": "newWinLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1155,11 +1155,11 @@ Object {
           "_name": "newWinWidth",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1170,11 +1170,11 @@ Object {
           "_name": "newWinHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1185,11 +1185,11 @@ Object {
           "_name": "newWindDeltaLeft",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
@@ -1200,11 +1200,11 @@ Object {
           "_name": "newWindDeltaHeight",
           "_props": Object {
             "InputProps": Object {
-              "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+              "endAdornment": <ForwardRef(WithStyles)
                 position="end"
               >
                 Pixel
-              </WithStyles(WithFormControlContext(InputAdornment))>,
+              </ForwardRef(WithStyles)>,
             },
           },
           "_type": 6,
