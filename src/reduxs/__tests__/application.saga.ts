@@ -173,7 +173,7 @@ describe('Application saga',()=>{
                 .next('en-US')
                 .call(System.asyncs.getMonitorInfo,System.actions.getMonitorInfo({}))
                 .next({payload:{primaryMonitor:{monitorRect}}})
-                .call(Window.asyncs.newWindow,Window.actions.newWindow({
+                .call(Window.asyncs.createWindow,Window.actions.createWindow({
                     name:LOADING_VIEW_UUID,
                     url:'/loading',
                     frame:false,
@@ -469,6 +469,8 @@ describe('Application saga',()=>{
 
         it('redirect back to main window',()=>{
 
+            window.name = LAUNCHBAR_VIEW_UUID;
+
             const mainWindow = {
                 show: jest.fn(),
             };
@@ -511,6 +513,9 @@ describe('Application saga',()=>{
         })
 
         it('redirect to collapsed launchBar window',()=>{
+
+            window.name = 'not'+LAUNCHBAR_VIEW_UUID;
+
             const mainWindow = {
                 hide: jest.fn(),
             };
@@ -543,7 +548,7 @@ describe('Application saga',()=>{
                         window:launchbarWindow,
                     }
                 })
-                .call(Window.asyncs.newWindow,Window.actions.newWindow({
+                .call(Window.asyncs.createWindow,Window.actions.createWindow({
                     name:LAUNCHBAR_VIEW_UUID,
                     url:'/launchBar',
                     frame:false,
@@ -603,7 +608,7 @@ describe('Application saga',()=>{
                         window:launchbarWindow,
                     }
                 })
-                .call(Window.asyncs.newWindow,Window.actions.newWindow({
+                .call(Window.asyncs.createWindow,Window.actions.createWindow({
                     name:LAUNCHBAR_VIEW_UUID,
                     url:'/launchBar',
                     frame:false,
@@ -788,7 +793,7 @@ describe('Application saga',()=>{
                 .next(defaultTop)
                 .select(getNewWindowLeft)
                 .next(defaultLeft)
-                .call(Window.asyncs.newWindow,Window.actions.newWindow(expectedAppJson))
+                .call(Window.asyncs.createWindow,Window.actions.createWindow(expectedAppJson))
                 .next({
                     payload:{
                         window:existWindow,
