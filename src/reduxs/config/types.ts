@@ -1,7 +1,5 @@
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { TextFieldProps } from '@material-ui/core/TextField';
-import {TimePickerModalProps} from "material-ui-pickers/TimePicker/TimePickerModal";
-import {DatePickerModalProps} from "material-ui-pickers/DatePicker/DatePickerModal";
 
 export enum MuiTheme{
     LIGHT='light',
@@ -39,7 +37,7 @@ export interface IConfigField {
     _defaultValue?:any;
     _cols?:number;
     _rows?:number;
-    _props?:TextFieldProps|TimePickerModalProps|DatePickerModalProps;
+    _props?:TextFieldProps|any;
     _custom?:any;
     [key:string]:any;
     [key:number]:any;

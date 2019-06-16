@@ -1,5 +1,7 @@
 sudo: false
 
+if: branch =~ /(master|develop)/
+
 language: node_js
 
 node_js:
