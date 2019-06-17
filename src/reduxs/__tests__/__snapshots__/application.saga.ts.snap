@@ -62,10 +62,12 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to coll
 [MockFunction] {
   "calls": Array [
     Array [
-      0,
-      0,
-      88,
-      64,
+      Object {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 88,
+      },
     ],
   ],
   "results": Array [
@@ -109,10 +111,12 @@ exports[`Application saga handleApplicationLaunchBarToggle saga redirect to non-
 [MockFunction] {
   "calls": Array [
     Array [
-      0,
-      0,
-      88,
-      64,
+      Object {
+        "height": 64,
+        "left": 0,
+        "top": 0,
+        "width": 88,
+      },
     ],
   ],
   "results": Array [

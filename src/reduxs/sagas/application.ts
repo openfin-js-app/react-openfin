@@ -89,12 +89,13 @@ export function* handleShowLoadingView(monitorRect) {
     }));
     loadingWindow = newWindowResAction.payload.window;
 
-    loadingWindow.setBounds(
-        (monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
-        (monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
-        _LOADING_BANNER_WIDTH,
-         _LOADING_BANNER_HEIGHT
-    );
+
+    loadingWindow.setBounds({
+        left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+        top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+        width:_LOADING_BANNER_WIDTH,
+        height:_LOADING_BANNER_HEIGHT
+    });
     loadingWindow.bringToFront();
 
 }
@@ -333,19 +334,19 @@ export function* handleApplicationLaunchBarToggle(){
         launchbarWindow = newWindowResAction.payload.window;
 
         if (launchBarCollapse){
-            launchbarWindow.setBounds(
-                getBoundsActionPayload.left,
-                getBoundsActionPayload.top,
-                88,
-                64,
-            );
+            launchbarWindow.setBounds({
+                left:getBoundsActionPayload.left,
+                top:getBoundsActionPayload.top,
+                width:88,
+                height:64,
+            });
         }else{
-            launchbarWindow.setBounds(
-                getBoundsActionPayload.left,
-                getBoundsActionPayload.top,
-                getAllShownItems(initState.launchBarItems).length<10? getAllShownItems(initState.launchBarItems).length*64+88:664,
-                64,
-            );
+            launchbarWindow.setBounds({
+                left:getBoundsActionPayload.left,
+                top:getBoundsActionPayload.top,
+                width:getAllShownItems(initState.launchBarItems).length<10? getAllShownItems(initState.launchBarItems).length*64+88:664,
+                height:64,
+            });
         }
 
         launchbarWindow.bringToFront();
@@ -384,7 +385,7 @@ export function* handleApplicationLaunchBarClose() {
         windowName: initState.finUuid,
     }));
     const mainWindow = mainWindowAction.payload.window;
-    mainWindow.close(false);
+    mainWindow.close( false);
 }
 
 export function* handleApplicationLaunchNewWindow(action) {
