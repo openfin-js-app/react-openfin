@@ -243,5 +243,5 @@ the next section.
 [CHANGELOG]: ./CHANGELOG.md
 
 
-[version-badge]: https://img.shields.io/badge/version-1.0.0-green.svg
+[version-badge]: https://img.shields.io/badge/version-1.0.1-green.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-green.svg
