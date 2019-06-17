@@ -89,13 +89,13 @@ export function* handleShowLoadingView(monitorRect) {
     }));
     loadingWindow = newWindowResAction.payload.window;
 
-    loadingWindow.setBounds(
-        (monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
-        (monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
-        _LOADING_BANNER_WIDTH,
-         _LOADING_BANNER_HEIGHT
-    );
-    loadingWindow.bringToFront();
+    yield call(loadingWindow.setBounds, {
+        left:(monitorRect.right - monitorRect.left)/2 - _LOADING_BANNER_WIDTH/2,
+        top:(monitorRect.bottom - monitorRect.top)/2 - _LOADING_BANNER_HEIGHT/2,
+        width:_LOADING_BANNER_WIDTH,
+        height:_LOADING_BANNER_HEIGHT
+    });
+    yield call(loadingWindow.bringToFront);
 
 }
 
@@ -113,7 +113,7 @@ export function* handleHideFromLoadingView(monitorRect, targetUrl?:string) {
     yield delay(200);
 
     if (loadingWindow){
-        loadingWindow.close(true);
+        yield call(loadingWindow.close);
     }
     yield put(Window.actions.show({force:true}))
 }
@@ -311,9 +311,9 @@ export function* handleApplicationLaunchBarToggle(){
 
     if (window.name === LAUNCHBAR_VIEW_UUID){
         launchbarWindow = launchbarWindowAction.payload.window;
-        mainWindow.show(true);
+        yield call (mainWindow.show,true);
         yield put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_MAIN_WIN));
-        launchbarWindow.close();
+        yield call(launchbarWindow.close);
     }else{
         launchbarWindow = null;
         const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow({
@@ -333,23 +333,23 @@ export function* handleApplicationLaunchBarToggle(){
         launchbarWindow = newWindowResAction.payload.window;
 
         if (launchBarCollapse){
-            launchbarWindow.setBounds(
-                getBoundsActionPayload.left,
-                getBoundsActionPayload.top,
-                88,
-                64,
-            );
+            yield call(launchbarWindow.setBounds, {
+                left:getBoundsActionPayload.left,
+                top:getBoundsActionPayload.top,
+                width:88,
+                height:64,
+            });
         }else{
-            launchbarWindow.setBounds(
-                getBoundsActionPayload.left,
-                getBoundsActionPayload.top,
-                getAllShownItems(initState.launchBarItems).length<10? getAllShownItems(initState.launchBarItems).length*64+88:664,
-                64,
-            );
+            yield call(launchbarWindow.setBounds,{
+                left:getBoundsActionPayload.left,
+                top:getBoundsActionPayload.top,
+                width:getAllShownItems(initState.launchBarItems).length<10? getAllShownItems(initState.launchBarItems).length*64+88:664,
+                height:64,
+            });
         }
 
-        launchbarWindow.bringToFront();
-        mainWindow.hide();
+        yield call(launchbarWindow.bringToFront);
+        yield call(mainWindow.hide);
         yield put(applicationLaunchBarToggled(APPLICATION_LAUNCH_BAR_STATUS.SWITCH_TO_LAUNCHBAR));
     }
 
@@ -384,7 +384,7 @@ export function* handleApplicationLaunchBarClose() {
         windowName: initState.finUuid,
     }));
     const mainWindow = mainWindowAction.payload.window;
-    mainWindow.close(false);
+    yield call(mainWindow.close, false);
 }
 
 export function* handleApplicationLaunchNewWindow(action) {
@@ -406,8 +406,8 @@ export function* handleApplicationLaunchNewWindow(action) {
         ){
             // already created, not need to create anymore
             const theWindow = wrapWindowAction.payload.window;
-            theWindow.show(true);
-            theWindow.bringToFront();
+            yield call(theWindow.show,true);
+            yield call(theWindow.bringToFront);
         }else{
             // not created, need to create one
             const defaultWidth = yield select(getNewWindowWidth);
@@ -422,7 +422,7 @@ export function* handleApplicationLaunchNewWindow(action) {
 
             const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow(appJson));
             const newWindow = newWindowResAction.payload.window;
-            newWindow.bringToFront();
+            yield call(newWindow.bringToFront);
 
             yield put(configUpdateNewWindowPosition());
         }
