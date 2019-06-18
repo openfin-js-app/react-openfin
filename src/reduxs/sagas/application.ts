@@ -104,11 +104,11 @@ export function* handleHideFromLoadingView(monitorRect, targetUrl?:string) {
 
     // after the sagas loaded, redirect to default page/view
     if(targetUrl && targetUrl.length > 0){
-        initState.hist.push(targetUrl);
+        initState.hist.push(initState.config.publicUrl+targetUrl);
     }else if ( initState.config.defaultViewUrl && initState.config.defaultViewUrl.length > 0){
-        initState.hist.push( initState.config.defaultViewUrl );
+        initState.hist.push( initState.config.publicUrl+initState.config.defaultViewUrl );
     }else{
-        initState.hist.push('/dashboard/view-one');
+        initState.hist.push(initState.config.publicUrl+'/dashboard/view-one');
     }
 
     yield delay(200);
@@ -206,7 +206,7 @@ export function* handleApplicationChildLoading() {
     // console.log("[react-openfin]::app saga take APPLICATION_CHILD_READY or time out", readyRes, timeout);
     const readyPayload = readyRes?readyRes.payload:{};
     if(readyPayload && readyPayload.targetUrl){
-        initState.hist.push(readyPayload.targetUrl);
+        initState.hist.push(initState.config.publicUrl+readyPayload.targetUrl);
     }
     yield putResolve(applicationChildStarted());
 
@@ -232,7 +232,7 @@ export function* handleApplicationNotificationLoading() {
     // console.log("[react-openfin]::app saga take APPLICATION_NOTIFICATION_READY or time out", readyRes, timeout);
     const readyPayload = readyRes?readyRes.payload:{};
     if(readyPayload && readyPayload.targetUrl){
-        initState.hist.push(readyPayload.targetUrl);
+        initState.hist.push(initState.config.publicUrl+readyPayload.targetUrl);
     }
     yield putResolve(applicationNotificationStarted());
 

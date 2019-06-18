@@ -10,6 +10,7 @@ import { IConfigTab } from "./reduxs/config/types";
 import reactOpenfinSharedActions from './reduxs/sharedActions';
 
 interface IInitStateConfig{
+    publicUrl:string,
     logActions:boolean,
     enableLoadingView:boolean,
     enableAutoDocking:boolean,
@@ -68,6 +69,7 @@ const initState:IInitState = {
     configTabs:[],
     clientReduxDispatch: void 0,
     config:{
+        publicUrl:'',
         logActions:false,
         enableLoadingView:true,
         enableAutoDocking:true,
