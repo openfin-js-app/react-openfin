@@ -76,7 +76,7 @@ export function* handleShowLoadingView(monitorRect) {
 
     const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow({
         name:LOADING_VIEW_UUID,
-        url:'/loading',
+        url:initState.config.publicUrl+'/loading',
         frame:false,
         resizable:false,
         state:'normal',
@@ -319,7 +319,7 @@ export function* handleApplicationLaunchBarToggle(){
         launchbarWindow = null;
         const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow({
             name:LAUNCHBAR_VIEW_UUID,
-            url:'/launchBar',
+            url:initState.config.publicUrl+'/launchBar',
             frame:false,
             resizable:false,
             state:'normal',
