@@ -74,6 +74,9 @@ export function* handleShowLoadingView(monitorRect) {
     const _LOADING_BANNER_WIDTH     = Math.min( LOADING_BANNER_WIDTH, WINDOW_WIDTH * 0.6387 );
     const _LOADING_BANNER_HEIGHT    = Math.min( LOADING_BANNER_HEIGHT, WINDOW_HEIGHT * 0.324074 );
 
+    // todo remove this in release
+    console.log('[react-openfin] application async :: handleShowLoadingView',initState.config.publicUrl,initState);
+
     const newWindowResAction:Action<CreateWindowResPayload> = yield call(Window.asyncs.createWindow,Window.actions.createWindow({
         name:LOADING_VIEW_UUID,
         url:initState.config.publicUrl+'/loading',
