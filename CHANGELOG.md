@@ -1,3 +1,5 @@
+## [1.1.0] 2019-06-18
+- Support PUBLIC_URL in: config option
 ## [1.0.1] 2019-06-16
 - Fix a minor bug of passing incorrect parameters
 ## [1.0.0] 2019-06-16
