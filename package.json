@@ -28,7 +28,7 @@
   "dependencies": {
     "dexie": "^2.0.4",
     "fake-indexeddb": "^2.1.0",
-    "i18next": "15.0.7",
+    "i18next": "26.3.4",
     "openfin-browser-adapter": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
